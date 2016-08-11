@@ -2,10 +2,10 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from './common/Header';
 
-const App = () =>
+const App = ({ children, loading }) =>
   <div className="container-fluid">
-    <Header loading={this.props.loading} />
-    {this.props.children}
+    <Header loading={loading} />
+    {children}
   </div>;
 
 function mapStateToProps(state) {
