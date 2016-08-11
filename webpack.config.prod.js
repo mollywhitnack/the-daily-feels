@@ -10,7 +10,7 @@ export default {
   debug: true,
   devtool: 'source-map',
   noInfo: false,
-  entry: './src/index',
+  entry: './src/index.jsx',
   target: 'web',
   output: {
     path: `${__dirname}/dist`,
@@ -28,6 +28,11 @@ export default {
   ],
   module: {
     loaders: [
+      {
+        test: /\.jsx?$/,
+        include: path.join(__dirname, 'src'),
+        loaders: ['babel'],
+      },
       { test: /\.js$/, include: path.join(__dirname, 'src'), loaders: ['babel'] },
       { test: /(\.css)$/, loader: ExtractTextPlugin.extract('css?sourceMap') },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
@@ -36,5 +41,8 @@ export default {
       { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, 
         loader: 'url?limit=10000&mimetype=image/svg+xml' },
     ],
-  }
+  },
+resolve: {
+    extensions: ['', '.js', '.jsx'],
+  },
 };

@@ -7,7 +7,7 @@ const config = {
   noInfo: false,
   entry: [
     'webpack-hot-middleware/client?reload=true',
-    './src/index.jsx',
+    './src/index',
   ],
   target: 'web',
   output: {
