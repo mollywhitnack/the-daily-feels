@@ -1,8 +1,9 @@
+/* eslint-disable no-console */
+
 import fs from 'fs';
 import cheerio from 'cheerio';
-import colors from 'colors';
+import 'colors';
 
-/* eslist-disable no-console */
 
 fs.readFile('src/index.html', 'utf8', (err, markup) => {
   if (err) {
@@ -15,6 +16,7 @@ fs.readFile('src/index.html', 'utf8', (err, markup) => {
     if (error) {
       return console.log(error);
     }
-    console.log('index.html written to /dist'.green);
+    return console.log('index.html written to /dist'.green);
   });
+  return null;
 });

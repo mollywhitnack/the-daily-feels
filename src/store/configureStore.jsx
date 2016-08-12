@@ -1,5 +1,9 @@
-if(process.env.NODE_ENV === 'production'){
-  module.exports = require('./configureStore.prod');
-} else{
-  module.exports = require('./configureStore.dev');
+const prodConfig = require('./configureStore.prod');
+const devConfig = require('./configureStore.dev');
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = prodConfig;
+} else {
+  module.exports = devConfig;
 }
+
