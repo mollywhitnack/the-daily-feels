@@ -17,9 +17,8 @@ class SplashPage extends React.Component{
 
   updateSearchState(event){
     const field = event.target.name;
-    let search = this.state.course;
-    search[field] = event.target.value;
-    return this.setState({search: course});
+    let search = event.target.value;
+    return this.setState({search: search});
   }
 
   render(){

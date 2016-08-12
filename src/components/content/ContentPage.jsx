@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import FaceBoard from './FaceBoard';
-// import * as articleActions from '../../actions/articleActions';
+import * as articleActions from '../../actions/articleActions';
 // import CourseList from './CourseList';
 
 class ContentPage extends Component {
