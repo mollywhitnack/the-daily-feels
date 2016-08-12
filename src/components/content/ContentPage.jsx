@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {browserHistory} from 'react-router';
 import FaceBoard from './FaceBoard';
-// import * as articleActions from '../../actions/articleActions';
+import * as articleActions from '../../actions/articleActions';
 // import CourseList from './CourseList';
 
 class ContentPage extends Component {
@@ -12,10 +12,10 @@ class ContentPage extends Component {
   }
 
   render() {
-    const {articles} = this.props;
+    const {articles, faces} = this.props;
     return (
       <div>
-        <FaceBoard />
+        <FaceBoard faces={faces}/>
         <p>Articles here...</p>
       </div>
     );
@@ -24,12 +24,40 @@ class ContentPage extends Component {
 
 ContentPage.propTypes = {
   articles: PropTypes.array.isRequired,
+  faces: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   return {
-    articles: { "link": "cnn.com", "snippet": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, totam." }// state.articles; property courses determined by reducer (reducers/courseReducer.js in this case)
+    articles: [ { "link": "cnn.com", "snippet": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, totam." } ], // state.articles; property courses determined by reducer (reducers/courseReducer.js in this case)
+    faces: [
+      {
+        "img": "😠",
+        "emotion": "anger",
+        "percentage": 84,
+      },
+      {
+        "img": "😷",
+        "emotion": "disgust",
+        "percentage": 37,
+      },
+      {
+        "img": "😨",
+        "emotion": "fear",
+        "percentage": 25,
+      },
+      {
+        "img": "😄",
+        "emotion": "joy",
+        "percentage": 92,
+      },
+      {
+        "img": "😭",
+        "emotion": "sadness",
+        "percentage": 4,
+      }
+    ]
   };
 }
 
