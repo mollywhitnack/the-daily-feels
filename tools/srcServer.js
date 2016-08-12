@@ -6,6 +6,7 @@ import path from 'path';
 import api from './api';
 
 import config from '../webpack.config.dev';
+require('dotenv').config();
 
 /* eslint-disable no-console */
 
@@ -37,3 +38,4 @@ app.listen(port, err => {
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+

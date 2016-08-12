@@ -21,9 +21,22 @@ const scrapeOneArticle = article =>
   });
 
 
-const analyzeOneTone = article =>
-  mockToneApi.getTone(article)
-;
+const analyzeOneTone = article => {
+  const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
+  const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
+
+  const toneUrl = `https://${toneAnalyzerUsername}:${toneAnalyzerPassword}@gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=${article.text}`;
+
+  const toneRequestPromise = new Promise((resolve, reject) => {
+    request({ toneUrl }, (err, response, body) => {
+      if (err) reject(err);
+      return resolve(body);
+    });
+  });
+
+  return toneRequestPromise;
+  // return mockToneApi.getTone(article);
+};
 
 
 const scrapeArticles = articles => {
@@ -65,11 +78,20 @@ const analyzeTones = articles => {
 };
 
 
-exports.get = searchTerm =>
-  mockNewsApi.getArticles(searchTerm)
-  .then(scrapeArticles)
-  .then(analyzeTones)
-  .then(analyzed =>
-    analyzed
-  );
+exports.get = searchTerm => {
+  const newsApiKey = process.env.ALCHEMY_API_KEY || null;
+  const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
+
+  const newsRequestPromise = new Promise((resolve, reject) => {
+    request({ newsUrl }, (err, response, body) => {
+      if (err) reject(err);
+      return resolve(body);
+    });
+  });
+
+  // return mockNewsApi(searchTerm)
+  return newsRequestPromise
+    .then(scrapeArticles)
+    .then(analyzeTones);
+};
 
