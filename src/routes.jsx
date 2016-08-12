@@ -9,5 +9,6 @@ export default (
     <IndexRoute component={SplashPage} />
     <Route path="splash" component={SplashPage} />
     <Route path="articles" component={ContentPage} />
+    <Route path="articles/:search" component={ContentPage} />
   </Route>
 );
