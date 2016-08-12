@@ -3,6 +3,9 @@ import path from 'path';
 
 const config = {
   debug: true,
+  externals: {
+    'cheerio': 'window',
+  },
   devtool: 'cheap-module-eval-source-map',
   noInfo: false,
   entry: [
