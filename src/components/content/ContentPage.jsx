@@ -9,6 +9,7 @@ import * as articleActions from '../../actions/articleActions';
 class ContentPage extends Component {
   constructor(props, context) {
     super(props, context);
+    console.log('sear by:', this.props.params);
   }
 
   render() {
@@ -30,7 +31,7 @@ ContentPage.propTypes = {
 
 function mapStateToProps(state, ownProps) {
   return {
-    articles: [ { "link": "cnn.com", "snippet": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, totam." } ], // state.articles; property courses determined by reducer (reducers/courseReducer.js in this case)
+    articles: state.articles, // state.articles; property courses determined by reducer (reducers/courseReducer.js in this case)
     faces: [
       {
         "img": "😠",
@@ -60,6 +61,7 @@ function mapStateToProps(state, ownProps) {
     ]
   };
 }
+
 
 function mapDispatchToProps(dispatch) {
   return {

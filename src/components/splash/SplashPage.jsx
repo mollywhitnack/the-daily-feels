@@ -1,6 +1,11 @@
 import React, {PropTypes} from 'react';
 import TextInput from '../common/TextInput';
-import {Link } from 'react-router'
+import {Link } from 'react-router';
+import * as articleActions from '../../actions/articleActions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import toastr from 'toastr';
+
 
 //const SplashPage = ({onChange, errors, onSave}) =>
 class SplashPage extends React.Component{
@@ -11,14 +16,26 @@ class SplashPage extends React.Component{
       search: '',
     };
 
-  this.updateSearchState = this.updateSearchState.bind(this);
+    this.updateSearchState = this.updateSearchState.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
 
   }
 
+
   updateSearchState(event){
+    event.preventDefault;
     const field = event.target.name;
     let search = event.target.value;
     return this.setState({search: search});
+  } 
+
+  onSubmit(event){
+    event.preventDefault;
+    this.props.actions.loadArticles(this.state.search)
+    .then(()=> console.log('store updated'))
+    /*.catch(err =>{
+      toastr.error(err);
+    });*/
   }
 
   render(){
@@ -32,11 +49,31 @@ class SplashPage extends React.Component{
         onChange = {this.updateSearchState} />
 
       <Link to = {'/articles/' +this.state.search}
-           className = "btn btn-primary"> Submit </Link>
+           className = "btn btn-primary" onClick= {this.onSubmit}> Submit </Link>
 
       </div>
     );
   }
 }
 
-export default SplashPage;
+function mapStateToProps(state, ownProps){
+  /*let courseId = ownProps.params.id;
+  let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+
+  if(courseId && state.courses.length >0){
+    course = getCourseById(state.courses, courseId);
+  }
+*/
+
+  return {
+    articles: state.articles,
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(articleActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps ,mapDispatchToProps)(SplashPage);
