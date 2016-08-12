@@ -4,7 +4,7 @@ import React, {PropTypes} from 'react';
 
 const Face = ({face}) =>{
   return (
-    <Link to = `/face/${face.emotion}`>
+    <Link to ={`/face/${face.emotion}`}>
       <h3>{face.emotion}</h3>
       <image src = {face.url} />
     </Link>
