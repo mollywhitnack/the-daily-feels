@@ -6,13 +6,9 @@ import FaceBoard from './FaceBoard';
 // import * as articleActions from '../../actions/articleActions';
 // import CourseList from './CourseList';
 
-class CoursesPage extends Component {
+class ContentPage extends Component {
   constructor(props, context) {
     super(props, context);
-  }
-
-  courseRow(course, index) {
-    return <div key={index}>{course.title}</div>;
   }
 
   render() {
@@ -26,7 +22,7 @@ class CoursesPage extends Component {
   }
 }
 
-CoursesPage.propTypes = {
+ContentPage.propTypes = {
   articles: PropTypes.array.isRequired,
   actions: PropTypes.object.isRequired
 };
