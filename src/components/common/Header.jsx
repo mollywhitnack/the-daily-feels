@@ -1,7 +1,6 @@
 import React, {PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as courseActions from '../../actions/authorActions';
 
 class Header extends React.Component {
   constructor(props) {
