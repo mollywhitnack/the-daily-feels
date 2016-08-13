@@ -77,7 +77,7 @@ const analyzeTones = articles => {
     analyzeOneTone(article)
       .then(tone => {
         const newArticle = Object.assign({}, article);
-        newArticle.tone = tone;
+        newArticle.tone = tone.document_tone.tone_categories[0].tones;
         return newArticle;
       })
       .catch(err => console.log(err))
