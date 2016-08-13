@@ -1,9 +1,21 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+
+require('dotenv').config();
 const cheerio = require('cheerio');
 const request = require('request');
 import mockNewsApi from '../../src/api/mockNewsApi';
 import mockToneApi from '../../src/api/mockToneApi';
 
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const toneAnalyzer = new ToneAnalyzerV3({
+  username: '9df5ee86-ce67-4f5c-947e-78209374ae20',
+  password: 'SiZ6rlPh3J5u',
+  version_date: '2016-05-19',
+});
+
+const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
+const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
 
 const scrapeOneArticle = article =>
   new Promise((resolve, reject) => {
@@ -22,20 +34,16 @@ const scrapeOneArticle = article =>
 
 
 const analyzeOneTone = article => {
-  const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
-  const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
-
-  const toneUrl = `https://${toneAnalyzerUsername}:${toneAnalyzerPassword}@gateway.watsonplatform.net/tone-analyzer/api/v3/tone?version=2016-05-19&text=${article.text}`;
-
   const toneRequestPromise = new Promise((resolve, reject) => {
-    request({ toneUrl }, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
+    toneAnalyzer.tone({ text: article.text },
+      (err, body) => {
+        if (err) reject(err);
+        return resolve(body);
+      });
   });
-
   return toneRequestPromise;
-  // return mockToneApi.getTone(article);
+
+  // return mockToneApi.getTone(article)
 };
 
 
@@ -79,18 +87,22 @@ const analyzeTones = articles => {
 
 
 exports.get = searchTerm => {
-  const newsApiKey = process.env.ALCHEMY_API_KEY || null;
+  const newsApiKey = process.env.ALCH_API || null;
   const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
 
-  const newsRequestPromise = new Promise((resolve, reject) => {
-    request({ newsUrl }, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
-  });
+  // const newsRequestPromise = new Promise((resolve, reject) => {
+  //   request(newsUrl, (err, response, body) => {
+  //     console.log('err',err)
+  //     console.log('body',body)
+  //     if (err) reject(err);
+  //     return resolve(body);
+  //   });
+  // });
+  // return newsRequestPromise
+  // .then(scrapeArticles)
+  // .then(analyzeTones);
 
-  // return mockNewsApi(searchTerm)
-  return newsRequestPromise
+  return mockNewsApi.getArticles(searchTerm)
     .then(scrapeArticles)
     .then(analyzeTones);
 };
