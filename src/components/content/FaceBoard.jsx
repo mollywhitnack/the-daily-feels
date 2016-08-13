@@ -8,7 +8,6 @@ const FaceBoard = ({faces}) => {
     <div className='container-fluid'>
       {faces.map(face =>
         <Face key={face.img} face={face} searchTerm={searchTerm} />
-
       )}
     </div>
   )
