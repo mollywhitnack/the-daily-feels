@@ -21,11 +21,11 @@ const scrapeOneArticle = article =>
   new Promise((resolve, reject) => {
     const url = article.url;
     //  last characters of snippet are ' ...'
-    const searchText = article.snippet.slice(-26, -6);
+    const searchText = article.snippet.slice(-26, -6).replace(/\)/g,"\\)").replace(/"/g,"\\\"");
     request(url, (err, response, body) => {
       if (err) reject(err);
       const $ = cheerio.load(body);
-      const searchResult = $(`p:contains("${searchText}")`);
+      const searchResult = $(`p:contains(${searchText})`);
       if (!searchResult) reject(new Error("Scraper can't find snippet"));
       const textResult = searchResult.text() + searchResult.siblings(':not("script")').text();
       resolve(textResult);
@@ -48,7 +48,13 @@ const analyzeOneTone = article => {
 
 
 const scrapeArticles = articles => {
-  const scrapedArticlePromises = articles.result.docs.map(article => {
+  try {
+    var parsedArticles = JSON.parse(articles);
+  } catch (e) {
+    var parsedArticles = articles;
+  }
+
+  const scrapedArticlePromises = parsedArticles.result.docs.map(article => {
     const formattedArticle = {
       title: article.source.enriched.url.title,
       snippet: article.source.enriched.url.text,
@@ -87,23 +93,24 @@ const analyzeTones = articles => {
 
 
 exports.get = searchTerm => {
-  const newsApiKey = process.env.ALCH_API || null;
-  const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
 
+  // const newsApiKey = process.env.ALCH_API || null;
+  // const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
   // const newsRequestPromise = new Promise((resolve, reject) => {
   //   request(newsUrl, (err, response, body) => {
-  //     console.log('err',err)
-  //     console.log('body',body)
   //     if (err) reject(err);
   //     return resolve(body);
   //   });
   // });
   // return newsRequestPromise
-  // .then(scrapeArticles)
-  // .then(analyzeTones);
+  //   .then(scrapeArticles)
+  //   .then(analyzeTones)
+  //   .catch(err => console.log(err))
+
 
   return mockNewsApi.getArticles(searchTerm)
     .then(scrapeArticles)
     .then(analyzeTones);
+  
 };
 
