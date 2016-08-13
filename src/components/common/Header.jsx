@@ -51,6 +51,17 @@ class Header extends React.Component {
   }
 }
 
+function mapStateToProps(state, ownProps){
 
-export default Header;
+  return {
+    articles: state.articles,
+  };
+}
 
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(articleActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps ,mapDispatchToProps)(Header);
