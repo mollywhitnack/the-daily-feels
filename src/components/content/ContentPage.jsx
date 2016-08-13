@@ -9,19 +9,18 @@ import ArticleList from './ArticleList';
 class ContentPage extends Component {
   constructor(props, context) {
     super(props, context);
-    console.log('search by:', this.props.params);
   }
 
   render() {
+    console.log('emotion:', this.props.params.emotion);
     const {articles, faces} = this.props;
-    return (
-      <div>
-        <FaceBoard faces={faces}/>
-        <ArticleList articles={articles}/>
-      </div>
-    );
-  }
-
+      return (
+        <div>
+          <FaceBoard faces={faces}/>
+          <ArticleList articles={articles} emotion = {this.props.params.emotion}/>
+        </div>
+      );
+   }
 }
 
 ContentPage.propTypes = {

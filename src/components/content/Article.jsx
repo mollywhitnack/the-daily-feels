@@ -2,7 +2,8 @@ import React, {PropTypes} from 'react';
 import {Link} from 'react-router';
 import styles from '../../styles/styles.css';
 
-const Article = ({article}) => {
+const Article = ({article, emotion}) => {
+
   return (
     <Link to={article.url} target="_blank">
       <div className="col-xs-3 article">
