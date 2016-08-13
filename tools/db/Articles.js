@@ -7,15 +7,15 @@ const request = require('request');
 import mockNewsApi from '../../src/api/mockNewsApi';
 import mockToneApi from '../../src/api/mockToneApi';
 
-const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
-const toneAnalyzer = new ToneAnalyzerV3({
-  username: '9df5ee86-ce67-4f5c-947e-78209374ae20',
-  password: 'SiZ6rlPh3J5u',
-  version_date: '2016-05-19',
-});
-
 const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
 const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
+
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const toneAnalyzer = new ToneAnalyzerV3({
+  username: toneAnalyzerUsername,
+  password: toneAnalyzerPassword,
+  version_date: '2016-05-19',
+});
 
 const scrapeOneArticle = article =>
   new Promise((resolve, reject) => {
