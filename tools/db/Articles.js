@@ -17,68 +17,88 @@ const toneAnalyzer = new ToneAnalyzerV3({
   version_date: '2016-05-19',
 });
 
-const scrapeOneArticle = article =>
-  new Promise((resolve, reject) => {
-    const url = article.url;
-    //  last characters of snippet are ' ...'
-    const searchText = article.snippet.slice(-26, -6).replace(/\)/g,"\\)").replace(/"/g,"\\\"");
-    request(url, (err, response, body) => {
-      if (err) reject(err);
-      const $ = cheerio.load(body);
-      const searchResult = $(`p:contains(${searchText})`);
-      if (!searchResult) reject(new Error("Scraper can't find snippet"));
-      const textResult = searchResult.text() + searchResult.siblings(':not("script")').text();
-      resolve(textResult);
-    });
-  });
 
-
-const analyzeOneTone = article => {
-  const toneRequestPromise = new Promise((resolve, reject) => {
-    toneAnalyzer.tone({ text: article.text },
-      (err, body) => {
-        if (err) reject(err);
-        return resolve(body);
-      });
-  });
-  return toneRequestPromise;
-
-  // return mockToneApi.getTone(article)
-};
-
-
-const scrapeArticles = articles => {
+function formatArticles(articles) {
+  let parsedArticles;
   try {
-    var parsedArticles = JSON.parse(articles);
+    parsedArticles = JSON.parse(articles);
   } catch (e) {
-    var parsedArticles = articles;
+    parsedArticles = articles;
   }
 
-  const scrapedArticlePromises = parsedArticles.result.docs.map(article => {
-    const formattedArticle = {
-      title: article.source.enriched.url.title,
-      snippet: article.source.enriched.url.text,
-      url: article.source.original.url,
-      id: article.id,
+  const formattedArticles = parsedArticles.result.docs.map(el => {
+    if (!Object.keys(el).length) {
+      return null;
+    }
+    return {
+      title: el.source.enriched.url.title,
+      snippet: el.source.enriched.url.text,
+      url: el.source.original.url,
+      id: el.id,
     };
+  })
+    .filter(el => el !== null);
 
-    return scrapeOneArticle(formattedArticle)
+  console.log('formattedArticles pre', formattedArticles);
+  return Promise.resolve(formattedArticles);
+}
+
+
+function scrapeArticles(formattedArticles) {
+  console.log('formattedArticles post', formattedArticles);
+  const scrapedArticlePromises = formattedArticles.map(formattedArticle =>
+    scrapeOneArticle(formattedArticle)
       .then(scrapedText => {
-        formattedArticle.text = scrapedText;
-        return formattedArticle;
+        console.log('scrapedText', scrapedText);
+        const scrapedArticle = Object.assign({}, formattedArticle);
+        scrapedArticle.text = scrapedText;
+        return scrapedArticle;
       })
-      .catch(err => console.log(err));
-  });
+      .catch(err => console.log(err))
+  );
 
   return Promise.all(scrapedArticlePromises)
     .then(scrapedArticles => {
       const articlesToReturn = scrapedArticles.filter(article => article.text);
       return articlesToReturn;
     });
-};
+}
+
+function scrapeOneArticle(article) {
+  return new Promise((resolve, reject) => {
+    const url = article.url;
+    const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
+    request(url, (err, response, body) => {
+      if (err) reject(err);
+      const $ = cheerio.load(body);
+      let searchResult = $(`p:contains(${searchText})`);
+      if (!searchResult.length) {
+        searchResult = $(`span:contains(${searchText})`);
+      }
+      const textResult = searchResult.text() +
+        searchResult.siblings(':not(:has("script"))').not('script').text();
+      resolve(textResult);
+    });
+  });
+}
+
+function createScrapeSearchText(snippet, lastChar) {
+  if (snippet.length < 20) {
+    return snippet.replace(/\W/g, ' ');
+  }
+  const searchText = snippet.slice(lastChar - 20, lastChar);
+  const matchResult = searchText.match(/[)("]/);
+  if (lastChar - 20 < 0) {
+    return null;
+  }
+  if (matchResult) {
+    return createScrapeSearchText(snippet, lastChar - matchResult.index - 1);
+  }
+  return searchText;
+}
 
 
-const analyzeTones = articles => {
+function analyzeTones(articles) {
   const tonePromises = articles.map(article =>
     analyzeOneTone(article)
       .then(tone => {
@@ -89,13 +109,23 @@ const analyzeTones = articles => {
       .catch(err => console.log(err))
   );
   return Promise.all(tonePromises);
-};
+}
 
+function analyzeOneTone(article) {
+  return new Promise((resolve, reject) => {
+    toneAnalyzer.tone({ text: article.text },
+      (err, tone) => {
+        if (err) reject(err);
+        return resolve(tone);
+      });
+  });
+  //  mockToneApi.getTone(article)
+}
 
-exports.get = searchTerm => {
-
+exports.get = searchTerm => {  //  eslint-disable-line arrow-body-style
   // const newsApiKey = process.env.ALCH_API || null;
-  // const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
+  // const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
+  //
   // const newsRequestPromise = new Promise((resolve, reject) => {
   //   request(newsUrl, (err, response, body) => {
   //     if (err) reject(err);
@@ -103,14 +133,17 @@ exports.get = searchTerm => {
   //   });
   // });
   // return newsRequestPromise
+  //   .then(formatArticles)
   //   .then(scrapeArticles)
   //   .then(analyzeTones)
-  //   .catch(err => console.log(err))
-
+  //   .then(stuff => {
+  //     console.log(stuff);
+  //     return stuff;
+  //   })
+  //   .catch(err => console.log(err));
 
   return mockNewsApi.getArticles(searchTerm)
+    .then(formatArticles)
     .then(scrapeArticles)
     .then(analyzeTones);
-  
 };
-
