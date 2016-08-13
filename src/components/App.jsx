@@ -1,11 +1,14 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Header from './common/Header';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const App = ({ children, loading }) =>
   <div className="container-fluid">
-    <Header loading={loading} />
-    {children}
+    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      {children}
+    </MuiThemeProvider>
   </div>;
 
 function mapStateToProps(state) {
@@ -20,4 +23,3 @@ App.propTypes = {
 };
 
 export default connect(mapStateToProps)(App);
-
