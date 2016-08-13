@@ -1,9 +1,21 @@
 /* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+
+require('dotenv').config();
 const cheerio = require('cheerio');
 const request = require('request');
 import mockNewsApi from '../../src/api/mockNewsApi';
 import mockToneApi from '../../src/api/mockToneApi';
 
+const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
+const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
+
+const ToneAnalyzerV3 = require('watson-developer-cloud/tone-analyzer/v3');
+const toneAnalyzer = new ToneAnalyzerV3({
+  username: toneAnalyzerUsername,
+  password: toneAnalyzerPassword,
+  version_date: '2016-05-19',
+});
 
 const scrapeOneArticle = article =>
   new Promise((resolve, reject) => {
@@ -21,9 +33,18 @@ const scrapeOneArticle = article =>
   });
 
 
-const analyzeOneTone = article =>
-  mockToneApi.getTone(article)
-;
+const analyzeOneTone = article => {
+  const toneRequestPromise = new Promise((resolve, reject) => {
+    toneAnalyzer.tone({ text: article.text },
+      (err, body) => {
+        if (err) reject(err);
+        return resolve(body);
+      });
+  });
+  return toneRequestPromise;
+
+  // return mockToneApi.getTone(article)
+};
 
 
 const scrapeArticles = articles => {
@@ -65,11 +86,24 @@ const analyzeTones = articles => {
 };
 
 
-exports.get = searchTerm =>
-  mockNewsApi.getArticles(searchTerm)
-  .then(scrapeArticles)
-  .then(analyzeTones)
-  .then(analyzed =>
-    analyzed
-  );
+exports.get = searchTerm => {
+  const newsApiKey = process.env.ALCH_API || null;
+  const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
+
+  // const newsRequestPromise = new Promise((resolve, reject) => {
+  //   request(newsUrl, (err, response, body) => {
+  //     console.log('err',err)
+  //     console.log('body',body)
+  //     if (err) reject(err);
+  //     return resolve(body);
+  //   });
+  // });
+  // return newsRequestPromise
+  // .then(scrapeArticles)
+  // .then(analyzeTones);
+
+  return mockNewsApi.getArticles(searchTerm)
+    .then(scrapeArticles)
+    .then(analyzeTones);
+};
 
