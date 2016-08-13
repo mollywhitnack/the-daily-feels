@@ -10,5 +10,6 @@ export default (
     <Route path="splash" component={SplashPage} />
     <Route path="articles" component={ContentPage} />
     <Route path="articles/:search" component={ContentPage} />
+    <Route path="articles/:search/:emotion" component={ContentPage} />
   </Route>
 );
