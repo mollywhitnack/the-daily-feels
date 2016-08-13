@@ -6,7 +6,6 @@ import path from 'path';
 import api from './api';
 
 import config from '../webpack.config.dev';
-require('dotenv').config();
 
 /* eslint-disable no-console */
 
