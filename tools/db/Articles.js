@@ -106,4 +106,3 @@ exports.get = searchTerm => {
     .then(scrapeArticles)
     .then(analyzeTones);
 };
-

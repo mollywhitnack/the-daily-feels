@@ -27,7 +27,7 @@ class SplashPage extends React.Component{
     const field = event.target.name;
     let search = event.target.value;
     return this.setState({search: search});
-  } 
+  }
 
   onSubmit(event){
     event.preventDefault;
@@ -76,4 +76,4 @@ function mapDispatchToProps(dispatch){
   };
 }
 
-export default connect(mapStateToProps ,mapDispatchToProps)(SplashPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SplashPage);
