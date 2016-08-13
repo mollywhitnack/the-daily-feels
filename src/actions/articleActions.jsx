@@ -15,8 +15,7 @@ export function loadArticles(searchTerm) {
         dispatch(loadArticlesSuccess(articles));
       })
       .fail(err => {
-        // throw err;
-        console.log('this is an error action 19',err);
+        throw err;
       });
   };
 }
