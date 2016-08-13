@@ -147,7 +147,7 @@ const articles =
           "source": {
             "enriched": {
               "url": {
-                "text": "Washington:\u00A0                            Malia Obama, the elder daughter of US President Barack Obama, has been spotted smoking what some suspect to be a cannabis joint. The 18-year-old, who is set to attend Harvard next year, was at the Lollapalooza music festival in Chicago, Illinois, where a nine-second video published by Radar Online, apparently captured her smoking, is doing the rounds on internet and has evoked mixed reactions from public. ...",
+                "text": "Malia Obama, the elder daughter of US President Barack Obama, has been spotted smoking what some suspect to be a cannabis joint. The 18-year-old, who is set to attend Harvard next year, was at the Lollapalooza music festival in Chicago, Illinois, where a nine-second video published by Radar Online, apparently captured her smoking, is doing the rounds on internet and has evoked mixed reactions from public. ...",
                 "title": "Barack Obama's Daughter Malia Caught Smoking"
               }
             },
