@@ -36,7 +36,7 @@ function getEmoPercent(articles) {
   let joyTotal = 0;
   let sadnessTotal = 0;
   let percentages = articles.map(article => {
-    let tones = article.tone.document_tone.tone_categories[0].tones;
+    let tones = article.tone;
     angerTotal += tones[0].score;
     disgustTotal += tones[1].score;
     fearTotal += tones[2].score;
