@@ -41,15 +41,14 @@ class SplashPage extends React.Component{
   render(){
     return(
       <div className="jumbotron">
-      <h1>The Daily Feels</h1>
-      <p>something something</p>
-      <TextInput
-        name = "searchBy"
-        label = "Search News"
-        onChange = {this.updateSearchState} />
+        <h1>The Daily Feels</h1>
+        <p>something something</p>
+        <TextInput
+          name = "searchBy"
+          label = "Search News"
+          onChange = {this.updateSearchState} />
 
-      <Link to = {'/articles/' +this.state.search}
-           className = "btn btn-primary" onClick= {this.onSubmit}> Submit </Link>
+        <Link to = {'/articles/' + this.state.search} className = "btn btn-primary" onClick= {this.onSubmit}>Submit</Link>
 
       </div>
     );
@@ -57,14 +56,6 @@ class SplashPage extends React.Component{
 }
 
 function mapStateToProps(state, ownProps){
-  /*let courseId = ownProps.params.id;
-  let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
-
-  if(courseId && state.courses.length >0){
-    course = getCourseById(state.courses, courseId);
-  }
-*/
-
   return {
     articles: state.articles,
   };

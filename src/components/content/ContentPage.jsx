@@ -5,19 +5,28 @@ import {browserHistory} from 'react-router';
 import FaceBoard from './FaceBoard';
 import * as articleActions from '../../actions/articleActions';
 import ArticleList from './ArticleList';
+import LoadingDots from '../common/LoadingDots';
+import CircularProgress from 'material-ui/CircularProgress';
+import AppBar from 'material-ui/AppBar';
+import Header from '../common/Header';
 
 class ContentPage extends Component {
   constructor(props, context) {
     super(props, context);
+
   }
 
   render() {
     console.log('emotion:', this.props.params.emotion);
-    const {articles, faces} = this.props;
+    const {articles, faces, loading} = this.props;
       return (
         <div>
-          <FaceBoard faces={faces}/>
-          <ArticleList articles={articles} emotion = {this.props.params.emotion}/>
+          { loading ? <CircularProgress size={2} /> :
+          <div>
+            <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
+            <FaceBoard faces={faces}/>
+            <ArticleList articles={articles} emotion = {this.props.params.emotion}/>
+          </div> }
         </div>
       );
    }
@@ -26,7 +35,8 @@ class ContentPage extends Component {
 ContentPage.propTypes = {
   articles: PropTypes.array.isRequired,
   faces: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 function getEmoPercent(articles) {
@@ -53,7 +63,7 @@ function getEmoPercent(articles) {
 }
 
 function mapStateToProps(state, ownProps) {
-  console.log('state.articles:', state.articles);
+  // console.log('state.articles:', state.articles);
   state.articles.forEach(article => article.snippet = article.snippet.match(RegExp(".{"+20+"}\\S*")||[article.snippet])[0]);
   let percentages = {
     "angerTotal": 0,
@@ -66,6 +76,7 @@ function mapStateToProps(state, ownProps) {
     percentages = getEmoPercent(state.articles);
   }
   return {
+    loading: state.ajaxCallsInProgress > 0,
     articles: state.articles, // state.articles; property courses determined by reducer (reducers/courseReducer.js in this case)
     faces: [
       {
