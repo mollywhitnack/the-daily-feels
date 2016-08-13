@@ -1,45 +1,67 @@
-import React, {PropTypes} from 'react';
+import React, {PropTypes} from 'react'; 
+import {Link} from 'react-router';
+import TextInput from './TextInput';
+import * as articleActions from '../../actions/articleActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import toastr from 'toastr';
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor(props, context) {
+    super(props, context);
     this.state = {
-      value: 'Enter a Search Term'
+      search: '',
     };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleClick = this.handleClick.bind(this); 
+    this.updateSearchState = this.updateSearchState.bind(this); 
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({
-      value: event.target.value
-    });
+  updateSearchState(event){
+    const field = event.target.name;
+    let search = event.target.value;
+    return this.setState({search: search});
   }
-  
 
-  handleClick() {
-    // loadArticles(this.state.value);
-    // just alerting for now, but the intention is to plug input value into API action
-    alert(this.state.value);
+
+  onSubmit(event){
+    event.preventDefault;
+    this.props.actions.loadArticles(this.state.search)
+    .then(()=> console.log('store updated'))
+    /*.catch(err =>{
+      toastr.error(err);
+    });*/
   }
 
 
   render() {
     return (
       <div style={{float: "right"}}>
-        <input placeholder='Enter a Topic' onChange={this.handleChange} />
-        <button onClick={this.handleClick}>Get Feels</button>
+        <TextInput
+          name = "searchBy"
+          label = "Enter a Search Term"
+          onChange = {this.updateSearchState}
+          placeholder = "ie. Donald Trump" 
+          />
+          
+          <Link to = {'/articles/' +this.state.search}
+             className = "btn btn-primary" onClick={this.onSubmit}> Get Feels </Link>  
+        
       </div>
     );
   }
 }
-Header.propTypes = {
 
-};
-Header.defaultProps = {
+function mapStateToProps(state, ownProps){
 
-};
+  return {
+    articles: state.articles,
+  };
+}
 
-export default Header;
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(articleActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps ,mapDispatchToProps)(Header);
