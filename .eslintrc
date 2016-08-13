@@ -26,5 +26,6 @@
     "import/no-extraneous-dependencies": [2, { "devDependencies": true } ],
     "no-underscore-dangle":["error",{"allow": ["_id"]}],
     "new-cap": ["error", {"capIsNewExceptions":["Router"]}],
+    "no-use-before-define": ["error", { "functions": false, "classes": true }]
   }
 }
