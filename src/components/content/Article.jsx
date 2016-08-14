@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import styles from '../../styles/styles.css';
+import styles from '../../styles/styles.scss';
 
 const Article = ({ article }) => {
   return (
