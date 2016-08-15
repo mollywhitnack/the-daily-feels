@@ -4,6 +4,7 @@
 require('dotenv').config();
 const cheerio = require('cheerio');
 const request = require('request');
+const uuid = require('uuid');
 import mockNewsApi from '../../src/api/mockNewsApi';
 import mockToneApi from '../../src/api/mockToneApi';
 
@@ -26,18 +27,38 @@ function formatArticles(articles) {
     parsedArticles = articles;
   }
 
-  const formattedArticles = parsedArticles.result.docs.map(el => {
-    if (!Object.keys(el).length) {
-      return null;
-    }
-    return {
-      title: el.source.enriched.url.title,
-      snippet: el.source.enriched.url.text,
-      url: el.source.original.url,
-      id: el.id,
-    };
-  })
-    .filter(el => el !== null);
+  let formattedArticles;
+
+  //  articles are from alchemy
+  if (parsedArticles.result) {
+    formattedArticles = parsedArticles.result.docs.map(el => {
+      if (!Object.keys(el).length) {
+        return null;
+      }
+      return {
+        title: el.source.enriched.url.title,
+        snippet: el.source.enriched.url.text,
+        url: el.source.original.url,
+        id: uuid(),
+      };
+    })
+      .filter(el => el !== null);
+  } 
+  //  articles are from bing
+  else if (parsedArticles.value) {
+    formattedArticles = parsedArticles.value.map(el => {
+      if (!Object.keys(el).length) {
+        return null;
+      }
+      return {
+        title: el.name,
+        snippet: el.description,
+        url: el.url,
+        id: uuid(),
+      };
+    })
+      .filter(el => el !== null);
+  }
 
   return Promise.resolve(formattedArticles);
 }
@@ -109,39 +130,51 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-  return new Promise((resolve, reject) => {
-    toneAnalyzer.tone({ text: article.text },
-      (err, tone) => {
-        if (err) reject(err);
-        return resolve(tone);
-      });
-  });
-   // return mockToneApi.getTone(article)
+  // return new Promise((resolve, reject) => {
+  //   toneAnalyzer.tone({ text: article.text },
+  //     (err, tone) => {
+  //       if (err) reject(err);
+  //       return resolve(tone);
+  //     });
+  // });
+  return mockToneApi.getTone(article);
 }
 
 exports.get = searchTerm => {  //  eslint-disable-line arrow-body-style
-  const newsApiKey = process.env.ALCH_API || null;
-  const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
-
-  const newsRequestPromise = new Promise((resolve, reject) => {
-    request(newsUrl, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
-  });
-  return newsRequestPromise
-    .then(formatArticles)
-    .then(scrapeArticles)
-    .then(analyzeTones)
-    .then(stuff => {
-      console.log(stuff);
-      return stuff;
-    })
-    .catch(err => console.log(err));
-
-  // return mockNewsApi.getArticles(searchTerm)
+  // const newsApiKey = process.env.ALCH_API || null;
+  // const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
+  //
+  // const newsRequestPromise = new Promise((resolve, reject) => {
+  //   request(newsUrl, (err, response, body) => {
+  //     if (err) reject(err);
+  //     return resolve(body);
+  //   });
+  // });
+  // return newsRequestPromise
   //   .then(formatArticles)
   //   .then(scrapeArticles)
-  //   .then(analyzeTones);
+  //   .then(analyzeTones)
+  //   .then(stuff => {
+  //     console.log(stuff);
+  //     return stuff;
+  //   })
+  //   .catch(err => console.log(err));
+
+  return mockNewsApi.getArticles(searchTerm)
+    .then(formatArticles)
+    .then(stuff => {
+      console.log('afterformat',stuff)
+      return stuff; 
+    })
+    .then(scrapeArticles)
+    .then(stuff => {
+      console.log('afterscrape',stuff)
+      return stuff; 
+    })
+    .then(analyzeTones)
+    .then(stuff => {
+      console.log('afteranal',stuff)
+      return stuff; 
+    });
 };
 

@@ -37,6 +37,7 @@
     "redux-thunk": "2.0.1",
     "request": "^2.74.0",
     "toastr": "2.1.2",
+    "uuid": "^2.0.2",
     "watson-developer-cloud": "^2.1.0"
   },
   "devDependencies": {
