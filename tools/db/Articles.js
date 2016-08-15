@@ -39,17 +39,14 @@ function formatArticles(articles) {
   })
     .filter(el => el !== null);
 
-  console.log('formattedArticles pre', formattedArticles);
   return Promise.resolve(formattedArticles);
 }
 
 
 function scrapeArticles(formattedArticles) {
-  console.log('formattedArticles post', formattedArticles);
   const scrapedArticlePromises = formattedArticles.map(formattedArticle =>
     scrapeOneArticle(formattedArticle)
       .then(scrapedText => {
-        console.log('scrapedText', scrapedText);
         const scrapedArticle = Object.assign({}, formattedArticle);
         scrapedArticle.text = scrapedText;
         return scrapedArticle;
@@ -119,31 +116,32 @@ function analyzeOneTone(article) {
         return resolve(tone);
       });
   });
-  //  mockToneApi.getTone(article)
+   // return mockToneApi.getTone(article)
 }
 
 exports.get = searchTerm => {  //  eslint-disable-line arrow-body-style
-  // const newsApiKey = process.env.ALCH_API || null;
-  // const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
-  //
-  // const newsRequestPromise = new Promise((resolve, reject) => {
-  //   request(newsUrl, (err, response, body) => {
-  //     if (err) reject(err);
-  //     return resolve(body);
-  //   });
-  // });
-  // return newsRequestPromise
-  //   .then(formatArticles)
-  //   .then(scrapeArticles)
-  //   .then(analyzeTones)
-  //   .then(stuff => {
-  //     console.log(stuff);
-  //     return stuff;
-  //   })
-  //   .catch(err => console.log(err));
+  const newsApiKey = process.env.ALCH_API || null;
+  const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
 
-  return mockNewsApi.getArticles(searchTerm)
+  const newsRequestPromise = new Promise((resolve, reject) => {
+    request(newsUrl, (err, response, body) => {
+      if (err) reject(err);
+      return resolve(body);
+    });
+  });
+  return newsRequestPromise
     .then(formatArticles)
     .then(scrapeArticles)
-    .then(analyzeTones);
+    .then(analyzeTones)
+    .then(stuff => {
+      console.log(stuff);
+      return stuff;
+    })
+    .catch(err => console.log(err));
+
+  // return mockNewsApi.getArticles(searchTerm)
+  //   .then(formatArticles)
+  //   .then(scrapeArticles)
+  //   .then(analyzeTones);
 };
+
