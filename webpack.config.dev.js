@@ -1,6 +1,8 @@
 import webpack from 'webpack';
 import path from 'path';
 
+const port = process.env.PORT || 3000;
+
 const config = {
   debug: true,
   devtool: 'cheap-module-eval-source-map',
@@ -12,11 +14,11 @@ const config = {
   target: 'web',
   output: {
     path: path.join(__dirname, '/dist'),
-    publicPath: '/',
+    publicPath: `http://localhost:${port}/`,  //  absolute path is a necessary workaround for css sourcemaps and background-images
     filename: 'bundle.js',
   },
   devServer: {
-    contentBase: './src',
+    contentBase: '/',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -30,12 +32,9 @@ const config = {
         loaders: ['babel'],
       },
       {
-        test: /(\.css)$/,
-        loaders: ['style', 'css'],
-      },
-      {
         test: /\.eot(\?v=\d+\.\d+\.d+)?$/,
-        loader: 'file' },
+        loader: 'file' 
+      },
       {
         test: /\.(woff|woff2)$/,
         loader: 'url?prefix=font/&limit=5000',
@@ -47,6 +46,14 @@ const config = {
       {
         test: /\.svg(\?v=\d+\.\d+\.d+)?$/,
         loader: 'url?limit=10000&mimetype=image/svg+xml',
+      },
+      {
+        test: /\.(jpe?g|png|gif)$/i,
+        loader: 'file?name=[name].[ext]'
+      },
+      {
+        test: /(\.css|\.scss)$/,
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
       },
     ],
   },
