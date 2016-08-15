@@ -1,7 +1,6 @@
 import webpack from 'webpack';
 import path from 'path';
 
-//  used with publicPath; necessary workaround for css sourcemaps and background-images
 const port = process.env.PORT || 3000;
 
 const config = {
@@ -15,7 +14,7 @@ const config = {
   target: 'web',
   output: {
     path: path.join(__dirname, '/dist'),
-    publicPath: `http://localhost:${port}/`,
+    publicPath: `http://localhost:${port}/`,  //  absolute path is a necessary workaround for css sourcemaps and background-images
     filename: 'bundle.js',
   },
   devServer: {
@@ -54,7 +53,6 @@ const config = {
       },
       {
         test: /(\.css|\.scss)$/,
-        // loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
         loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
       },
     ],
