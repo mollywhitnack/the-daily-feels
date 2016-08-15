@@ -5,7 +5,7 @@ import * as articleActions from '../../actions/articleActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
-
+import '../../styles/splashPage.scss';
 
 //const SplashPage = ({onChange, errors, onSave}) =>
 class SplashPage extends React.Component{
@@ -32,7 +32,7 @@ class SplashPage extends React.Component{
   onSubmit(event){
     event.preventDefault;
     this.props.actions.loadArticles(this.state.search)
-    .then(()=> console.log('store updated'))
+      .then(()=> console.log('store updated'))
     /*.catch(err =>{
       toastr.error(err);
     });*/
@@ -40,16 +40,30 @@ class SplashPage extends React.Component{
 
   render(){
     return(
-      <div className="jumbotron">
-        <h1>The Daily Feels</h1>
-        <p>something something</p>
-        <TextInput
-          name = "searchBy"
-          label = "Search News"
-          onChange = {this.updateSearchState} />
-
-        <Link to = {'/articles/' + this.state.search} className = "btn btn-primary" onClick= {this.onSubmit}>Submit</Link>
-
+      <div>
+        <div className="splashBackground">
+        </div>
+          <div className="splashContent">
+            <h1 className="splashTitle">The Daily Feels</h1>
+            <div className="splashSearchArea">
+        
+              <form className="form-inline" action="">
+                <TextInput
+                  name = "searchBy"
+                  onChange = {this.updateSearchState}
+                />
+                <div className="form-group">
+                  <Link 
+                    to={'/articles/' + this.state.search}
+                    className="btn btn-primary splashButton"
+                    onClick={this.onSubmit}
+                  >
+                    Search For News
+                  </Link>
+                </div>
+              </form>
+            </div>
+          </div>
       </div>
     );
   }
