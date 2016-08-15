@@ -1,0 +1,97 @@
+//  adjust this if font changes
+$splash_text_offset: 230px;
+
+.splashBackground {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../images/blurrycolorballs.png");
+  background-size: cover;
+  -webkit-animation: 10s colorChange linear infinite;
+}
+
+.splashContent {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: auto;
+  width: 70%;
+  background-color: rgba(169, 228, 239, .8);
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: left;
+  border: solid 2px #222;
+  border-right: none;
+  border-radius: 15px 0 0 15px;
+}
+
+.splashSearchArea {
+  overflow: hidden;  //  to contain floating button
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.splashSearchArea .form-group:nth-child(1){
+  white-space: nowrap;
+  width: 50%;
+}
+
+.splashSearchArea input {
+  width: 100%!important;
+  min-width: 230px;
+  display: inline-block;
+  border: 1px solid black;
+}
+
+.splashSearchArea .btn {
+  margin-left: 10px;
+  display: inline-block;
+  float: right;
+}
+
+.splashTitle {
+  position: relative;
+  right: $splash_text_offset;
+  white-space: nowrap;
+  font-size: 8em;
+  color: #111;
+}
+
+
+@media (max-width: 830px) {
+  .splashTitle {
+    font-size: 6em;
+    right: $splash_text_offset - 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .splashSearchArea {
+    text-align: center;
+  }
+  .splashSearchArea .btn {
+    float: none;
+  }
+  .splashSearchArea .form-group:nth-child(1){
+    width: 100%;
+  }
+}
+
+@media (max-width: 625px) {
+  .splashTitle {
+    font-size: 3.8em;
+    right: $splash_text_offset - 110px;
+  }
+}
+
+@-webkit-keyframes colorChange {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  to {
+    -webkit-filter: hue-rotate(360deg);
+  }
+}
