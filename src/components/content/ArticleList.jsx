@@ -3,7 +3,7 @@ import Article from './Article';
 
 const ArticleList = ({articles, emotion}) => {
 
-  //console.log('articles.tone', articles);
+  console.log('articles.tone', articles);
   console.log('emotion', emotion);
 
   if(emotion){
