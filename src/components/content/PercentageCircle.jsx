@@ -1,5 +1,3 @@
-// not currently being used -- rendering being done in ./Face 
-import React, {PropTypes} from 'react';
 import Face from './Face';
 
 const PercentageCircle = face =>
