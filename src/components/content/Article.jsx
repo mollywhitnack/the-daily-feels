@@ -25,8 +25,6 @@ const Article = ({ article }) => {
   );
 };
 
-
-
 Article.propTypes = {
   article: PropTypes.object.isRequired,
 };
