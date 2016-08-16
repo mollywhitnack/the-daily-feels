@@ -12,7 +12,6 @@ class ContentPage extends Component {
 
   constructor(props, context) {
     super(props, context);
-    console.log('context:', context);
   }
 
   componentWillMount() {
