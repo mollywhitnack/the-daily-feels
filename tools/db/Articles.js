@@ -60,7 +60,6 @@ function scrapeArticles(formattedArticles) {
   return Promise.all(scrapedArticlePromises)
     .then(scrapedArticles => {
       const articlesToReturn = scrapedArticles.filter((article, ind) => {
-        console.log(ind, article);
         if (article) {
           return article.text;
         }
@@ -78,7 +77,6 @@ function scrapeOneArticle(article) {
   };
   return new Promise((resolve, reject) => {
     const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
-    console.log('searchText',searchText);
     request(configObj, (err, response, body) => {
       if (err) return reject(err);
       if (!body) return resolve('');
@@ -86,8 +84,7 @@ function scrapeOneArticle(article) {
       let searchResult = $(`p:contains(${searchText})`);
       if (!searchResult.length) {
         searchResult = $(`span:contains(${searchText})`);
-      }
-      const textResult = searchResult.text() +
+      } const textResult = searchResult.text() +
         searchResult.siblings(':not(:has("script"))').not('script').text();
       return resolve(textResult);
     });

@@ -1,72 +1,77 @@
-import React, { PropTypes, Component } from 'react';
+import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import AppBar from 'material-ui/AppBar';
+// import AppBar from 'material-ui/AppBar';
 import FaceBoard from './FaceBoard';
 import * as articleActions from '../../actions/articleActions';
 import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 
-class ContentPage extends Component {
-  render() {
-    const { articles, faces, loading } = this.props;
-    return (
-      <div>
-        {loading ? <CircularProgress size={2} /> :
-          <div>
-            <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-            <FaceBoard faces={faces} />
-            <ArticleList articles={articles} emotion={this.props.params.emotion} />
-          </div>}
-      </div>
-    );
-  }
-}
+const ContentPage = ({ articles, faces, loading }) => {
+  const loadingCircle = <CircularProgress size={2} />;
+  const content = (
+    <div>
+      <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
+      <FaceBoard faces={faces} />
+      <ArticleList articles={articles} emotion={this.props.params.emotion} />
+    </div>
+  );
+
+  return (
+    <div>
+      {loading ? loadingCircle : content}
+    </div>
+  );
+};
+
+// function getEmoPercent(articles) {
+//   let angerTotal = 0;
+//   let disgustTotal = 0;
+//   let fearTotal = 0;
+//   let joyTotal = 0;
+//   let sadnessTotal = 0;
+//   articles.map(article => {
+//     const tones = article.tone;
+//     angerTotal += tones[0].score;
+//     disgustTotal += tones[1].score;
+//     fearTotal += tones[2].score;
+//     joyTotal += tones[3].score;
+//     sadnessTotal += tones[4].score;
+//   });
+//   return ({
+//     angerTotal: ((angerTotal /= articles.length) * 100).toFixed(1),
+//     disgustTotal: ((disgustTotal /= articles.length) * 100).toFixed(1),
+//     fearTotal: ((fearTotal /= articles.length) * 100).toFixed(1),
+//     joyTotal: ((joyTotal /= articles.length) * 100).toFixed(1),
+//     sadnessTotal: ((sadnessTotal /= articles.length) * 100).toFixed(1),
+//   });
+// }
 
 ContentPage.propTypes = {
   articles: PropTypes.array.isRequired,
   faces: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
+  params: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
 };
 
-function getEmoPercent(articles) {
-  let angerTotal = 0;
-  let disgustTotal = 0;
-  let fearTotal = 0;
-  let joyTotal = 0;
-  let sadnessTotal = 0;
-  articles.map(article => {
-    const tones = article.tone;
-    angerTotal += tones[0].score;
-    disgustTotal += tones[1].score;
-    fearTotal += tones[2].score;
-    joyTotal += tones[3].score;
-    sadnessTotal += tones[4].score;
-  });
-  return ({
-    angerTotal: ((angerTotal /= articles.length) * 100).toFixed(1),
-    disgustTotal: ((disgustTotal /= articles.length) * 100).toFixed(1),
-    fearTotal: ((fearTotal /= articles.length) * 100).toFixed(1),
-    joyTotal: ((joyTotal /= articles.length) * 100).toFixed(1),
-    sadnessTotal: ((sadnessTotal /= articles.length) * 100).toFixed(1),
-  });
-}
-
 function mapStateToProps(state) {
-  // console.log('state.articles:', state.articles);
-  let percentages = {
+  const percentages = {
     angerTotal: 0,
     disgustTotal: 0,
     fearTotal: 0,
     joyTotal: 0,
     sadnessTotal: 0,
   };
+
   if (state.articles.length) {
-    state.articles.forEach(article => article.snippet = 
-      article.snippet.match(RegExp(".{"+20+"}\\S*") || [article.snippet])[0]);
+    state.articles.forEach(article => {
+      article.snippet =
+        article.snippet.match(RegExp(".{"+20+"}\\S*") || [article.snippet])[0];
+    });
   }
+
   return {
     loading: state.ajaxCallsInProgress > 0,
     // state.articles; property courses determined by
@@ -105,11 +110,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    // wrapping all actions in call to bindActionCreators -- in dispatch
     actions: bindActionCreators(articleActions, dispatch),
   };
 }
 
-// two function calls; connect returns a function and
-// calls that function on container component CoursesPage
 export default connect(mapStateToProps, mapDispatchToProps)(ContentPage);
