@@ -64,7 +64,6 @@ function getEmoPercent(articles) {
 
 function mapStateToProps(state, ownProps) {
   // console.log('state.articles:', state.articles);
-  state.articles.forEach(article => article.snippet = article.snippet.match(RegExp(".{"+20+"}\\S*")||[article.snippet])[0]);
   let percentages = {
     "angerTotal": 0,
     "disgustTotal": 0,
@@ -73,6 +72,7 @@ function mapStateToProps(state, ownProps) {
     "sadnessTotal": 0,
   };
   if (state.articles.length) {
+    state.articles.forEach(article => article.snippet = article.snippet.match(RegExp(".{"+20+"}\\S*")||[article.snippet])[0]);
     percentages = getEmoPercent(state.articles);
   }
   return {
