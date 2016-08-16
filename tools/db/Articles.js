@@ -54,7 +54,7 @@ function scrapeArticles(formattedArticles) {
         scrapedArticle.text = scrapedText;
         return scrapedArticle;
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log('scrape err', err))
   );
 
   return Promise.all(scrapedArticlePromises)
@@ -72,14 +72,16 @@ function scrapeArticles(formattedArticles) {
 function scrapeOneArticle(article) {
   const configObj = {
     url: article.url,
-    maxRedirects: 50,
-    followRedirects: false,
+    'User-Agent': "thedailyfeels",
+    // maxRedirects: 50,
+    // followRedirects: true,
   };
   return new Promise((resolve, reject) => {
     const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
     request(configObj, (err, response, body) => {
       if (err) return reject(err);
       if (!body) return resolve('');
+      console.log('ook alllright');
       const $ = cheerio.load(body);
       let searchResult = $(`p:contains(${searchText})`);
       if (!searchResult.length) {
@@ -121,46 +123,46 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-  return new Promise((resolve, reject) => {
-    toneAnalyzer.tone({ text: article.text },
-      (err, tone) => {
-        if (err) reject(err);
-        return resolve(tone);
-      });
-  });
-  // return mockToneApi.getTone(article)
+//   return new Promise((resolve, reject) => {
+//     toneAnalyzer.tone({ text: article.text },
+//       (err, tone) => {
+//         if (err) reject(err);
+//         return resolve(tone);
+//       });
+//   });
+  return mockToneApi.getTone(article)
 }
 
 exports.get = searchTerm => {
-  const bingApiKey = process.env.BING_API || null;
-  const newsConfigObj = {
-    url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
-    headers: {
-      'Ocp-Apim-Subscription-Key': bingApiKey,
-    },
-  };
-
-  const newsRequestPromise = new Promise((resolve, reject) => {
-    request(newsConfigObj, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
-  });
-
-  return newsRequestPromise
-    .then(formatArticles)
-    .then(scrapeArticles)
-    .then(analyzeTones)
-    .catch(err => console.log(err));
-};
-
-//   return mockNewsApi.getArticles(searchTerm)
+//   const bingApiKey = process.env.BING_API || null;
+//   const newsConfigObj = {
+//     url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+//     headers: {
+//       'Ocp-Apim-Subscription-Key': bingApiKey,
+//     },
+//   };
+//
+//   const newsRequestPromise = new Promise((resolve, reject) => {
+//     request(newsConfigObj, (err, response, body) => {
+//       if (err) reject(err);
+//       return resolve(body);
+//     });
+//   });
+//
+//   return newsRequestPromise
 //     .then(formatArticles)
 //     .then(scrapeArticles)
 //     .then(analyzeTones)
 //     .catch(err => console.log(err));
 // };
-//
+
+  return mockNewsApi.getArticles(searchTerm)
+    .then(formatArticles)
+    .then(scrapeArticles)
+    .then(analyzeTones)
+    .catch(err => console.log('end err', err));
+};
+
 
 // //  news from alchemy
 // exports.get = searchTerm => {  //  eslint-disable-line arrow-body-style
