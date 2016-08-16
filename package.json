@@ -5,19 +5,8 @@
   "author": "Matthew Broatch",
   "license": "MIT",
   "scripts": {
-    "prestart": "babel-node tools/startMessage.js",
-    "start": "npm-run-all --parallel test:watch open:src lint:watch",
-    "open:src": "babel-node tools/srcServer.js",
-    "lint": "node_modules/.bin/esw webpack.config.* src tools",
-    "lint:watch": "npm run lint -- --watch --ext .js --ext .jsx --color",
-    "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
-    "test:watch": "npm run test -- --watch",
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "node_modules/.bin/rimraf ./dist",
-    "build:html": "babel-node tools/buildHtml.js",
-    "prebuild": "npm-run-all clean-dist test build:html",
-    "build": "babel-node tools/build.js",
-    "postbuild": "babel-node tools/distServer.js"
+    "build": "NODE_ENV=production, webpack",
+    "start": "NODE_ENV=development nodemon ./node_modules/babel-cli/bin/babel-node.js tools/srcServer.js "
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",
@@ -28,6 +17,7 @@
     "jquery": "2.2.3",
     "material-ui": "^0.15.4",
     "morgan": "^1.7.0",
+    "path": "^0.12.7",
     "react": "15.0.2",
     "react-dom": "15.0.2",
     "react-redux": "4.4.5",
