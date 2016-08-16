@@ -5,6 +5,7 @@ import * as articleActions from '../../actions/articleActions';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
+import {browserHistory} from 'react-router';
 
 class Header extends React.Component {
   constructor(props, context) {
@@ -13,6 +14,7 @@ class Header extends React.Component {
       search: '',
     };
     this.updateSearchState = this.updateSearchState.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   updateSearchState(event){
@@ -21,18 +23,27 @@ class Header extends React.Component {
     return this.setState({search: search});
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+    browserHistory.push(`/articles/${this.state.search}`);
+  }
+
   render() {
     return (
       <div style={{float: "right"}}>
+        <form className="form-inline" onSubmit={this.onSubmit}>
         <TextInput
           name = "searchBy"
           label = "Enter a Search Term"
           onChange = {this.updateSearchState}
           placeholder = "ie. Donald Trump"
           />
-
-          <Link to = {'/articles/' +this.state.search}
-             className = "btn btn-primary" onClick={this.onSubmit}> Get Feels </Link>
+        <div className="form-group">
+          <button className="btn btn-primary">
+            Get Feels
+          </button>
+        </div>
+      </form>
 
       </div>
     );
