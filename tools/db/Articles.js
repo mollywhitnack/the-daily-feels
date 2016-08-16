@@ -124,48 +124,48 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-  return new Promise((resolve, reject) => {
-    toneAnalyzer.tone({ text: article.text },
-      (err, tone) => {
-        if (err) reject(err);
-        return resolve(tone);
-      });
-  });
+  // return new Promise((resolve, reject) => {
+  //   toneAnalyzer.tone({ text: article.text },
+  //     (err, tone) => {
+  //       if (err) reject(err);
+  //       return resolve(tone);
+  //     });
+  // });
 
   // console.log('using mock tone api');
-  // return mockToneApi.getTone(article);
+  return mockToneApi.getTone(article);
 }
 
 exports.get = searchTerm => {
-  const bingApiKey = process.env.BING_API || null;
-  const newsConfigObj = {
-    url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
-    headers: {
-      'Ocp-Apim-Subscription-Key': bingApiKey,
-    },
-  };
+//   const bingApiKey = process.env.BING_API || null;
+//   const newsConfigObj = {
+//     url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+//     headers: {
+//       'Ocp-Apim-Subscription-Key': bingApiKey,
+//     },
+//   };
+//
+//   const newsRequestPromise = new Promise((resolve, reject) => {
+//     request(newsConfigObj, (err, response, body) => {
+//       if (err) reject(err);
+//       return resolve(body);
+//     });
+//   });
+//
+//   return newsRequestPromise
+//     .then(formatArticles)
+//     .then(scrapeArticles)
+//     .then(analyzeTones)
+//     .catch(err => console.log(err));
+// };
 
-  const newsRequestPromise = new Promise((resolve, reject) => {
-    request(newsConfigObj, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
-  });
-
-  return newsRequestPromise
+  console.log('using mock news api');
+  return mockNewsApi.getArticles(searchTerm)
     .then(formatArticles)
     .then(scrapeArticles)
     .then(analyzeTones)
-    .catch(err => console.log(err));
+    .catch(err => console.log('end err', err));
 };
-
-  // console.log('using mock news api');
-  // return mockNewsApi.getArticles(searchTerm)
-  //   .then(formatArticles)
-  //   .then(scrapeArticles)
-  //   .then(analyzeTones)
-  //   .catch(err => console.log('end err', err));
-// };
 
 
 // //  news from alchemy
