@@ -72,9 +72,9 @@ function scrapeArticles(formattedArticles) {
 function scrapeOneArticle(article) {
   const configObj = {
     url: article.url,
-    'User-Agent': "thedailyfeels",
-    // maxRedirects: 50,
-    // followRedirects: true,
+    'User-Agent': 'thedailyfeels',
+    maxRedirects: 50,
+    followRedirects: true,
   };
   return new Promise((resolve, reject) => {
     const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
@@ -88,6 +88,7 @@ function scrapeOneArticle(article) {
         searchResult = $(`span:contains(${searchText})`);
       } const textResult = searchResult.text() +
         searchResult.siblings(':not(:has("script"))').not('script').text();
+      console.log('scraped');
       return resolve(textResult);
     });
   });
@@ -123,14 +124,16 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-//   return new Promise((resolve, reject) => {
-//     toneAnalyzer.tone({ text: article.text },
-//       (err, tone) => {
-//         if (err) reject(err);
-//         return resolve(tone);
-//       });
-//   });
-  return mockToneApi.getTone(article)
+  return new Promise((resolve, reject) => {
+    toneAnalyzer.tone({ text: article.text },
+      (err, tone) => {
+        if (err) reject(err);
+        return resolve(tone);
+      });
+  });
+
+  // console.log('using mock tone api');
+  // return mockToneApi.getTone(article);
 }
 
 exports.get = searchTerm => {
@@ -156,6 +159,7 @@ exports.get = searchTerm => {
 //     .catch(err => console.log(err));
 // };
 
+  console.log('using mock news api');
   return mockNewsApi.getArticles(searchTerm)
     .then(formatArticles)
     .then(scrapeArticles)

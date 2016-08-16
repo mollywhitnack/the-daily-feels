@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import toastr from 'toastr';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -21,11 +20,13 @@ class SplashPage extends React.Component {
   }
 
   onSubmit(event) {
+    // these were event.preventDefault, without parens
     // event.preventDefault();
     this.props.actions.loadArticles(this.state.search);
   }
 
   updateSearchState(event) {
+    // these were event.preventDefault, without parens
     // event.preventDefault();
     const search = event.target.value;
     return this.setState({ search });
