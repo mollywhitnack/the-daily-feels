@@ -1,7 +1,5 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
-import FlipCard from 'react-flipcard';
-
 
 const Article = ({ article }) => {
   console.log('article:', article.tone[0].score);
@@ -15,11 +13,11 @@ const Article = ({ article }) => {
           <div>{`${article.snippet} ... `}</div>
         </div>
       <div className="back">
-        <p> anger: {(article.tone[0].score*100).toFixed(1)}</p>
-        <p> disgust: {(article.tone[1].score*100).toFixed(1)}</p>
-        <p> fear: {(article.tone[2].score).toFixed(1)}</p>
-        <p> joy: {(article.tone[3].score).toFixed(1)}</p>
-        <p> sadness: {(article.tone[4].score).toFixed(1)}</p>
+        <p> anger: {(article.tone[0].score*100).toFixed(1)}%</p>
+        <p> disgust: {(article.tone[1].score*100).toFixed(1)}%</p>
+        <p> fear: {(article.tone[2].score).toFixed(1)}%</p>
+        <p> joy: {(article.tone[3].score).toFixed(1)}%</p>
+        <p> sadness: {(article.tone[4].score).toFixed(1)}%</p>
       </div>
     </div>
     </span>
