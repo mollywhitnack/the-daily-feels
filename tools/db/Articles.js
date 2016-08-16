@@ -73,12 +73,12 @@ function scrapeArticles(formattedArticles) {
 function scrapeOneArticle(article) {
   const configObj = {
     url: article.url,
-    searchText: createScrapeSearchText(article.snippet, article.snippet.length - 6),
-    maxRedirects: 100,
+    maxRedirects: 50,
     followRedirects: false,
   };
   return new Promise((resolve, reject) => {
     const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
+    console.log('searchText',searchText);
     request(configObj, (err, response, body) => {
       if (err) return reject(err);
       if (!body) return resolve('');
