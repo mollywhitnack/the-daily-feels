@@ -16,13 +16,6 @@ class SplashPage extends React.Component {
     };
 
     this.updateSearchState = this.updateSearchState.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  onSubmit(event) {
-    // these were event.preventDefault, without parens
-    // event.preventDefault();
-    this.props.actions.loadArticles(this.state.search);
   }
 
   updateSearchState(event) {
