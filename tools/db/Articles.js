@@ -160,7 +160,8 @@ exports.get = searchTerm => {
 //   return mockNewsApi.getArticles(searchTerm)
 //     .then(formatArticles)
 //     .then(scrapeArticles)
-//     .then(analyzeTones);
+//     .then(analyzeTones)
+//     .catch(err => console.log(err));
 // };
 //
 
