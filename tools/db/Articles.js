@@ -137,42 +137,42 @@ function analyzeOneTone(article) {
 }
 
 exports.get = searchTerm => {
-//   const bingApiKey = process.env.BING_API || null;
-//   const newsConfigObj = {
-//     url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
-//     headers: {
-//       'Ocp-Apim-Subscription-Key': bingApiKey,
-//     },
-//   };
-//
-//   const newsRequestPromise = new Promise((resolve, reject) => {
-//     request(newsConfigObj, (err, response, body) => {
-//       if (err) reject(err);
-//       return resolve(body);
-//     });
-//   });
-//
-//   return newsRequestPromise
-//     .then(formatArticles)
-//     .then(scrapeArticles)
-//     .then(analyzeTones)
-//     .catch(err => console.log(err));
-// };
+  const bingApiKey = process.env.BING_API || null;
+  const newsConfigObj = {
+    url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+    headers: {
+      'Ocp-Apim-Subscription-Key': bingApiKey,
+    },
+  };
 
-  console.log('using mock news api');
-  return mockNewsApi.getArticles(searchTerm)
+  const newsRequestPromise = new Promise((resolve, reject) => {
+    request(newsConfigObj, (err, response, body) => {
+      if (err) reject(err);
+      return resolve(body);
+    });
+  });
+
+  return newsRequestPromise
     .then(formatArticles)
     .then(scrapeArticles)
     .then(analyzeTones)
-    .catch(err => console.log('end err', err));
+    .catch(err => console.log(err));
 };
+
+  // console.log('using mock news api');
+  // return mockNewsApi.getArticles(searchTerm)
+  //   .then(formatArticles)
+  //   .then(scrapeArticles)
+  //   .then(analyzeTones)
+  //   .catch(err => console.log('end err', err));
+// };
 
 
 // //  news from alchemy
 // exports.get = searchTerm => {  //  eslint-disable-line arrow-body-style
 //   const newsApiKey = process.env.ALCH_API || null;
 //   const newsUrl = `https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey=${newsApiKey}&outputMode=json&start=now-1d&end=now&dedup=true&q.enriched.url.title=${searchTerm}&return=enriched.url.text,enriched.url.title,original.url`;
-
+//
 //   const newsRequestPromise = new Promise((resolve, reject) => {
 //     request(newsUrl, (err, response, body) => {
 //       if (err) reject(err);
@@ -188,7 +188,7 @@ exports.get = searchTerm => {
 //       return stuff;
 //     })
 //     .catch(err => console.log(err));
-
+//
 // function formatOneArticleFromAlchemy(article) {
 //   return (Object.keys(article).length) ?
 //     {

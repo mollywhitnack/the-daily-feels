@@ -12,8 +12,7 @@ class Header extends React.Component {
     this.state = {
       search: '',
     };
-    this.updateSearchState = this.updateSearchState.bind(this); 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.updateSearchState = this.updateSearchState.bind(this);
   }
 
   updateSearchState(event){
@@ -22,17 +21,6 @@ class Header extends React.Component {
     return this.setState({search: search});
   }
 
-
-  onSubmit(event){
-    event.preventDefault;
-    this.props.actions.loadArticles(this.state.search)
-    .then(()=> console.log('store updated'))
-    /*.catch(err =>{
-      toastr.error(err);
-    });*/
-  }
-
-
   render() {
     return (
       <div style={{float: "right"}}>
@@ -40,12 +28,12 @@ class Header extends React.Component {
           name = "searchBy"
           label = "Enter a Search Term"
           onChange = {this.updateSearchState}
-          placeholder = "ie. Donald Trump" 
+          placeholder = "ie. Donald Trump"
           />
-          
+
           <Link to = {'/articles/' +this.state.search}
-             className = "btn btn-primary" onClick={this.onSubmit}> Get Feels </Link>  
-        
+             className = "btn btn-primary" onClick={this.onSubmit}> Get Feels </Link>
+
       </div>
     );
   }
