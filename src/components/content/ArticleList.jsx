@@ -2,7 +2,6 @@ import React, { PropTypes } from 'react';
 import Article from './Article';
 
 const ArticleList = ({ articles, emotion }) => {
-  console.log('articles:', articles);
   if (emotion) {
     articles.sort( (a, b) =>  {
       a.tone.find(el => el.tone_id === emotion).score - b.tone.find(el => el.tone_id === emotion).score;
