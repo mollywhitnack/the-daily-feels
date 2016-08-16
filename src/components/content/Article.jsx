@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 const Article = ({ article }) =>
   <Link to={article.url} target="_blank">
-    <span className="flip-container" onTouchStart="this.classList.toggle('hover');">
+    <span className="flip-container" ontouchstart="this.classList.toggle('hover');">
       <div className="flipper">
         <div className="front">
           <div>{article.title}</div>

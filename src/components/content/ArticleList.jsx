@@ -22,7 +22,7 @@ const ArticleList = ({ articles, emotion }) => {
 
 ArticleList.propTypes = {
   articles: PropTypes.array.isRequired,
-  emotion: PropTypes.string.isRequired,
+  emotion: PropTypes.string,
 };
 
 export default ArticleList;
