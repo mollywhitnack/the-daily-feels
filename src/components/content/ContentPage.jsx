@@ -66,7 +66,6 @@ function mapStateToProps(state) {
   if (state.articles.length) {
     state.articles.forEach(article => article.snippet = 
       article.snippet.match(RegExp(".{"+20+"}\\S*") || [article.snippet])[0]);
-    percentages = getEmoPercent(state.articles);
   }
   return {
     loading: state.ajaxCallsInProgress > 0,

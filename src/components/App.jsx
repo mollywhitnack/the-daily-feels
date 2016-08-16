@@ -4,7 +4,8 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-const App = ({ children, loading }) =>
+const App = ({ children }) =>
+// const App = ({ children, loading }) =>
   <div className="container-fluid">
     <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
       {children}
@@ -19,7 +20,8 @@ function mapStateToProps(state) {
 
 App.propTypes = {
   children: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
+  // loading: PropTypes.bool.isRequired,
 };
 
 export default connect(mapStateToProps)(App);
+
