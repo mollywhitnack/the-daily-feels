@@ -36,7 +36,7 @@ class ContentPage extends Component {
     const content = (
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-          <FaceBoard faces={faces} />
+          <FaceBoard faces={faces} searchTerm={params.search}/>
           <ArticleList articles={articles} emotion={params.emotion} />
         </div>
       );

@@ -2,9 +2,7 @@ import Face from './Face';
 import React, { PropTypes } from 'react';
 import {Link} from 'react-router';
 
-const FaceBoard = ({ faces }) => {
-  const windowUrl = window.location.href.split('/');
-  let searchTerm = windowUrl[4];
+const FaceBoard = ({ faces, searchTerm}) => {
   //  why not get searchTerm as a prop?
 
   const facesDisplay = faces.map(face =>
