@@ -67,33 +67,7 @@ function mapStateToProps(state) {
     sadnessTotal: 0,
   };
 
-  const faces = [
-    {
-      img: '😠',
-      emotion: 'anger',
-      percentage: percentages.angerTotal,
-    },
-    {
-      img: '😷',
-      emotion: 'disgust',
-      percentage: percentages.disgustTotal,
-    },
-    {
-      img: '😨',
-      emotion: 'fear',
-      percentage: percentages.fearTotal,
-    },
-    {
-      img: '😄',
-      emotion: 'joy',
-      percentage: percentages.joyTotal,
-    },
-    {
-      img: '😭',
-      emotion: 'sadness',
-      percentage: percentages.sadnessTotal,
-    },
-  ];
+  
 
   if (state.articles.length) {
      state.articles.forEach(article => article.snippet = 
@@ -102,11 +76,37 @@ function mapStateToProps(state) {
      }
 
   return {
+    faces: [
+        {
+          img: '😠',
+          emotion: 'anger',
+          percentage: percentages.angerTotal,
+        },
+        {
+          img: '😷',
+          emotion: 'disgust',
+          percentage: percentages.disgustTotal,
+        },
+        {
+          img: '😨',
+          emotion: 'fear',
+          percentage: percentages.fearTotal,
+        },
+        {
+          img: '😄',
+          emotion: 'joy',
+          percentage: percentages.joyTotal,
+        },
+        {
+          img: '😭',
+          emotion: 'sadness',
+          percentage: percentages.sadnessTotal,
+        },
+    ],
     loading: state.ajaxCallsInProgress > 0,
     // state.articles; property courses determined by
     // reducer (reducers/courseReducer.js in this case)
     articles: state.articles,
-    faces,
   };
 }
 
