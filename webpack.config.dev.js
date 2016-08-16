@@ -33,7 +33,7 @@ const config = {
       },
       {
         test: /\.eot(\?v=\d+\.\d+\.d+)?$/,
-        loader: 'file' 
+        loader: 'file',
       },
       {
         test: /\.(woff|woff2)$/,
@@ -49,11 +49,11 @@ const config = {
       },
       {
         test: /\.(jpe?g|png|gif)$/i,
-        loader: 'file?name=[name].[ext]'
+        loader: 'file?name=[name].[ext]',
       },
       {
         test: /(\.css|\.scss)$/,
-        loaders: ['style', 'css?sourceMap', 'sass?sourceMap']
+        loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
       },
     ],
   },
