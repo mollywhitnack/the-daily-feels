@@ -21,15 +21,12 @@ class SplashPage extends React.Component {
   }
 
   onSubmit(event) {
-    event.preventDefault();
-    this.props.actions.loadArticles(this.state.search)
-      .catch(err => {
-        toastr.error(err);
-      });
+    // event.preventDefault();
+    this.props.actions.loadArticles(this.state.search);
   }
 
   updateSearchState(event) {
-    event.preventDefault();
+    // event.preventDefault();
     const search = event.target.value;
     return this.setState({ search });
   }

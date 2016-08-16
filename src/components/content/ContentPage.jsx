@@ -8,13 +8,13 @@ import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 
-const ContentPage = ({ articles, faces, loading }) => {
+const ContentPage = ({ articles, faces, loading, params }) => {
   const loadingCircle = <CircularProgress size={2} />;
   const content = (
     <div>
       <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
       <FaceBoard faces={faces} />
-      <ArticleList articles={articles} emotion={this.props.params.emotion} />
+      <ArticleList articles={articles} emotion={params.emotion} />
     </div>
   );
 
