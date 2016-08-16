@@ -20,8 +20,6 @@ class SplashPage extends React.Component {
   }
 
   updateSearchState(event) {
-    // these were event.preventDefault, without parens
-    // event.preventDefault();
     const search = event.target.value;
     return this.setState({ search });
   }
