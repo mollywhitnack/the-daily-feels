@@ -2,10 +2,8 @@
   "name": "ReduxTemplate",
   "version": "1.0.0",
   "description": "Template for Redux Files",
-  "author": "Matthew Broatch",
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production webpack",
     "prestart": "babel-node tools/startMessage.js",
     "start": "NODE_ENV=development npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
@@ -13,8 +11,11 @@
     "lint:watch": "npm run lint -- --watch --ext .js --ext .jsx --color",
     "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
-    "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "node_modules/.bin/rimraf ./dist"
+    "clean-api": "npm run remove-api && mkdir production/api",
+    "copy-api": "cp -R tools/api/* production/api",
+    "remove-api": "node_modules/.bin/rimraf ./production/api",
+    "prebuild": "npm-run-all clean-api copy-api",
+    "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",

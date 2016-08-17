@@ -1,7 +1,9 @@
-import { Router } from 'express';
-import Articles from '../db/Articles';
+'use strict';
 
-const router = Router();
+const express = require('express')
+const router = express.Router();
+const Articles = require('../db/Articles');
+
 
 router.get('/:searchTerm', (req, res) => {
   Articles.get(req.params.searchTerm)
@@ -12,5 +14,5 @@ router.get('/:searchTerm', (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
-export default router;
+module.exports = router;
 

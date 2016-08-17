@@ -1,12 +1,12 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-
+'use strict'
 require('dotenv').config();
 const cheerio = require('cheerio');
 const request = require('request');
 const uuid = require('uuid');
-import mockNewsApi from '../../src/api/mockNewsApi';
-import mockToneApi from '../../src/api/mockToneApi';
+const mockNewsApi = require('../../src/api/mockNewsApi');
+const mockToneApi = require('../../src/api/mockToneApi');
 
 const toneAnalyzerUsername = process.env.TONE_ANALYZER_USERNAME || null;
 const toneAnalyzerPassword = process.env.TONE_ANALYZER_PASSWORD || null;
