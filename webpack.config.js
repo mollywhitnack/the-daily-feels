@@ -4,11 +4,8 @@ const path = require('path');
 let config = {}
 
 const port = process.env.PORT || 3000;
-console.log('in webpack');
 
 if(process.env.NODE_ENV === 'development'){
-
-  console.log('dev');
   config = {
     debug: true,
     devtool: 'cheap-module-eval-source-map',
@@ -70,14 +67,15 @@ if(process.env.NODE_ENV === 'development'){
 }
 
 else{
-console.log('prod');
   config = {
     devtool: 'source-map',
 
     entry: [
       './src/styles/styles.scss',
       './src/styles/splashPage.scss',
-      './src/index'
+      './src/images/background2.jpg',
+      './src/images/blurrycolorballs.png',
+      './src/index',
     ],
 
     target: 'web',
@@ -118,7 +116,7 @@ console.log('prod');
         },
         {
           test: /(\.css|\.scss)$/,
-          loaders: ['style', 'css?sourceMap', 'sass?sourceMap'],
+          loaders: ['style', 'css', 'sass'],
         },
       ],
     },
