@@ -105,16 +105,16 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-  //   return new Promise((resolve, reject) => {
-  //     toneAnalyzer.tone({ text: article.text },
-  //       (err, tone) => {
-  //         if (err) reject(err);
-  //         return resolve(tone);
-  //       });
-  //   });
+    return new Promise((resolve, reject) => {
+      toneAnalyzer.tone({ text: article.text },
+        (err, tone) => {
+          if (err) reject(err);
+          return resolve(tone);
+        });
+    });
 
-  console.log('using mock tone api');
-  return mockToneApi.getTone(article);
+  // console.log('using mock tone api');
+  // return mockToneApi.getTone(article);
 }
 
 function formatArticles(articles) {
@@ -140,36 +140,37 @@ function formatOneArticleFromBing(article) {
 }
 
 exports.get = searchTerm => {
-  //   const bingApiKey = process.env.BING_API || null;
-  //   const newsConfigObj = {
-  //     url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
-  //     headers: {
-  //       'Ocp-Apim-Subscription-Key': bingApiKey,
-  //     },
-  //   };
-  //
-  //   const newsRequestPromise = new Promise((resolve, reject) => {
-  //     request(newsConfigObj, (err, response, body) => {
-  //       if (err) reject(err);
-  //       return resolve(body);
-  //     });
-  //   });
-  //
-  //   return newsRequestPromise
-  //     .then(scrapeArticles)
-  //     .then(analyzeTones)
-  //     .then(formatArticles)
-  //     .catch(err => console.log(err));
-  // };
+    const bingApiKey = process.env.BING_API || null;
+    const newsConfigObj = {
+      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+      headers: {
+        'Ocp-Apim-Subscription-Key': bingApiKey,
+      },
+    };
 
-  console.log('using mock news api');
-  return mockNewsApi.getArticles(searchTerm)
-    .then(parseArticles)
-    .then(scrapeArticles)
-    .then(analyzeTones)
-    .then(formatArticles)
-    .catch(err => console.log('end err', err));
-};
+    const newsRequestPromise = new Promise((resolve, reject) => {
+      request(newsConfigObj, (err, response, body) => {
+        if (err) reject(err);
+        return resolve(body);
+      });
+    });
+
+    return newsRequestPromise
+      .then(parseArticles)
+      .then(scrapeArticles)
+      .then(analyzeTones)
+      .then(formatArticles)
+      .catch(err => console.log(err));
+  };
+
+//   console.log('using mock news api');
+//   return mockNewsApi.getArticles(searchTerm)
+//     .then(parseArticles)
+//     .then(scrapeArticles)
+//     .then(analyzeTones)
+//     .then(formatArticles)
+//     .catch(err => console.log('end err', err));
+// };
 
 
 // //  news from alchemy
