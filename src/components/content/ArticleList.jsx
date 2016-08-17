@@ -17,10 +17,8 @@ const ArticleList = ({ articles, emotion }) => {
   });
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        {filteredArticles}
-      </div>
+    <div>
+      {filteredArticles}
     </div>
   );
 };
