@@ -1,0 +1,92 @@
+.article {
+  margin: 15px;
+  display: inline-block;
+}
+
+.inline {
+  display: inline-block;
+  margin: 10px;
+}
+
+.articleTitle {
+  font-size: 1.55em;
+  box-shadow: 2px 2px 8px 0 #999;
+  padding: 5px;
+  background-color: #595758;
+  color: #FFEEF2;
+  z-index: 9;
+}
+
+.articleSnippet {
+  margin-top: 5px;
+  color: black;
+  // background-color: #FFEEF2;
+}
+
+.articleEmotionRow {
+
+}
+
+.anger {
+  color: red;
+}
+
+.disgust {
+  color: green;
+}
+
+.fear {
+  color: black;
+}
+
+.joy {
+  color: pink;
+}
+
+.sadness {
+  color: blue;
+}
+
+
+.flip-container {
+  perspective: 1000px;
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  padding: 5px;
+  width: 360px;
+  height: 250px;
+  display: inline-block;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  box-shadow: 3px 3px 7px 3px #999;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  transform: rotateY(180deg);
+}
