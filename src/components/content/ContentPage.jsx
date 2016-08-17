@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 // import AppBar from 'material-ui/AppBar';
@@ -7,25 +7,68 @@ import * as articleActions from '../../actions/articleActions';
 import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
+import '../../styles/contentPage.scss';
 
-const ContentPage = ({ articles, loading, params, faces }) => {
+class ContentPage extends Component {
 
-  const loadingCircle = <CircularProgress size={2} />;
+  constructor(props, context) {
+    super(props, context);
+  }
 
-  const content = (
-    <div>
-      <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-      <FaceBoard faces={faces} />
-      <ArticleList articles={articles} emotion={params.emotion} />
-    </div>
-  );
+  componentWillMount() {
+    console.log('this.props:', this.props);
+    this.props.actions.loadArticles(this.props.routeParams.search)
+      .then(()=> console.log('store updated'))
+  }
 
-  return (
-    <div>
-      {loading ? loadingCircle : content}
-    </div>
-  );
-};
+  componentWillReceiveProps(nextProps) {
+    if (this.props.routeParams.search !== nextProps.params.search) {
+      // make api request for new search term entered via Header component
+      console.log('nextProps:', nextProps);
+      nextProps.actions.loadArticles(nextProps.params.search)
+        .then(()=> console.log('store updated'));
+    }
+  }
+
+  render() {
+    let { faces, articles, loading, params } = this.props;
+    const loadingCircle = <CircularProgress size={2} />;
+
+    const content = (
+      <div>
+        <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
+        <FaceBoard faces={faces} searchTerm={params.search}/>
+        <ArticleList articles={articles} emotion={params.emotion} />
+      </div>
+    );
+
+    return (
+      <div>
+        {loading ? loadingCircle : content}
+      </div>
+    );
+  }
+
+}
+
+// const ContentPage = ({ articles, loading, params, faces }) => {
+//
+//   const loadingCircle = <CircularProgress size={2} />;
+//
+//   const content = (
+//     <div>
+//       <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
+//       <FaceBoard faces={faces} />
+//       <ArticleList articles={articles} emotion={params.emotion} />
+//     </div>
+//   );
+//
+//   return (
+//     <div>
+//       {loading ? loadingCircle : content}
+//     </div>
+//   );
+// };
 
 function getEmoPercent(articles) {
   let angerTotal = 0;
@@ -68,10 +111,8 @@ function mapStateToProps(state) {
   };
 
   if (state.articles.length) {
-     state.articles.forEach(article => article.snippet = 
-           article.snippet.match(RegExp(".{"+20+"}\\S*") || [article.snippet])[0]);
-       percentages = getEmoPercent(state.articles);
-     }
+    percentages = getEmoPercent(state.articles);
+  }
 
   return {
     faces: [

@@ -1,13 +1,11 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 const App = ({ children }) =>
 // const App = ({ children, loading }) =>
   <div className="container-fluid">
-    <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+    <MuiThemeProvider>
       {children}
     </MuiThemeProvider>
   </div>;

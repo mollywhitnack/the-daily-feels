@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import TextInput from '../common/TextInput';
 import * as articleActions from '../../actions/articleActions';
 import '../../styles/splashPage.scss';
-
+import {browserHistory} from 'react-router';
 
 class SplashPage extends React.Component {
   constructor(props, context) {
@@ -19,17 +19,14 @@ class SplashPage extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  onSubmit(event) {
-    // these were event.preventDefault, without parens
-    // event.preventDefault();
-    this.props.actions.loadArticles(this.state.search);
-  }
-
   updateSearchState(event) {
-    // these were event.preventDefault, without parens
-    // event.preventDefault();
     const search = event.target.value;
     return this.setState({ search });
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    browserHistory.push(`/articles/${this.state.search}`);
   }
 
   render() {
@@ -41,19 +38,15 @@ class SplashPage extends React.Component {
           <h1 className="splashTitle">The Daily Feels</h1>
           <div className="splashSearchArea">
 
-            <form className="form-inline" action="">
+            <form className="form-inline" onSubmit={this.onSubmit}>
               <TextInput
                 name="searchBy"
                 onChange={this.updateSearchState}
               />
               <div className="form-group">
-                <Link
-                  to={`/articles/${this.state.search}`}
-                  className="btn btn-primary splashButton"
-                  onClick={this.onSubmit}
-                >
+                <button className="btn-primary btn splashButton">
                   Search For News
-                </Link>
+                </button>
               </div>
             </form>
           </div>
