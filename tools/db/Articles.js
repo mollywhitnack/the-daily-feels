@@ -19,38 +19,21 @@ const toneAnalyzer = new ToneAnalyzerV3({
 });
 
 
-function formatArticles(articles) {
+function parseArticles(articles) {
   let parsedArticles;
   try {
     parsedArticles = JSON.parse(articles);
   } catch (e) {
     parsedArticles = articles;
   }
-
-  const formattedArticles = parsedArticles.value.map(el =>
-    formatOneArticleFromBing(el)
-  )
-    .filter(el => el !== null);
-
-  return Promise.resolve(formattedArticles);
+  return parsedArticles.value;
 }
 
-function formatOneArticleFromBing(article) {
-  return (Object.keys(article).length) ?
-    {
-      title: article.name,
-      snippet: article.description,
-      url: article.url,
-      id: uuid(),
-    }
-    : null;
-}
-
-function scrapeArticles(formattedArticles) {
-  const scrapedArticlePromises = formattedArticles.map(formattedArticle =>
-    scrapeOneArticle(formattedArticle)
+function scrapeArticles(articles) {
+  const scrapedArticlePromises = articles.map(article =>
+    scrapeOneArticle(article)
       .then(scrapedText => {
-        const scrapedArticle = Object.assign({}, formattedArticle);
+        const scrapedArticle = Object.assign({}, article);
         scrapedArticle.text = scrapedText;
         return scrapedArticle;
       })
@@ -77,18 +60,16 @@ function scrapeOneArticle(article) {
     followRedirects: true,
   };
   return new Promise((resolve, reject) => {
-    const searchText = createScrapeSearchText(article.snippet, article.snippet.length - 6);
+    const searchText = createScrapeSearchText(article.description, article.description.length - 6);
     request(configObj, (err, response, body) => {
       if (err) return reject(err);
       if (!body) return resolve('');
-      console.log('ook alllright');
       const $ = cheerio.load(body);
       let searchResult = $(`p:contains(${searchText})`);
       if (!searchResult.length) {
         searchResult = $(`span:contains(${searchText})`);
       } const textResult = searchResult.text() +
         searchResult.siblings(':not(:has("script"))').not('script').text();
-      console.log('scraped');
       return resolve(textResult);
     });
   });
@@ -124,48 +105,71 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-  return new Promise((resolve, reject) => {
-    toneAnalyzer.tone({ text: article.text },
-      (err, tone) => {
-        if (err) reject(err);
-        return resolve(tone);
-      });
-  });
+  //   return new Promise((resolve, reject) => {
+  //     toneAnalyzer.tone({ text: article.text },
+  //       (err, tone) => {
+  //         if (err) reject(err);
+  //         return resolve(tone);
+  //       });
+  //   });
 
-  // console.log('using mock tone api');
-  // return mockToneApi.getTone(article);
+  console.log('using mock tone api');
+  return mockToneApi.getTone(article);
+}
+
+function formatArticles(articles) {
+  const formattedArticles = articles.map(el =>
+    formatOneArticleFromBing(el)
+  )
+    .filter(el => el !== null);
+
+  return formattedArticles;
+}
+
+function formatOneArticleFromBing(article) {
+  return (Object.keys(article).length) ?
+    {
+      title: article.name,
+      snippet: article.description.slice(0, 140),
+      url: article.url,
+      id: uuid(),
+      text: article.text,
+      tone: article.tone,
+    }
+    : null;
 }
 
 exports.get = searchTerm => {
-  const bingApiKey = process.env.BING_API || null;
-  const newsConfigObj = {
-    url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
-    headers: {
-      'Ocp-Apim-Subscription-Key': bingApiKey,
-    },
-  };
+  //   const bingApiKey = process.env.BING_API || null;
+  //   const newsConfigObj = {
+  //     url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+  //     headers: {
+  //       'Ocp-Apim-Subscription-Key': bingApiKey,
+  //     },
+  //   };
+  //
+  //   const newsRequestPromise = new Promise((resolve, reject) => {
+  //     request(newsConfigObj, (err, response, body) => {
+  //       if (err) reject(err);
+  //       return resolve(body);
+  //     });
+  //   });
+  //
+  //   return newsRequestPromise
+  //     .then(scrapeArticles)
+  //     .then(analyzeTones)
+  //     .then(formatArticles)
+  //     .catch(err => console.log(err));
+  // };
 
-  const newsRequestPromise = new Promise((resolve, reject) => {
-    request(newsConfigObj, (err, response, body) => {
-      if (err) reject(err);
-      return resolve(body);
-    });
-  });
-
-  return newsRequestPromise
-    .then(formatArticles)
+  console.log('using mock news api');
+  return mockNewsApi.getArticles(searchTerm)
+    .then(parseArticles)
     .then(scrapeArticles)
     .then(analyzeTones)
-    .catch(err => console.log(err));
+    .then(formatArticles)
+    .catch(err => console.log('end err', err));
 };
-
-//   console.log('using mock news api');
-//   return mockNewsApi.getArticles(searchTerm)
-//     .then(formatArticles)
-//     .then(scrapeArticles)
-//     .then(analyzeTones)
-//     .catch(err => console.log('end err', err));
-// };
 
 
 // //  news from alchemy
@@ -180,6 +184,7 @@ exports.get = searchTerm => {
 //     });
 //   });
 //   return newsRequestPromise
+//     .then(parseArticles)
 //     .then(formatArticles)
 //     .then(scrapeArticles)
 //     .then(analyzeTones)
