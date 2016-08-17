@@ -5,6 +5,7 @@
   "author": "Matthew Broatch",
   "license": "MIT",
   "scripts": {
+    "build": "NODE_ENV=production webpack",
     "prestart": "babel-node tools/startMessage.js",
     "start": "NODE_ENV=development npm-run-all --parallel test:watch open:src lint:watch",
     "open:src": "babel-node tools/srcServer.js",
@@ -13,8 +14,7 @@
     "test": "mocha --reporter progress tools/testSetup.js \"src/**/*.test.js\"",
     "test:watch": "npm run test -- --watch",
     "clean-dist": "npm run remove-dist && mkdir dist",
-    "remove-dist": "node_modules/.bin/rimraf ./dist",
-    "build": "NODE_ENV=production, webpack"
+    "remove-dist": "node_modules/.bin/rimraf ./dist"
   },
   "dependencies": {
     "babel-polyfill": "6.8.0",
