@@ -1,8 +1,10 @@
-import { Router } from 'express';
-const router = Router();
+'use strict';
 
-import articles from './articles';
+const express = require('express')
+const router = express.Router();
+
+const articles = require('./articles');
 
 router.use('/articles', articles);
 
-export default router;
+module.exports = router;
