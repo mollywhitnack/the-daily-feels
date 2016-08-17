@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import toastr from 'toastr';
 import {browserHistory} from 'react-router';
+import '../../styles/header.scss';
 
 class Header extends React.Component {
   constructor(props, context) {
@@ -30,7 +31,7 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div style={{float: "right"}}>
+      <div className="header">
         <form className="form-inline" onSubmit={this.onSubmit}>
         <TextInput
           name = "searchBy"
