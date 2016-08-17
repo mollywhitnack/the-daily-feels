@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import webpack from 'webpack';
-import webpackConfig from '../webpack.config.dev';
+import webpackConfig from '../webpack.config';
 import 'colors';
 
 process.env.NODE_ENV = 'development';
