@@ -4,8 +4,9 @@ import Article from './Article';
 const ArticleList = ({ articles, emotion }) => {
   if (emotion) {
     articles.sort((a, b) =>
-      a.tone.find(el => el.tone_id === emotion).score
-      - b.tone.find(el => el.tone_id === emotion).score
+      (b.tone.find(el => el.tone_id === emotion).std
+      - a.tone.find(el => el.tone_id === emotion).std)
+      
     );
   }
 
