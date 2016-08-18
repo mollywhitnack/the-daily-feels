@@ -165,10 +165,7 @@ function getDominantTone(articles) {
 }
 
 exports.get = searchTerm => {
-<<<<<<< HEAD
-=======
 
->>>>>>> a78de1fa00bf909f2b67436fac95b6e465e6e547
     const bingApiKey = process.env.BING_API || null;
     const newsConfigObj = {
       url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
@@ -176,35 +173,13 @@ exports.get = searchTerm => {
         'Ocp-Apim-Subscription-Key': bingApiKey,
       },
     };
-<<<<<<< HEAD
-  
-=======
 
->>>>>>> a78de1fa00bf909f2b67436fac95b6e465e6e547
     const newsRequestPromise = new Promise((resolve, reject) => {
       request(newsConfigObj, (err, response, body) => {
         if (err) reject(err);
         return resolve(body);
       });
     });
-<<<<<<< HEAD
-  
-    return newsRequestPromise
-      .then(parseArticles)
-      .then(scrapeArticles)
-      .then(analyzeTones)
-      .then(formatArticles)
-      .catch(err => console.log(err));
-  };
-
-  // console.log('using mock news api');
-  // return mockNewsApi.getArticles(searchTerm)
-  //   .then(parseArticles)
-  //   .then(scrapeArticles)
-  //   .then(analyzeTones)
-  //   .then(formatArticles)
-  //   .catch(err => console.log('end err', err));
-=======
 
     return newsRequestPromise
       .then(parseArticles)
@@ -227,7 +202,6 @@ exports.get = searchTerm => {
 //     .then(analyzeTones)
 //     .then(formatArticles)
 //     .catch(err => console.log('end err', err));
->>>>>>> a78de1fa00bf909f2b67436fac95b6e465e6e547
 // };
 
 
