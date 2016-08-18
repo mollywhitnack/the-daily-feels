@@ -22,13 +22,13 @@ const Article = ({ article }) =>
             disgust: {(article.tone[1].score * 100).toFixed(1)}%
           </p>
           <p className="articleEmotionRow fear">
-            fear: {(article.tone[2].score).toFixed(1)}%
+            fear: {(article.tone[2].score * 100).toFixed(1)}%
           </p>
           <p className="articleEmotionRow joy">
-            joy: {(article.tone[3].score).toFixed(1)}%
+            joy: {(article.tone[3].score * 100).toFixed(1)}%
           </p>
           <p className="articleEmotionRow sadness">
-            sadness: {(article.tone[4].score).toFixed(1)}%
+            sadness: {(article.tone[4].score * 100).toFixed(1)}%
           </p>
         </div>
       </div>
