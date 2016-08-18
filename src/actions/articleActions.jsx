@@ -15,8 +15,8 @@ export function loadArticles(searchTerm) {
         dispatch(loadArticlesSuccess(articles));
       })
       .fail(err => {
-        throw err;
+        dispatch(ajaxCallError(err));
+        throw(err);
       });
   };
 }
-
