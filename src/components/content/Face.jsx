@@ -10,7 +10,7 @@ const Face = ({ face, searchTerm }) =>
       + face.emotion.slice(1, face.emotion.length)}</div>
     <Link to={`/articles/${searchTerm}/${face.emotion}`}>
       <div className="face">{face.img}</div>
-      <PercentageCircle percentage={face.percentage} />
+      <PercentageCircle percentage={face.percentage.toString()} />
     </Link>
   </div>;
 
