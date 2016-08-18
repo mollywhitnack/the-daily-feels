@@ -35,6 +35,7 @@ class SplashPage extends React.Component {
         </div>
         <div className="splashContent">
           <h1 className="splashTitle">The Daily Feels</h1>
+          <span className="splashTagline">Emotion-Sensitive News Search Engine</span>
           <div className="splashSearchArea">
 
             <form className="form-inline" onSubmit={this.onSubmit}>
