@@ -23,30 +23,30 @@
   // background-color: #FFEEF2;
 }
 
-.articleEmotionRow {
-
+.percentages {
+  padding: 10px;
+  font-size: 1.6em;
 }
 
-.anger {
+.percentages>.anger {
   color: red;
 }
 
-.disgust {
+.percentages>.disgust {
   color: green;
 }
 
-.fear {
+.percentages>.fear {
   color: black;
 }
 
-.joy {
+.percentages>.joy {
   color: pink;
 }
 
-.sadness {
+.percentages>.sadness {
   color: blue;
 }
-
 
 .flip-container {
   perspective: 1000px;

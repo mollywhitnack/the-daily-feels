@@ -1,11 +1,10 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import TextInput from '../common/TextInput';
 import * as articleActions from '../../actions/articleActions';
 import '../../styles/splashPage.scss';
-import {browserHistory} from 'react-router';
+import { browserHistory } from 'react-router';
 
 class SplashPage extends React.Component {
   constructor(props, context) {
@@ -19,14 +18,14 @@ class SplashPage extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-  updateSearchState(event) {
-    const search = event.target.value;
-    return this.setState({ search });
-  }
-
   onSubmit(event) {
     event.preventDefault();
     browserHistory.push(`/articles/${this.state.search}`);
+  }
+
+  updateSearchState(event) {
+    const search = event.target.value;
+    return this.setState({ search });
   }
 
   render() {

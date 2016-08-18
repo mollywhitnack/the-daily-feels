@@ -8,36 +8,35 @@ import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 import '../../styles/contentPage.scss';
+// import toastr from 'toastr';
 
 class ContentPage extends Component {
 
-  constructor(props, context) {
-    super(props, context);
-  }
-
   componentWillMount() {
-    console.log('this.props:', this.props);
     this.props.actions.loadArticles(this.props.routeParams.search)
-      .then(()=> console.log('store updated'))
+      // .catch(err => toastr.error(err));
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.routeParams.search !== nextProps.params.search) {
       // make api request for new search term entered via Header component
-      console.log('nextProps:', nextProps);
       nextProps.actions.loadArticles(nextProps.params.search)
-        .then(()=> console.log('store updated'));
+      // .catch(err => toastr.error(err));
     }
   }
 
   render() {
-    let { faces, articles, loading, params } = this.props;
+    const { faces, articles, loading, params } = this.props;
     const loadingCircle = <CircularProgress size={2} />;
 
     const content = (
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-        <FaceBoard faces={faces} searchTerm={params.search}/>
+        <FaceBoard faces={faces} searchTerm={params.search} />
+        <span className="searchTermDisplay">
+          <span className="searchTermText">Showing results for:</span>
+          <span className="searchTerm">{(this.props.routeParams.search)}</span>
+        </span>
         <ArticleList articles={articles} emotion={params.emotion} />
       </div>
     );
@@ -51,32 +50,13 @@ class ContentPage extends Component {
 
 }
 
-// const ContentPage = ({ articles, loading, params, faces }) => {
-//
-//   const loadingCircle = <CircularProgress size={2} />;
-//
-//   const content = (
-//     <div>
-//       <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-//       <FaceBoard faces={faces} />
-//       <ArticleList articles={articles} emotion={params.emotion} />
-//     </div>
-//   );
-//
-//   return (
-//     <div>
-//       {loading ? loadingCircle : content}
-//     </div>
-//   );
-// };
-
 function getEmoPercent(articles) {
   let angerTotal = 0;
   let disgustTotal = 0;
   let fearTotal = 0;
   let joyTotal = 0;
   let sadnessTotal = 0;
-  articles.map(article => {
+  articles.forEach(article => {
     const tones = article.tone;
     angerTotal += tones[0].score;
     disgustTotal += tones[1].score;
@@ -98,10 +78,11 @@ ContentPage.propTypes = {
   loading: PropTypes.bool.isRequired,
   params: PropTypes.object.isRequired,
   actions: PropTypes.object.isRequired,
+  routeParams: PropTypes.object.isRequired,
+  faces: PropTypes.array.isRequired,
 };
 
 function mapStateToProps(state) {
-
   let percentages = {
     angerTotal: 0,
     disgustTotal: 0,
