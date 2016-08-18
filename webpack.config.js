@@ -1,11 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
 
-let config = {}
+let config = {};
 
 const port = process.env.PORT || 3000;
 
-if(process.env.NODE_ENV === 'development'){
+if (process.env.NODE_ENV === 'development') {
   config = {
     debug: true,
     devtool: 'cheap-module-eval-source-map',
@@ -64,9 +64,7 @@ if(process.env.NODE_ENV === 'development'){
       extensions: ['', '.js', '.jsx'],
     },
   };
-}
-
-else{
+} else {
   config = {
     devtool: 'source-map',
 
@@ -82,10 +80,10 @@ else{
     output: {
       path: path.join(__dirname, 'production/client'),
       publicPath: '/',
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     plugins: [
-      new webpack.NoErrorsPlugin()
+      new webpack.NoErrorsPlugin(),
     ],
     module: {
       loaders: [
@@ -124,7 +122,6 @@ else{
       extensions: ['', '.js', '.jsx'],
     },
   };
-
 }
 
 module.exports = config;
