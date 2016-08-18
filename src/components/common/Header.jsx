@@ -45,7 +45,6 @@ class Header extends React.Component {
           </button>
         </div>
       </form>
-
       </div>
     );
   }
