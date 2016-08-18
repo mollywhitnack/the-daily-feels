@@ -101,6 +101,7 @@ function mapStateToProps(state) {
 
   if (state.articles.length) {
     percentages = getEmoPercent(state.articles);
+    console.log('percentages:', percentages);
   }
 
   return {
