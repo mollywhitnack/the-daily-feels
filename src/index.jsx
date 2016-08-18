@@ -8,6 +8,7 @@ import routes from './routes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../node_modules/toastr/build/toastr.min.css';
 import './styles/styles.scss';
+require('font-awesome-webpack');
 
 const store = configureStore();
 
@@ -17,4 +18,3 @@ render(
   </Provider>,
   document.getElementById('app')
 );
-
