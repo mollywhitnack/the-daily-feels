@@ -155,7 +155,7 @@ function getDominantTone(articles) {
 
     for (let i = 0; i < article.tone.length; i++) {
       let stdMax = Math.max.apply(null, std)
-      
+
       if(std[i] === stdMax) {
         article.dominantTone = toneColors[i];
       }
@@ -169,7 +169,7 @@ exports.get = searchTerm => {
 
     const bingApiKey = process.env.BING_API || null;
     const newsConfigObj = {
-      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=10&offset=0&mkt=en-us&safeSearch=Off`,
+      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=40&offset=0&mkt=en-us&safeSearch=Off`,
       headers: {
         'Ocp-Apim-Subscription-Key': bingApiKey,
       },
@@ -192,7 +192,7 @@ exports.get = searchTerm => {
       .then(formatArticles)
       .then(function(formatArticles){console.log("formatArticles :", formatArticles); return formatArticles})
       .then(getDominantTone)
-      .then(function(getDominantTone){console.log("getDominantTone :", getDominantTone); return getDominantTone})      
+      .then(function(getDominantTone){console.log("getDominantTone :", getDominantTone); return getDominantTone})
       .catch(err => console.log(err));
   };
 
