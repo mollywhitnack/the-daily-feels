@@ -127,7 +127,7 @@ function formatArticles(articles) {
 }
 
 function formatOneArticleFromBing(article) {
-  return (Object.keys(article).length) ?
+  return (article && Object.keys(article).length) ?
     {
       title: article.name,
       snippet: article.description.slice(0, 140),
@@ -141,14 +141,15 @@ function formatOneArticleFromBing(article) {
 
 function getDominantTone(articles) {
   return articles.map(article => {
-    let stdArr = [.1378, .1718, .1971, .0906, .0548];
-    let meanArr = [.6281, .4558, .3586, .1049, .1292];
-    let toneColors = ["red", "green", "black", "pink", "blue"];
+    let stdArr = [.1178, .1718, .1971, .0906, .0748];
+    let meanArr = [.5781, .4558, .3586, .1049, .1292];
+    let toneColors = ["anger", "disgust", "fear", "joy", "sadness"];
     let std = [];
-    let dominantColor;
+    let dominantTone;
 
     for (let i = 0; i < article.tone.length; i++) {
       let toneStds = (article.tone[i].score - meanArr[i]) / stdArr[i];
+      toneStds < 10 ? article.tone[i].std = (toneStds + 4.6) : article.tone[i].std = 9.9;
       std.push(toneStds);
     }
 
@@ -156,10 +157,10 @@ function getDominantTone(articles) {
       let stdMax = Math.max.apply(null, std)
       
       if(std[i] === stdMax) {
-        article.dominantColor = toneColors[i];
+        article.dominantTone = toneColors[i];
       }
     }
-    console.log(article.dominantColor);
+    console.log(article.dominantTone);
     return article;
   });
 }
@@ -168,7 +169,7 @@ exports.get = searchTerm => {
 
     const bingApiKey = process.env.BING_API || null;
     const newsConfigObj = {
-      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
+      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=10&offset=0&mkt=en-us&safeSearch=Off`,
       headers: {
         'Ocp-Apim-Subscription-Key': bingApiKey,
       },
