@@ -3,10 +3,10 @@ import Article from './Article';
 
 const ArticleList = ({ articles, emotion }) => {
   if (emotion) {
-    articles.sort((a, b) =>{
-      return (b.tone.find(el => el.tone_id === emotion).std
+    articles.sort((a, b) =>
+      (b.tone.find(el => el.tone_id === emotion).std
       - a.tone.find(el => el.tone_id === emotion).std)
-      }
+      
     );
   }
 
