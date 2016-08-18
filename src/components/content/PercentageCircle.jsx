@@ -9,7 +9,7 @@ const PercentageCircle = ({ percentage }) =>
   </div>;
 
 PercentageCircle.propTypes = {
-  percentage: PropTypes.number.isRequired,
+  percentage: PropTypes.string.isRequired,
 };
 
 export default PercentageCircle;
