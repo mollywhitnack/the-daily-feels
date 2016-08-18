@@ -127,7 +127,7 @@ function formatArticles(articles) {
 }
 
 function formatOneArticleFromBing(article) {
-  return (Object.keys(article).length) ?
+  return (article && Object.keys(article).length) ?
     {
       title: article.name,
       snippet: article.description.slice(0, 140),
