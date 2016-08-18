@@ -1,6 +1,18 @@
 //  adjust this if font changes
 $splash_text_offset: 230px;
 
+@font-face {
+  font-family: HermanoAlto;
+  src: url("./fonts/HermanoAltoRound.ttf");
+}
+
+.splashButton {
+  border-radius: 20%;
+  margin-left: 5px;
+  border: 2px solid rgba(0,0,0,0.5);
+  background-color: transparent;
+}
+
 .splashBackground {
   width: 100vw;
   height: 100vh;
@@ -18,8 +30,8 @@ $splash_text_offset: 230px;
   top: 50%;
   transform: translateY(-50%);
   margin: auto;
-  width: 70%;
-  background-color: rgba(169, 228, 239, .8);
+  width: 85%;
+  background-color: rgba(255, 255, 255, .4);
   padding-left: 20px;
   padding-right: 20px;
   text-align: left;
@@ -40,7 +52,7 @@ $splash_text_offset: 230px;
 }
 
 .splashSearchArea input {
-  width: 100%!important;
+  width: 80%!important;
   min-width: 230px;
   display: inline-block;
   border: 1px solid black;
@@ -53,11 +65,14 @@ $splash_text_offset: 230px;
 }
 
 .splashTitle {
-  position: relative;
-  right: $splash_text_offset;
+  font-family: HermanoAlto;
+  right: 230px;
   white-space: nowrap;
-  font-size: 8em;
-  color: #111;
+  font-size: 9em;
+  background: -webkit-linear-gradient(#888, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.4em;
 }
 
 

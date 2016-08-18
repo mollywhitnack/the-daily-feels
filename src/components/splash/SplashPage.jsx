@@ -43,8 +43,8 @@ class SplashPage extends React.Component {
                 onChange={this.updateSearchState}
               />
               <div className="form-group">
-                <button className="btn-primary btn splashButton">
-                  Search For News
+                <button className="splashButton">
+                  <i className="fa fa-2x fa-newspaper-o"></i>
                 </button>
               </div>
             </form>
