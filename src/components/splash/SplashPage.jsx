@@ -35,6 +35,7 @@ class SplashPage extends React.Component {
         </div>
         <div className="splashContent">
           <h1 className="splashTitle">The Daily Feels</h1>
+          <span className="splashTagline">Emotion-Sensitive News Search Engine</span>
           <div className="splashSearchArea">
 
             <form className="form-inline" onSubmit={this.onSubmit}>
@@ -43,8 +44,8 @@ class SplashPage extends React.Component {
                 onChange={this.updateSearchState}
               />
               <div className="form-group">
-                <button className="btn-primary btn splashButton">
-                  Search For News
+                <button className="splashButton">
+                  <i className="fa fa-2x fa-newspaper-o"></i>
                 </button>
               </div>
             </form>
