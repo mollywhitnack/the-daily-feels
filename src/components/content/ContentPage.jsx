@@ -8,7 +8,7 @@ import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 import '../../styles/contentPage.scss';
-import toastr from 'toastr'
+import toastr from 'toastr';
 
 class ContentPage extends Component {
 
@@ -19,12 +19,12 @@ class ContentPage extends Component {
   componentWillMount() {
     console.log('this.props:', this.props);
     this.props.actions.loadArticles(this.props.routeParams.search)
-      .then(()=> {console.log('store updated')
-                  console.log('this.props:', this.props.articles)
-                  if(this.props.articles.length === 0){
-                    toastr.warning('No Articles Found, Please search again')
-                  }
-                });
+      .then(() => {
+        console.log('store updated');
+        if (this.props.articles.length === 0) {
+          toastr.warning('No Articles Found, Please search again');
+        }
+      });
   }
 
   componentWillReceiveProps(nextProps) {
