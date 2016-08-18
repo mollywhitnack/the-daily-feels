@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
+import PercentageCircle from './PercentageCircle';
+import '../../styles/face.scss';
 
 const Face = ({ face, searchTerm }) =>
   // replace search w/ search var from store
   <div className="inline">
-    <h3>{face.emotion.split('')[0].toUpperCase()
-      + face.emotion.slice(1, face.emotion.length)}</h3>
+    <div className="emotionLabel">{face.emotion.split('')[0].toUpperCase()
+      + face.emotion.slice(1, face.emotion.length)}</div>
     <Link to={`/articles/${searchTerm}/${face.emotion}`}>
-      <h3>{face.img}</h3>
-      <h5>{face.percentage ? face.percentage : ''}</h5>
+      <div className="face">{face.img}</div>
+      <PercentageCircle percentage={face.percentage} />
     </Link>
   </div>;
 
