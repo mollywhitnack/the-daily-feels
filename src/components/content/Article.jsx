@@ -7,8 +7,8 @@ const Article = ({ article }) =>
     <a
       href={article.url} target="_blank"
       className="flip-container"
-      ontouchstart="this.classList.toggle('hover');"
     >
+    {/*ontouchstart="this.classList.toggle('hover');"*/}
       <div className="flipper">
         <div className="front">
           <div className="articleTitle">{article.title}</div>
