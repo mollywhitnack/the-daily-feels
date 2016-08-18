@@ -11,7 +11,7 @@ const FaceBoard = ({ faces, searchTerm}) => {
   return (
     <div className="container-fluid faceBoard">
       {facesDisplay}
-      <Link to={`/articles/${searchTerm}`} className="btn btn-primary">All</Link>
+      <Link to={`/articles/${searchTerm}`} className="allEmotions btn btn-primary">All</Link>
     </div>
   );
 };

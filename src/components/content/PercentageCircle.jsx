@@ -1,12 +1,15 @@
 import React, { PropTypes } from 'react';
+import '../../styles/percentageCircle.scss';
 
-const PercentageCircle = ({ face }) =>
+const PercentageCircle = ({ percentage }) =>
   <div className="container-fluid">
     <div className="circle text-center">
-      <h4>{face.percentage}%</h4> </div>
+      <div className="percentage">{percentage}%</div>
+    </div>
   </div>;
 
 PercentageCircle.propTypes = {
-  face: PropTypes.object.isRequired,
+  percentage: PropTypes.number.isRequired,
 };
 
+export default PercentageCircle;
