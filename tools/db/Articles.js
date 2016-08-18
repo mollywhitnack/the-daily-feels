@@ -139,7 +139,33 @@ function formatOneArticleFromBing(article) {
     : null;
 }
 
+function getDominantTone(articles) {
+  return articles.map(article => {
+    let stdArr = [.1378, .1718, .1971, .0906, .0548];
+    let meanArr = [.6281, .4558, .3586, .1049, .1292];
+    let toneColors = ["red", "green", "black", "pink", "blue"];
+    let std = [];
+    let dominantColor;
+
+    for (let i = 0; i < article.tone.length; i++) {
+      let toneStds = (article.tone[i].score - meanArr[i]) / stdArr[i];
+      std.push(toneStds);
+    }
+
+    for (let i = 0; i < article.tone.length; i++) {
+      let stdMax = Math.max.apply(null, std)
+      
+      if(std[i] === stdMax) {
+        article.dominantColor = toneColors[i];
+      }
+    }
+    console.log(article.dominantColor);
+    return article;
+  });
+}
+
 exports.get = searchTerm => {
+
     const bingApiKey = process.env.BING_API || null;
     const newsConfigObj = {
       url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=5&offset=0&mkt=en-us&safeSearch=Off`,
@@ -157,9 +183,15 @@ exports.get = searchTerm => {
 
     return newsRequestPromise
       .then(parseArticles)
+      .then(function(parseArticles){console.log("parseArticles :", parseArticles); return parseArticles})
       .then(scrapeArticles)
+      .then(function(scrapedArticles){console.log("scrapedArticles :", scrapedArticles); return scrapedArticles})
       .then(analyzeTones)
+      .then(function(analyzeTones){console.log("analyzeTones :", analyzeTones); return analyzeTones})
       .then(formatArticles)
+      .then(function(formatArticles){console.log("formatArticles :", formatArticles); return formatArticles})
+      .then(getDominantTone)
+      .then(function(getDominantTone){console.log("getDominantTone :", getDominantTone); return getDominantTone})      
       .catch(err => console.log(err));
   };
 
