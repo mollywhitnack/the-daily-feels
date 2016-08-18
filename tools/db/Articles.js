@@ -145,7 +145,7 @@ function getDominantTone(articles) {
     let meanArr = [.5781, .4558, .3586, .1049, .1292];
     let toneColors = ["anger", "disgust", "fear", "joy", "sadness"];
     let std = [];
-    let dominantColor;
+    let dominantTone;
 
     for (let i = 0; i < article.tone.length; i++) {
       let toneStds = (article.tone[i].score - meanArr[i]) / stdArr[i];
