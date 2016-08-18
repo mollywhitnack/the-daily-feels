@@ -3,9 +3,10 @@ import Article from './Article';
 
 const ArticleList = ({ articles, emotion }) => {
   if (emotion) {
-    articles.sort( (a, b) =>  {
-      a.tone.find(el => el.tone_id === emotion).score - b.tone.find(el => el.tone_id === emotion).score;
-    });
+    articles.sort((a, b) =>
+      a.tone.find(el => el.tone_id === emotion).score
+      - b.tone.find(el => el.tone_id === emotion).score
+    );
   }
   const filteredArticles = articles.map(article => {
     for (let i = 0; i < article.tone.length; i++) {
