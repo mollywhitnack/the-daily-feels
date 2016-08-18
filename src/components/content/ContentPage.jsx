@@ -130,6 +130,33 @@ function mapStateToProps(state) {
         emotion: 'sadness',
         percentage: percentages.sadnessTotal,
       },
+=======
+        {
+          img: '😠',
+          emotion: 'anger',
+          percentage: percentages.angerTotal,
+        },
+        {
+          img: '😷',
+          emotion: 'disgust',
+          percentage: percentages.disgustTotal,
+        },
+        {
+          img: '😨',
+          emotion: 'fear',
+          percentage: percentages.fearTotal,
+        },
+        {
+          img: '😄',
+          emotion: 'joy',
+          percentage: percentages.joyTotal,
+        },
+        {
+          img: '😭',
+          emotion: 'sadness',
+          percentage: percentages.sadnessTotal,
+        },
+>>>>>>> 63b403f911db44785c27898349e4a2ec60fdd404
     ],
     loading: state.ajaxCallsInProgress > 0,
     // state.articles; property courses determined by
