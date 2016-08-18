@@ -8,6 +8,7 @@ import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 import '../../styles/contentPage.scss';
+import toastr from 'toastr'
 
 class ContentPage extends Component {
 
@@ -18,7 +19,12 @@ class ContentPage extends Component {
   componentWillMount() {
     console.log('this.props:', this.props);
     this.props.actions.loadArticles(this.props.routeParams.search)
-      .then(()=> console.log('store updated'))
+      .then(()=> {console.log('store updated')
+                  console.log('this.props:', this.props.articles)
+                  if(this.props.articles.length === 0){
+                    toastr.warning('No Articles Found, Please search again')
+                  }
+                });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,6 +37,9 @@ class ContentPage extends Component {
   }
 
   render() {
+    /*if(noArticles){
+      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
+    }*/
     let { faces, articles, loading, params } = this.props;
     const loadingCircle = <CircularProgress size={2} />;
 
