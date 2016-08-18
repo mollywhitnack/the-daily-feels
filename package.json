@@ -2,7 +2,6 @@
   "name": "ReduxTemplate",
   "version": "1.0.0",
   "description": "Template for Redux Files",
-  "author": "Matthew Broatch",
   "license": "MIT",
   "scripts": {
     "prestart": "babel-node tools/startMessage.js",
