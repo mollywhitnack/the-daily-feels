@@ -1,7 +1,21 @@
 .emotionLabel {
   font-size: 1.3em;
+  text-decoration: none;
 }
 
+.faceAlign{
+  padding-left: 65px;
+}
 .face {
-  font-size: 4em;
+  font-size: 7em;
+  color:#142852;
+  //background-color: purple;
+}
+
+.face:hover{
+  color: #3973ac;
+}
+
+.face:active{
+  color: #336699;
 }
