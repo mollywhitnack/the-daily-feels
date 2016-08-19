@@ -11,10 +11,17 @@
   position: relative;
   width: 80px;
   height: 98px;
+  color: #333;
+}
+
+.allFaces:hover {
+  color: black;
 }
 
 .allEmotions {
   position: relative;
+  vertical-align: top;
+  text-align: center;
   width: 76px;
   height: 168px;
 }
