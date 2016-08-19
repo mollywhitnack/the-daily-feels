@@ -7,23 +7,25 @@ import '../../styles/article.scss';
 
 const Article = ({ article }) =>{
 let dominantTone = {
-  color: 'black',
+  backgroundColor: 'white',
 }
 if (article.dominantTone === 'anger') {
   dominantTone = {
-  color: 'red',
+  //backgroundColor: 'red',
+  boxShadow: 'inset 0 0 10px red'
 }}
 if(article.dominantTone === 'disgust'){dominantTone = {
-  color: 'green',
+  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px green',
 }}
 if(article.dominantTone === 'fear'){dominantTone = {
-  color: 'grey',
+  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #6600cc',
+
 }}
 if(article.dominantTone === 'joy'){dominantTone = {
-  color: 'pink',
+    boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #ff00ff',
 }}
 if(article.dominantTone === 'sadness'){dominantTone = {
-  color: 'blue',
+  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #0099ff',
 }}
 
 return (
@@ -34,8 +36,8 @@ return (
     >
     {/* ontouchstart="this.classList.toggle('hover');" */}
       <div className="flipper">
-        <div className="front" >
-          <div className="articleTitle" style = {dominantTone} >{article.title}</div>
+        <div className="front" style = {dominantTone} >
+          <div className="articleTitle"  >{article.title}</div>
           <div className="articleSnippet">{`${article.snippet} ... `}</div>
         </div>
         <div className="back">
