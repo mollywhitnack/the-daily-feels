@@ -1,5 +1,11 @@
 @import 'fonts';
 
+.articlesDisplay {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-top: 20px;
+  // border-radius: 10%;
+}
+
 .article {
   margin: 15px;
   display: inline-block;
@@ -25,7 +31,6 @@
   margin: 15px;
   margin-top: 8px;
   font-size: 1.2em;
-  // background-color: #FFEEF2;
 }
 
 .articleEmotionRow{
@@ -86,6 +91,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #fff;
 }
 
 /* front pane, placed above back */

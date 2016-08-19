@@ -20,23 +20,28 @@ const Article = ({ article }) => {
   };
 
   dominantTone = {
-  boxShadow: 'inset 0 0 10px red'
-}
-if(article.dominantTone === 'disgust'){
-  dominantTone = {
-  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px green',
+    boxShadow: 'inset 0 0 10px red'
   }
-}
-if(article.dominantTone === 'fear'){dominantTone = {
-  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #6600cc',
-
-}}
-if(article.dominantTone === 'joy'){dominantTone = {
-    boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #ff00ff',
-}}
-if(article.dominantTone === 'sadness'){dominantTone = {
-  boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #0099ff',
-}}
+  if(article.dominantTone === 'disgust'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px green',
+    }
+  }
+  if(article.dominantTone === 'fear'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #6600cc',
+    }
+  }
+  if(article.dominantTone === 'joy'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #ff00ff',
+    }
+  }
+  if(article.dominantTone === 'sadness'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #0099ff',
+    }
+  }
 
 
   return (
@@ -77,4 +82,3 @@ Article.propTypes = {
 };
 
 export default Article;
-
