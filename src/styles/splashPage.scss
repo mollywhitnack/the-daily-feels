@@ -108,9 +108,9 @@ $splash_text_offset: 230px;
 
 @-webkit-keyframes colorChange {
   from {
-    -webkit-filter: hue-rotate(0deg) blur(10px);
+    -webkit-filter: hue-rotate(0deg);
   }
   to {
-    -webkit-filter: hue-rotate(360deg) blur(10px);
+    -webkit-filter: hue-rotate(360deg);
   }
 }
