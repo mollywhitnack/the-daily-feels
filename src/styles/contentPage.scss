@@ -1,10 +1,39 @@
+@import 'fonts';
+@import 'emotions';
+
+.anger {
+  color: $anger;
+}
+
+.disgust {
+  color: $disgust;
+}
+
+.fear {
+  color: $fear;
+}
+
+.joy {
+  color: $joy;
+}
+
+.sadness {
+  color: $sadness;
+}
+
+.loading{
+  margin-top: 18%;
+}
+
 .searchTermDisplay {
-  display: inline-block; 
+  font-family: HermanoAlto;
+  display: inline-block;
   font-size: 2.5em;
+  color: #fff;
 }
 
 .searchTerm {
-  display: inline-block; 
-  font-size: 2.5em;
+  font-family: Ghostlight;
+  display: inline-block;
+  font-size: 1.5em;
 }
-

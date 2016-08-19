@@ -1,0 +1,20 @@
+@font-face {
+  font-family: Ghostlight;
+  src: url("./fonts/Ghostlight-Regular.ttf");
+}
+
+@font-face {
+  font-family: EmojiSymbols;
+  src: url("./fonts/EmojiSymbols-Regular.woff");
+}
+
+.emj{
+    font-family: EmojiSymbols;
+    line-height: 1;
+}
+
+body {
+  font-family: Ghostlight;
+  // background-color: #5f5f5f;
+  background-image: url("../images/blurrycolorballs.png");
+}

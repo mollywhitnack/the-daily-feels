@@ -34,10 +34,10 @@ class Header extends React.Component {
             name="searchBy"
             label="Enter a Search Term"
             onChange={this.updateSearchState}
-            placeholder="ie. Donald Trump"
+            placeholder="Donald Trump"
           />
           <div className="form-group">
-            <button className="btn btn-primary">
+            <button className="btn btn-default">
               Get Feels
             </button>
           </div>
