@@ -41,9 +41,8 @@ class ContentPage extends Component {
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
         <FaceBoard faces={faces} searchTerm={params.search} />
-        <span className="searchTermDisplay">
-          <span className="searchTermText">Showing results for:</span>
-          <span className="searchTerm">{(this.props.routeParams.search)}</span>
+        <span className="searchTermDisplay">Showing <span className={params.emotion}>{getDescriptorWord(params.emotion)}</span> results for:
+          <span className="searchTerm">{(params.search)}</span>
         </span>
         <ArticleList articles={articles} emotion={params.emotion} />
       </div>
@@ -55,7 +54,17 @@ class ContentPage extends Component {
       </div>
     );
   }
+}
 
+function getDescriptorWord(emotion) {
+  let descriptorWords = {
+    anger: 'angry',
+    disgust: 'disgusted',
+    fear: 'fearful',
+    joy: 'joyful',
+    sadness: 'sad',
+  }
+  return emotion ? descriptorWords[emotion] : "all";
 }
 
 function getEmoPercent(articles) {
