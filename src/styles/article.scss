@@ -1,9 +1,11 @@
 @import 'fonts';
+@import 'shared-styles';
 
 .articlesDisplay {
-  background-color: rgba(0, 0, 0, 0.8);
-  margin-top: 20px;
-  // border-radius: 10%;
+  background-color: $div-bg-color;
+  margin: 20px auto;
+  position: relative;
+  // border-radius: 3%;
 }
 
 .article {
@@ -22,6 +24,7 @@
   z-index: 9;
   text-align: left;
   color: black;
+  text-shadow: $text-shadow-lighter;
 }
 
 .articleSnippet {
@@ -65,10 +68,11 @@
 .flip-container {
   perspective: 1000px;
 }
-  /* flip the pane when hovered */
-  .flip-container:hover .flipper, .flip-container.hover .flipper {
-    transform: rotateY(180deg);
-  }
+
+/* flip the pane when hovered */
+.flip-container:hover .flipper, .flip-container.hover .flipper {
+  transform: rotateY(180deg);
+}
 
 .flip-container, .front, .back {
   padding: 5px;
@@ -106,4 +110,7 @@
   padding-top: 23px;
   background-color:  #f2f2f2;
   transform: rotateY(180deg);
+  .anger, .joy, .sadness, .disgust, .fear {
+    text-shadow: $text-shadow-lighter;
+  }
 }
