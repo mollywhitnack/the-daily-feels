@@ -1,9 +1,10 @@
 @import 'fonts';
+@import 'shared-styles';
 
 .articlesDisplay {
-  background-color: rgba(0, 0, 0, 0.8);
-  margin-top: 20px;
-  // border-radius: 10%;
+  background-color: $div-bg-color;
+  margin: 20px auto;
+  // border-radius: 3%;
 }
 
 .article {

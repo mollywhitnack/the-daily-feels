@@ -9,12 +9,12 @@ const displayNone = {
 };
 
 const Face = ({ face, searchTerm, params, currentEmotion }) => {
-  let setClass = face.emotion;
+  let setId = face.emotion;
 
-  let currentColorStyle = (currentEmotion && (currentEmotion === face.emotion)) ? 
+  let currentColorStyle = (currentEmotion && (currentEmotion === face.emotion)) ?
     {color: emotionColorKey[face.emotion]} :
     {};
-    
+
   return (
     // replace search w/ search var from store
     <div className="faceAlign" >
@@ -24,7 +24,7 @@ const Face = ({ face, searchTerm, params, currentEmotion }) => {
         <div
           className="face emj"
           style={currentColorStyle}
-          id={setClass}
+          id={setId}
         >
           {face.img}
         </div>
