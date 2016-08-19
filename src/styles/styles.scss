@@ -18,12 +18,12 @@ body {
   font-family: Ghostlight;
 }
 
-#app {
+.background-image {
   overflow-y: auto;
   position: relative;
 }
 
-#app:before {
+.background-image:before {
   content: "";
   position: fixed;
   left: 0;
