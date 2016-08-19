@@ -1,5 +1,5 @@
 import * as types from './actionTypes';
-import { beginAjaxCall } from './ajaxStatusActions';
+import { beginAjaxCall, ajaxCallError } from './ajaxStatusActions';
 import { get } from 'jquery';
 
 
@@ -16,7 +16,7 @@ export function loadArticles(searchTerm) {
       })
       .fail(err => {
         dispatch(ajaxCallError(err));
-        throw(err);
+        throw (err);
       });
   };
 }

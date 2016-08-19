@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-'use strict'
+/* eslint-disable strict */
+'use strict';
+
 require('dotenv').config();
 const cheerio = require('cheerio');
 const request = require('request');
@@ -105,13 +107,13 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-    return new Promise((resolve, reject) => {
-      toneAnalyzer.tone({ text: article.text },
-        (err, tone) => {
-          if (err) reject(err);
-          return resolve(tone);
-        });
-    });
+  return new Promise((resolve, reject) => {
+    toneAnalyzer.tone({ text: article.text },
+      (err, tone) => {
+        if (err) reject(err);
+        return resolve(tone);
+      });
+  });
 
   // console.log('using mock tone api');
   // return mockToneApi.getTone(article);
@@ -141,60 +143,54 @@ function formatOneArticleFromBing(article) {
 
 function getDominantTone(articles) {
   return articles.map(article => {
-    let stdArr = [.1178, .1718, .1971, .0906, .0748];
-    let meanArr = [.5781, .4558, .3586, .1049, .1292];
-    let toneColors = ["anger", "disgust", "fear", "joy", "sadness"];
-    let std = [];
+    const articleToReturn = Object.assign({}, article);
+    const stdArr = [0.1178, 0.1718, 0.1971, 0.0906, 0.0748];
+    const meanArr = [0.5781, 0.4558, 0.3586, 0.1049, 0.1292];
+    const toneColors = ['anger', 'disgust', 'fear', 'joy', 'sadness'];
+    const std = [];
     let dominantTone;
 
-    for (let i = 0; i < article.tone.length; i++) {
-      let toneStds = (article.tone[i].score - meanArr[i]) / stdArr[i];
-      toneStds < 10 ? article.tone[i].std = (toneStds + 4.6) : article.tone[i].std = 9.9;
+    for (let i = 0; i < articleToReturn.tone.length; i++) {
+      const toneStds = (articleToReturn.tone[i].score - meanArr[i]) / stdArr[i];
+      articleToReturn.tone[i].std = (toneStds < 10) ? (toneStds + 4.6) : 9.9;
       std.push(toneStds);
     }
 
-    for (let i = 0; i < article.tone.length; i++) {
-      let stdMax = Math.max.apply(null, std)
+    for (let i = 0; i < articleToReturn.tone.length; i++) {
+      const stdMax = Math.max.apply(null, std);
 
-      if(std[i] === stdMax) {
-        article.dominantTone = toneColors[i];
+      if (std[i] === stdMax) {
+        articleToReturn.dominantTone = toneColors[i];
       }
     }
-    console.log(article.dominantTone);
-    return article;
+    return articleToReturn;
   });
 }
 
 exports.get = searchTerm => {
-
-    const bingApiKey = process.env.BING_API || null;
-    const newsConfigObj = {
-      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=40&offset=0&mkt=en-us&safeSearch=Off`,
-      headers: {
-        'Ocp-Apim-Subscription-Key': bingApiKey,
-      },
-    };
-
-    const newsRequestPromise = new Promise((resolve, reject) => {
-      request(newsConfigObj, (err, response, body) => {
-        if (err) reject(err);
-        return resolve(body);
-      });
-    });
-
-    return newsRequestPromise
-      .then(parseArticles)
-      .then(function(parseArticles){console.log("parseArticles :", parseArticles); return parseArticles})
-      .then(scrapeArticles)
-      .then(function(scrapedArticles){console.log("scrapedArticles :", scrapedArticles); return scrapedArticles})
-      .then(analyzeTones)
-      .then(function(analyzeTones){console.log("analyzeTones :", analyzeTones); return analyzeTones})
-      .then(formatArticles)
-      .then(function(formatArticles){console.log("formatArticles :", formatArticles); return formatArticles})
-      .then(getDominantTone)
-      .then(function(getDominantTone){console.log("getDominantTone :", getDominantTone); return getDominantTone})
-      .catch(err => console.log(err));
+  const bingApiKey = process.env.BING_API || null;
+  const newsConfigObj = {
+    url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=40&offset=0&mkt=en-us&safeSearch=Off`,
+    headers: {
+      'Ocp-Apim-Subscription-Key': bingApiKey,
+    },
   };
+
+  const newsRequestPromise = new Promise((resolve, reject) => {
+    request(newsConfigObj, (err, response, body) => {
+      if (err) reject(err);
+      return resolve(body);
+    });
+  });
+
+  return newsRequestPromise
+    .then(parseArticles)
+    .then(scrapeArticles)
+    .then(analyzeTones)
+    .then(formatArticles)
+    .then(getDominantTone)
+    .catch(err => console.log(err));
+};
 
 //   console.log('using mock news api');
 //   return mockNewsApi.getArticles(searchTerm)
@@ -202,6 +198,7 @@ exports.get = searchTerm => {
 //     .then(scrapeArticles)
 //     .then(analyzeTones)
 //     .then(formatArticles)
+//     .then(getDominantTone)
 //     .catch(err => console.log('end err', err));
 // };
 
