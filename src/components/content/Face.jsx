@@ -5,24 +5,24 @@ import '../../styles/face.scss';
 
 const displayNone = {
   textDecoration: 'none',
-}
+};
 
 
-const Face = ({ face, searchTerm }) =>{
-  console.log('face.emotion:',face.emotion);
+const Face = ({ face, searchTerm }) => {
   let setClass = face.emotion;
 
-  return(
-  // replace search w/ search var from store
-  <div className="inline faceAlign" >
-    <div className="emotionLabel">{face.emotion.split('')[0].toUpperCase()
-      + face.emotion.slice(1, face.emotion.length)}</div>
-    <Link to={`/articles/${searchTerm}/${face.emotion}`} style = {displayNone}>
-      <div className="face emj" id = {setClass}>{face.img}</div>
-      <PercentageCircle percentage={face.percentage.toString()} />
-    </Link>
-  </div>
-  )};
+  return (
+    // replace search w/ search var from store
+    <div className="faceAlign" >
+      <div className="emotionLabel">{face.emotion.split('')[0].toUpperCase()
+        + face.emotion.slice(1, face.emotion.length)}</div>
+      <Link to={`/articles/${searchTerm}/${face.emotion}`} style={displayNone}>
+        <div className="face emj" id={setClass}>{face.img}</div>
+        <PercentageCircle percentage={face.percentage.toString()} />
+      </Link>
+    </div>
+  );
+};
 
 Face.propTypes = {
   face: PropTypes.object.isRequired,

@@ -1,13 +1,10 @@
 .faceBoard {
   position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: auto;
   display: inline-block;
-  background-color: none;
-  width: 100%;
   text-align: center;
-  padding-top: 2%;
-}
-
-.allEmotions {
-  position: absolute;
+  padding-top: 70px;
 }
 

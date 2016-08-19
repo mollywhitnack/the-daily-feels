@@ -1,7 +1,6 @@
 import Face from './Face';
 import AllFaceButton from './AllFaceButton';
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import '../../styles/faceBoard.scss';
 
 const FaceBoard = ({ faces, searchTerm }) => {
@@ -12,7 +11,7 @@ const FaceBoard = ({ faces, searchTerm }) => {
   return (
     <div className="container-fluid faceBoard">
       {facesDisplay}
-      <AllFaceButton />
+      <AllFaceButton searchTerm={searchTerm} />
     </div>
   );
 };
