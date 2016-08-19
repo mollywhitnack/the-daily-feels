@@ -8,14 +8,26 @@
 }
 .face {
   font-size: 7em;
-  color:#142852;
+  color: #333;
   //background-color: purple;
 }
 
-.face:hover{
-  color: #3973ac;
+#anger:hover{
+  color: red;
 }
 
-.face:active{
-  color: #336699;
+#disgust:hover{
+  color: green;
+}
+
+#fear:hover{
+  color: #6600cc;
+}
+
+#joy:hover{
+  color: #ff00ff;
+}
+
+#sadness:hover{
+  color: #0099ff;
 }
