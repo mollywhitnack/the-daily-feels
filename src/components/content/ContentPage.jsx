@@ -15,7 +15,6 @@ class ContentPage extends Component {
   componentWillMount() {
     this.props.actions.loadArticles(this.props.routeParams.search)
       .then(() => {
-        console.log('store updated');
         if (this.props.articles.length === 0) {
           toastr.warning('No Articles Found, Please search again');
         }
@@ -25,25 +24,29 @@ class ContentPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.routeParams.search !== nextProps.params.search) {
       // make api request for new search term entered via Header component
-      nextProps.actions.loadArticles(nextProps.params.search)
+      nextProps.actions.loadArticles(nextProps.params.search);
       // .catch(err => toastr.error(err));
     }
   }
 
   render() {
-    /*if(noArticles){
-      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
-    }*/
+
     let { faces, articles, loading, params } = this.props;
-    const loadingCircle = <div  className = "loading text-center"><CircularProgress size={3} /></div>;
+    const loadingCircle = <div  className = "loading text-center"><CircularProgress size={3} /></div>; 
 
     const content = (
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
         <FaceBoard faces={faces} searchTerm={params.search} />
-        <div className = 'text-center'>
-          <span className="searchTermDisplay">Showing <span className={params.emotion}>{getDescriptorWord(params.emotion)}</span> results for :
-            <span className="searchTerm"> &nbsp;{(params.search)}</span>
+        <div className="text-center">
+          <span className="searchTermDisplay">
+            Showing&nbsp;
+            <span className={params.emotion}>
+              {getDescriptorWord(params.emotion)}
+            </span> results for :
+            <span className="searchTerm">
+              &nbsp;{(params.search)}
+            </span>
           </span>
           <ArticleList articles={articles} emotion={params.emotion} />
         </div>
@@ -60,14 +63,14 @@ class ContentPage extends Component {
 }
 
 function getDescriptorWord(emotion) {
-  let descriptorWords = {
+  const descriptorWords = {
     anger: 'angry',
     disgust: 'disgusted',
     fear: 'fearful',
     joy: 'joyful',
     sadness: 'sad',
-  }
-  return emotion ? descriptorWords[emotion] : "all";
+  };
+  return emotion ? descriptorWords[emotion] : 'all';
 }
 
 function getEmoPercent(articles) {
@@ -113,7 +116,6 @@ function mapStateToProps(state) {
 
   if (state.articles.length) {
     percentages = getEmoPercent(state.articles);
-    console.log('percentages:', percentages);
   }
 
   return {

@@ -1,15 +1,21 @@
 .emotionLabel {
+  color: #333;
   font-size: 1.3em;
   text-decoration: none;
 }
 
-.faceAlign{
-  padding-left: 65px;
+.faceAlign {
+  display: inline-block;
+  margin-left: 65px;
 }
+
+.faceAlign:first-child {
+  margin-left: 0;
+}
+
 .face {
   font-size: 7em;
-  color: #333;
-  //background-color: purple;
+  color:#333;
 }
 
 #anger:hover{

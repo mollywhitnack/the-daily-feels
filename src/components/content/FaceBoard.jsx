@@ -1,6 +1,6 @@
 import Face from './Face';
+import AllFaceButton from './AllFaceButton';
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import '../../styles/faceBoard.scss';
 
 const FaceBoard = ({ faces, searchTerm }) => {
@@ -11,7 +11,7 @@ const FaceBoard = ({ faces, searchTerm }) => {
   return (
     <div className="container-fluid faceBoard">
       {facesDisplay}
-      <div><Link to={`/articles/${searchTerm}`} className="allEmotions btn btn-primary">All</Link></div>
+      <AllFaceButton searchTerm={searchTerm} />
     </div>
   );
 };
@@ -22,3 +22,4 @@ FaceBoard.propTypes = {
 };
 
 export default FaceBoard;
+
