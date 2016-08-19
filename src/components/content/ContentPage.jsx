@@ -41,10 +41,13 @@ class ContentPage extends Component {
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
         <FaceBoard faces={faces} searchTerm={params.search} />
-        <span className="searchTermDisplay">Showing <span className={params.emotion}>{getDescriptorWord(params.emotion)}</span> results for:
-          <span className="searchTerm">{(params.search)}</span>
-        </span>
-        <ArticleList articles={articles} emotion={params.emotion} />
+        <div className = 'text-center'>
+          <span className="searchTermDisplay">Showing <span className={params.emotion}>{getDescriptorWord(params.emotion)}</span> results for:
+            <span className="searchTerm">{(params.search)}</span>
+          </span>
+          <ArticleList articles={articles} emotion={params.emotion} />
+        </div>
+
       </div>
     );
 
