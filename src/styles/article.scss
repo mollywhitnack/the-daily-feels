@@ -26,7 +26,8 @@
   color: black;
   text-align: left;
   margin: 15px;
-  font-size: 1.1em;
+  margin-top: 8px;
+  font-size: 1.2em;
   // background-color: #FFEEF2;
 }
 
@@ -69,7 +70,7 @@
 
 .flip-container, .front, .back {
   padding: 5px;
-  width: 490px;
+  width: 400px;
   height: 250px;
   display: inline-block;
 }
