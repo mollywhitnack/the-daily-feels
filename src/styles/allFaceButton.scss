@@ -12,6 +12,16 @@
   width: 80px;
   height: 98px;
   color: #eee;
+  &:hover {
+    animation-name: stretch;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
 }
 
 .allEmotions {
