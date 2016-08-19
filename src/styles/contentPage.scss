@@ -1,5 +1,6 @@
 @import 'fonts';
 @import 'emotions';
+@import 'shared-styles';
 
 .anger {
   color: $anger;
@@ -26,14 +27,15 @@
 }
 
 .searchTermDisplay {
-  font-family: HermanoAlto;
+  font-family: Ghostlight;
   display: inline-block;
   font-size: 2.5em;
   color: #fff;
+  text-shadow: $text-shadow;
 }
 
 .searchTerm {
-  font-family: Ghostlight;
+  font-family: inherit;
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1.0em;
 }

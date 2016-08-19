@@ -1,0 +1,63 @@
+@import 'emotions';
+$div-bg-color: rgba(0, 0, 0, 0.5);
+$text-shadow: 10px 10px 19px #000;
+
+#anger:hover{
+  color: $anger;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+#disgust:hover{
+  color: $disgust;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+#fear:hover{
+  color: $fear;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+#joy:hover{
+  color: $joy;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+#sadness:hover{
+  color: $sadness;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
