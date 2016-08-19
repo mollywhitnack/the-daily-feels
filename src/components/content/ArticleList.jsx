@@ -3,6 +3,7 @@ import Article from './Article';
 
 const ArticleList = ({ articles, emotion }) => {
   if (emotion) {
+    //console.log(articles[0])
     articles.sort((a, b) =>
       (b.tone.find(el => el.tone_id === emotion).std
         - a.tone.find(el => el.tone_id === emotion).std)
@@ -15,8 +16,8 @@ const ArticleList = ({ articles, emotion }) => {
     for (let i = 0; i < article.tone.length; i++) {
       if (!emotion ||
         article.tone[i].tone_id === emotion && article.tone[i].score > thresholdArr[i]) {
-        return <Article key={article.id} article={article} />;
-      }
+          return <Article key={article.id} article={article} />;
+        }
     }
     return null;
   });

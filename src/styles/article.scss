@@ -8,24 +8,55 @@
   margin: 10px;
 }
 
+
 .articleTitle {
   font-size: 1.55em;
   box-shadow: 2px 2px 8px 0 #999;
-  padding: 5px;
-  background-color: #595758;
-  color: #FFEEF2;
+  padding: 7px;
+  padding-left: 15px;
+  padding-right: 10px;
+  background-color: #e6e6e6;
   z-index: 9;
+  text-align: left;
+
 }
 
 .articleSnippet {
   margin-top: 5px;
   color: black;
+  text-align: left;
+  margin: 15px;
+  font-size: 1.1em;
   // background-color: #FFEEF2;
+}
+
+.articleEmotionRow{
+  font-size: 1.6em;
 }
 
 .percentages {
   padding: 10px;
-  font-size: 1.6em;
+  //font-size: 4em !important;
+}
+
+.percentages>.anger {
+  color: red;
+}
+
+.percentages>.disgust {
+  color: green;
+}
+
+.percentages>.fear {
+  color: black;
+}
+
+.percentages>.joy {
+  color: pink;
+}
+
+.percentages>.sadness {
+  color: blue;
 }
 
 .flip-container {
@@ -38,7 +69,7 @@
 
 .flip-container, .front, .back {
   padding: 5px;
-  width: 360px;
+  width: 490px;
   height: 250px;
   display: inline-block;
 }
@@ -68,5 +99,7 @@
 
 /* back, initially hidden pane */
 .back {
+  padding-top: 23px;
+  background-color:  #f2f2f2;
   transform: rotateY(180deg);
 }
