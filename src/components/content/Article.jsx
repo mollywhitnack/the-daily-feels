@@ -29,8 +29,7 @@ const Article = ({ article }) => {
     boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #0099ff',
   }}
 
-  return 
-  (
+  return (
     <div className="article">
       <a href={article.url} target="_blank" className="flip-container">
         <div className="flipper">
