@@ -2,8 +2,6 @@ import React, { PropTypes } from 'react';
 import '../../styles/percentageCircle.scss';
 
 const PercentageCircle = ({ percentage }) => {
-  console.log('in percentageCircle');
-  console.log('percentage:', typeof (percentage));
   return (
     <div className="container-fluid">
       <div className="circle text-center">

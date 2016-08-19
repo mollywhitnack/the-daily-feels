@@ -1,9 +1,14 @@
 .faceBoard {
   display: inline-block;
-  background-color: #8E8DBE;
+  background-color: none;
+  width: 100%;
+  text-align: center;
+  padding-top: 2%;
+
 }
 
 .allEmotions {
   position: relative;
-  bottom: 50px;
+  bottom: 20px;
+
 }
