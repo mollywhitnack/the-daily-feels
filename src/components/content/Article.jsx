@@ -19,9 +19,9 @@ const Article = ({ article }) => {
   }
 
   if (article.dominantTone) {
-      dominantTone = {
-        boxShadow: `3px 3px 7px 3px #999, inset 0px 0px 10px ${dominantToneShadowObj[article.dominantTone]}`,
-      }
+    dominantTone = {
+      boxShadow: `3px 3px 7px 3px #999, inset 0px 0px 10px ${dominantToneShadowObj[article.dominantTone]}`,
+    }
   }
 
   return (
