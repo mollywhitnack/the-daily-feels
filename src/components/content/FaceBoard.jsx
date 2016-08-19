@@ -11,7 +11,7 @@ const FaceBoard = ({ faces, searchTerm, currentEmotion }) => {
   return (
     <div className="container-fluid faceBoard">
       {facesDisplay}
-      <AllFaceButton searchTerm={searchTerm} />
+      <AllFaceButton searchTerm={searchTerm} currentEmotion={currentEmotion} />
     </div>
   );
 };
