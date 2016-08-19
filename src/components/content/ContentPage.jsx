@@ -40,7 +40,7 @@ class ContentPage extends Component {
     const content = (
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-        <FaceBoard faces={faces} searchTerm={params.search} />
+        <FaceBoard faces={faces} searchTerm={params.search} currentEmotion={params.emotion} />
         <div className="text-center">
           <span className="searchTermDisplay">
             Showing&nbsp;
