@@ -1,31 +1,45 @@
+@import 'fonts';
+
+.articlesDisplay {
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-top: 20px;
+  // border-radius: 10%;
+}
+
 .article {
   margin: 15px;
   display: inline-block;
 }
 
-.inline {
-  display: inline-block;
-  margin: 10px;
-}
-
 .articleTitle {
+  font-family: HermanoAlto;
   font-size: 1.55em;
   box-shadow: 2px 2px 8px 0 #999;
-  padding: 5px;
-  background-color: #595758;
-  color: #FFEEF2;
+  padding: 7px;
+  padding-left: 15px;
+  padding-right: 10px;
+  background-color: #e6e6e6;
   z-index: 9;
+  text-align: left;
+  color: black;
 }
 
 .articleSnippet {
   margin-top: 5px;
   color: black;
-  // background-color: #FFEEF2;
+  text-align: left;
+  margin: 15px;
+  margin-top: 8px;
+  font-size: 1.2em;
+}
+
+.articleEmotionRow{
+  font-size: 1.6em;
 }
 
 .percentages {
   padding: 10px;
-  font-size: 1.6em;
+  //font-size: 4em !important;
 }
 
 .percentages>.anger {
@@ -58,7 +72,7 @@
 
 .flip-container, .front, .back {
   padding: 5px;
-  width: 360px;
+  width: 380px;
   height: 250px;
   display: inline-block;
 }
@@ -77,6 +91,7 @@
   position: absolute;
   top: 0;
   left: 0;
+  background-color: #fff;
 }
 
 /* front pane, placed above back */
@@ -88,5 +103,7 @@
 
 /* back, initially hidden pane */
 .back {
+  padding-top: 23px;
+  background-color:  #f2f2f2;
   transform: rotateY(180deg);
 }

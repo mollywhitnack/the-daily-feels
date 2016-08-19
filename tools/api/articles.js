@@ -1,4 +1,7 @@
-const express = require('express')
+/* eslint-disable strict */
+'use strict';
+
+const express = require('express');
 const router = express.Router();
 const Articles = require('../db/Articles');
 
@@ -12,3 +15,4 @@ router.get('/:searchTerm', (req, res) => {
 });
 
 module.exports = router;
+

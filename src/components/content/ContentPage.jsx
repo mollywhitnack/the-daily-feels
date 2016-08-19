@@ -8,36 +8,49 @@ import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 import '../../styles/contentPage.scss';
-// import toastr from 'toastr';
+import toastr from 'toastr';
 
 class ContentPage extends Component {
 
   componentWillMount() {
     this.props.actions.loadArticles(this.props.routeParams.search)
-      // .catch(err => toastr.error(err));
+      .then(() => {
+        if (this.props.articles.length === 0) {
+          toastr.warning('No Articles Found, Please search again');
+        }
+      });
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.routeParams.search !== nextProps.params.search) {
       // make api request for new search term entered via Header component
-      nextProps.actions.loadArticles(nextProps.params.search)
+      nextProps.actions.loadArticles(nextProps.params.search);
       // .catch(err => toastr.error(err));
     }
   }
 
   render() {
-    const { faces, articles, loading, params } = this.props;
-    const loadingCircle = <CircularProgress size={2} />;
+
+    let { faces, articles, loading, params } = this.props;
+    const loadingCircle = <div className = "loading text-center"><CircularProgress color={"#000"} size={3} /></div>;
 
     const content = (
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
-        <FaceBoard faces={faces} searchTerm={params.search} />
-        <span className="searchTermDisplay">
-          <span className="searchTermText">Showing results for:</span>
-          <span className="searchTerm">{(this.props.routeParams.search)}</span>
-        </span>
-        <ArticleList articles={articles} emotion={params.emotion} />
+        <FaceBoard faces={faces} searchTerm={params.search} currentEmotion={params.emotion} />
+        <div className="text-center articlesDisplay">
+          <span className="searchTermDisplay">
+            Showing&nbsp;
+            <span className={params.emotion}>
+              {getDescriptorWord(params.emotion)}
+            </span> results for :
+            <span className="searchTerm">
+              &nbsp;{(params.search)}
+            </span>
+          </span>
+          <ArticleList articles={articles} emotion={params.emotion} />
+        </div>
+
       </div>
     );
 
@@ -47,7 +60,17 @@ class ContentPage extends Component {
       </div>
     );
   }
+}
 
+function getDescriptorWord(emotion) {
+  const descriptorWords = {
+    anger: 'angry',
+    disgust: 'disgusted',
+    fear: 'fearful',
+    joy: 'joyful',
+    sadness: 'sad',
+  };
+  return emotion ? descriptorWords[emotion] : 'all';
 }
 
 function getEmoPercent(articles) {

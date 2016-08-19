@@ -1,17 +1,17 @@
 import Face from './Face';
+import AllFaceButton from './AllFaceButton';
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import '../../styles/faceBoard.scss';
 
-const FaceBoard = ({ faces, searchTerm }) => {
+const FaceBoard = ({ faces, searchTerm, currentEmotion }) => {
   const facesDisplay = faces.map(face =>
-    <Face key={face.img} face={face} searchTerm={searchTerm} />
+    <Face key={face.img} face={face} currentEmotion={currentEmotion} searchTerm={searchTerm} />
   );
 
   return (
     <div className="container-fluid faceBoard">
       {facesDisplay}
-      <Link to={`/articles/${searchTerm}`} className="allEmotions btn btn-primary">All</Link>
+      <AllFaceButton searchTerm={searchTerm} />
     </div>
   );
 };
