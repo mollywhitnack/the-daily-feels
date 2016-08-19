@@ -30,12 +30,9 @@ class ContentPage extends Component {
   }
 
   render() {
-    /*  if(noArticles){
-      toastr.warning('My name is Inigo Montoya. You killed my father, prepare to die!')
-    }  */
-    const { loading, params } = this.props;
-    let { faces, articles } = this.props;
-    const loadingCircle = <CircularProgress size={2} />;
+
+    let { faces, articles, loading, params } = this.props;
+    const loadingCircle = <div className = "loading text-center"><CircularProgress color={"#000"} size={3} /></div>;
 
     const content = (
       <div>

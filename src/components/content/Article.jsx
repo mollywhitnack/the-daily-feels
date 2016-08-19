@@ -20,9 +20,28 @@ const Article = ({ article }) => {
   };
 
   dominantTone = {
-    boxShadow: `3px 3px 7px 3px #999,
-     inset 0px 0px 10px ${dominantToneShadowObj[article.dominantTone]}`,
-  };
+    boxShadow: 'inset 0 0 10px red'
+  }
+  if(article.dominantTone === 'disgust'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px green',
+    }
+  }
+  if(article.dominantTone === 'fear'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #6600cc',
+    }
+  }
+  if(article.dominantTone === 'joy'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #ff00ff',
+    }
+  }
+  if(article.dominantTone === 'sadness'){
+    dominantTone = {
+      boxShadow: '3px 3px 7px 3px #999, inset 0px 0px 10px #0099ff',
+    }
+  }
 
 
   return (
@@ -33,7 +52,7 @@ const Article = ({ article }) => {
             <div className="articleTitle">{article.title}</div>
             <div className="articleSnippet">{`${article.snippet} ... `}</div>
           </div>
-          <div className="back">
+          <div className="back" style = {dominantTone}>
 
             <p className="articleEmotionRow anger">
               anger: {(article.tone[0].std.toFixed(1))}
@@ -63,4 +82,3 @@ Article.propTypes = {
 };
 
 export default Article;
-

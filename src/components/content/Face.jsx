@@ -11,9 +11,9 @@ const displayNone = {
 const Face = ({ face, searchTerm, params, currentEmotion }) => {
   let setClass = face.emotion;
 
-  let currentColor = (currentEmotion && (currentEmotion === face.emotion)) ? 
-    emotionColorKey[face.emotion] :
-    "black";
+  let currentColorStyle = (currentEmotion && (currentEmotion === face.emotion)) ? 
+    {color: emotionColorKey[face.emotion]} :
+    {};
     
   return (
     // replace search w/ search var from store
@@ -23,7 +23,7 @@ const Face = ({ face, searchTerm, params, currentEmotion }) => {
       <Link to={`/articles/${searchTerm}/${face.emotion}`} style={displayNone}>
         <div
           className="face emj"
-          style={{color: currentColor}}
+          style={currentColorStyle}
           id={setClass}
         >
           {face.img}

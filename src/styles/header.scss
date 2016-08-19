@@ -1,4 +1,12 @@
+@import 'fonts';
+
 .header {
   float: right;
   display: inline-block;
+}
+
+label {
+  margin-right: 10px;
+  font-family: HermanoAlto;
+  font-size: 1.2em;
 }
