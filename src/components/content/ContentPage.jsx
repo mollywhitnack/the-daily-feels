@@ -38,7 +38,7 @@ class ContentPage extends Component {
       <div>
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
         <FaceBoard faces={faces} searchTerm={params.search} currentEmotion={params.emotion} />
-        <div className="text-center">
+        <div className="text-center articlesDisplay">
           <span className="searchTermDisplay">
             Showing&nbsp;
             <span className={params.emotion}>
