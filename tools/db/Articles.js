@@ -107,16 +107,6 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
-<<<<<<< HEAD
-    console.log('analyzeonetone')
-    return new Promise((resolve, reject) => {
-      toneAnalyzer.tone({ text: article.text },
-        (err, tone) => {
-          if (err) reject(err);
-          return resolve(tone);
-        });
-    });
-=======
   return new Promise((resolve, reject) => {
     toneAnalyzer.tone({ text: article.text },
       (err, tone) => {
@@ -124,10 +114,6 @@ function analyzeOneTone(article) {
         return resolve(tone);
       });
   });
->>>>>>> fde67caa34af68925af6c716edf2af61da9599e4
-
-  // console.log('using mock tone api');
-  // return mockToneApi.getTone(article);
 }
 
 function formatArticles(articles) {
@@ -152,7 +138,7 @@ function formatOneArticleFromBing(article) {
     : null;
 }
 
-function getDominantTones(articles) {
+function getDominantTone(articles) {
   return articles.map(article => {
     const articleToReturn = Object.assign({}, article);
     const stdArr = [0.1178, 0.1718, 0.1971, 0.0906, 0.0748];
