@@ -40,7 +40,7 @@ return (
           <div className="articleTitle"  >{article.title}</div>
           <div className="articleSnippet">{`${article.snippet} ... `}</div>
         </div>
-        <div className="back">
+        <div className="back" style = {dominantTone}>
 
           <p className="articleEmotionRow anger"> Anger - {(article.tone[0].std.toFixed(1))}</p>
           <p className="articleEmotionRow disgust"> Disgust - {(article.tone[1].std.toFixed(1))}</p>
