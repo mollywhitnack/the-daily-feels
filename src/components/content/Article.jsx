@@ -11,7 +11,7 @@ const Article = ({ article }) =>
     {/* ontouchstart="this.classList.toggle('hover');" */}
       <div className="flipper">
         <div className="front">
-          <div className="articleTitle">{article.title}</div>
+          <div className={`articleTitle ${article.dominantTone}`}>{article.title}</div>
           <div className="articleSnippet">{`${article.snippet} ... `}</div>
         </div>
         <div className="back">
