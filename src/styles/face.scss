@@ -1,6 +1,10 @@
+@import 'fonts';
+@import 'emotions';
+
 .emotionLabel {
-  color: #333;
-  font-size: 1.3em;
+  font-family: HermanoAlto;
+  color: #fff;
+  font-size: 2.8em;
   text-decoration: none;
 }
 
@@ -14,26 +18,77 @@
 }
 
 .face {
+  font-family: HermanoAlto;
   font-size: 7em;
-  color:#333;
+  color: #eee;
 }
 
 #anger:hover{
-  color: red;
+  color: $anger;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
 #disgust:hover{
-  color: green;
+  color: $disgust;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
 #fear:hover{
-  color: #6600cc;
+  color: $fear;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
 #joy:hover{
-  color: #ff00ff;
+  color: $joy;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
 }
 
 #sadness:hover{
-  color: #0099ff;
+  color: $sadness;
+  animation-name: stretch;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+
+@keyframes stretch {
+  50% {
+    background-color: none;
+  }
+  100% {
+    transform: scale(1.25);
+  }
 }
