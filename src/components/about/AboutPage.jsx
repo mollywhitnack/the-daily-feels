@@ -22,10 +22,11 @@ class AboutPage extends React.Component {
     return (
  <div> 
 
+
     <div id="about-section" className="section" >   
        <div className="container" >
             <h2>About the Team</h2>
-
+            <br></br>
             <h5>
               <ul>
                 <li>We are four developers with a passion for news, media, linguistics, and data. </li>
@@ -37,61 +38,53 @@ class AboutPage extends React.Component {
             <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
                     <div className="row">
                         <div className="col-md-3 col-sm-3">
+                          <h5>Matthew Broatch</h5>
+                          <div className="Matt"></div>
                             <ul>
-                                <li>Matthew Broatch</li>
-
-                                <li>  <span> (INSERT MATT AVATAR) </span> </li>
-                                
+              
                                 <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
+                                              
                             </ul>
                         </div>
+                        
                         <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Molly Whitnack</li>
-
-                                <li>  <span> (INSERT MOLLY AVATAR) </span> </li>
-
+                          <h5>Molly Whitnack</h5>
+                          <div className="Molly"></div>
+                            <ul>
+              
                                 <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
+                                              
                             </ul>
                         </div>
+
                         <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Nikhil Ram</li>
-
-                                <li>  <span> (INSERT NICK AVATAR) </span> </li>
-                                
+                          <h5>Nikhil Ram</h5>
+                          <div className="Nick"></div>
+                            <ul>
+              
                                 <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
+                                              
                             </ul>
                         </div>
+
                         <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Sonam Kindy</li>
-
-                                <li>  <span> (INSERT SONAM AVATAR) </span> </li>
-                                
+                          <h5>Sonam Kindy</h5>
+                          <div className="Sonam"></div>
+                            <ul>
+              
                                 <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
                                 <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
+                                              
                             </ul>
-                        </div>
+                        </div>                        
+
                     </div>
                 </div>
 
@@ -106,6 +99,7 @@ class AboutPage extends React.Component {
             <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>How Does <i><b>The Daily Feels</b></i> Work?</h2>
+                    <br></br>
                     <h5>
                       <ul>
                         <li><i>The Daily Feels</i> analyzes media coverage of any topic or search term you can think of. More specifically, it gives you a breakdown of the emotional tone of news articles written about a subject. </li>
@@ -128,6 +122,7 @@ class AboutPage extends React.Component {
            <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>What Do The Numbers Mean?</h2>
+                    <br></br>
                     <h5>
 
                       <ul>
@@ -152,6 +147,7 @@ class AboutPage extends React.Component {
            <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>How Was <i><b>The Daily Feels</b></i> Built?</h2>
+                    <br></br>
                     <h5>
                       <ul>
                           <li> The Daily Feels was built using React.js with Redux, Webpack, Node.js, and ES6. </li>

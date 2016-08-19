@@ -24,3 +24,43 @@ h2 {
   font-size: 1.2em;
   // background-color: #FFEEF2;
 }
+
+.Matt {
+  width: 128px;
+  height: 170.6px;
+  top: 0;
+  left: 0;
+  background-image: url("../images/Matt_Chibi.jpg");
+  background-size: cover;
+  -webkit-animation: 9s colorChange linear infinite;
+}
+
+.Molly {
+  width: 128px;
+  height: 170.6px;
+  top: 0;
+  left: 0;
+  background-image: url("../images/Molly_Chibi.jpg");
+  background-size: cover;
+  -webkit-animation: 8s colorChange linear infinite;
+}
+
+.Nick {
+  width: 128px;
+  height: 170.6px;
+  top: 0;
+  left: 0;
+  background-image: url("../images/Nick_Chibi.jpg");
+  background-size: cover;
+  -webkit-animation: 7s colorChange linear infinite;
+}
+
+.Sonam {
+  width: 128px;
+  height: 170.6px;
+  top: 0;
+  left: 0;
+  background-image: url("../images/sonam_Chibi.jpg");
+  background-size: cover;
+  -webkit-animation: 10s colorChange linear infinite;
+}
