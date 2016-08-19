@@ -3,6 +3,18 @@
   src: url("./fonts/Ghostlight-Regular.ttf");
 }
 
+@font-face {
+  font-family: EmojiSymbols;
+  src: url("./fonts/EmojiSymbols-Regular.woff");
+  text-decoration: none;
+  font-style: normal;
+}
+
+.emj {
+    font-family: EmojiSymbols;
+    line-height: 1;
+}
+
 body {
   font-family: Ghostlight;
 }
