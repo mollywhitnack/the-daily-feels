@@ -32,7 +32,7 @@ class AboutPage extends React.Component {
           
                
             <div className="row main-low-margin">
-                <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" >
+                <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>How Does <i><b>The Daily Feels</b></i> Work?</h2>
                     <h5>
                       <ul>
@@ -54,7 +54,7 @@ class AboutPage extends React.Component {
         <div className="container" >
           
            <div className="row main-low-margin">
-                <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1" >
+                <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>What Do The Numbers Mean?</h2>
                     <h5>
 
@@ -112,7 +112,7 @@ class AboutPage extends React.Component {
               </ul>
             </h5>
           
-            <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+            <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
                     <div className="row">
                         <div className="col-md-3 col-sm-3">
                             <ul>
