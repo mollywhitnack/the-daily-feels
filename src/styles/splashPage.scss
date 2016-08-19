@@ -1,11 +1,7 @@
+@import 'fonts';
+
 //  adjust this if font changes
 $splash_text_offset: 230px;
-
-@font-face {
-  font-family: HermanoAlto;
-  src: url("./fonts/HermanoAltoRound.ttf");
-}
-
 
 .splashTagline {
   margin-left: 1%;

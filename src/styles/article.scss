@@ -1,9 +1,12 @@
+@import 'fonts';
+
 .article {
   margin: 15px;
   display: inline-block;
 }
 
 .articleTitle {
+  font-family: HermanoAlto;
   font-size: 1.55em;
   box-shadow: 2px 2px 8px 0 #999;
   padding: 7px;
