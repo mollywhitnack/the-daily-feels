@@ -1,0 +1,27 @@
+.smallFace {
+  position: absolute;
+  font-size: 4em;
+  border: 2px solid white;
+  height: .85em;
+  line-height: .68em!important;
+  border-radius: 50%;
+}
+
+.allFaces {
+  position: relative;
+  width: 80px;
+  height: 98px;
+  color: #333;
+}
+
+.allFaces:hover {
+  color: black;
+}
+
+.allEmotions {
+  position: relative;
+  vertical-align: top;
+  text-align: center;
+  width: 76px;
+  height: 168px;
+}

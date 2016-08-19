@@ -1,6 +1,7 @@
+/* eslint-disable strict */
 'use strict';
 
-const express = require('express')
+const express = require('express');
 const router = express.Router();
 const Articles = require('../db/Articles');
 
