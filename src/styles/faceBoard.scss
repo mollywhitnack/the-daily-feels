@@ -1,3 +1,5 @@
+@import 'shared-styles';
+
 .faceBoard {
   position: relative;
   left: 50%;
@@ -6,8 +8,9 @@
   display: inline-block;
   text-align: center;
   margin-top: 70px;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: $div-bg-color;
   padding-top: 50px;
+  // border-radius: 10%;
 }
 
 .allEmotions {

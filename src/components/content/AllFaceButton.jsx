@@ -8,9 +8,9 @@ const AllFaceButton = ({ searchTerm }) =>
     <div className="emotionLabel">All</div>
     <Link to={`/articles/${searchTerm}`}>
       <div className="allFaces">
-        <div className="smallFace emj" style={{ top: 15, left: 17, zIndex: 2 }}>😄</div>
-        <div className="smallFace emj" style={{ top: 48, left: -4, zIndex: 1 }}>😠</div>
-        <div className="smallFace emj" style={{ top: 51, left: 38, zIndex: 3 }}>😭</div>
+        <div className="smallFace emj" id="joy" style={{ top: 15, left: 17, zIndex: 2 }}>😄</div>
+        <div className="smallFace emj" id="anger" style={{ top: 48, left: -4, zIndex: 1 }}>😠</div>
+        <div className="smallFace emj" id="sadness" style={{ top: 51, left: 38, zIndex: 3 }}>😭</div>
       </div>
     </Link>
   </div>;
