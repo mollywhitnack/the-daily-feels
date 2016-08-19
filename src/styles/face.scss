@@ -11,10 +11,22 @@
   color:#333;
 }
 
-.face:hover{
-  color: #3973ac;
+#anger:hover{
+  color: red;
 }
 
-.face:active{
-  color: #336699;
+#disgust:hover{
+  color: green;
+}
+
+#fear:hover{
+  color: #6600cc;
+}
+
+#joy:hover{
+  color: #ff00ff;
+}
+
+#sadness:hover{
+  color: #0099ff;
 }
