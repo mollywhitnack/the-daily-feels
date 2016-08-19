@@ -105,6 +105,7 @@ function analyzeTones(articles) {
 }
 
 function analyzeOneTone(article) {
+    console.log('analyzeonetone')
     return new Promise((resolve, reject) => {
       toneAnalyzer.tone({ text: article.text },
         (err, tone) => {
@@ -139,7 +140,7 @@ function formatOneArticleFromBing(article) {
     : null;
 }
 
-function getDominantTone(articles) {
+function getDominantTones(articles) {
   return articles.map(article => {
     let stdArr = [.1178, .1718, .1971, .0906, .0748];
     let meanArr = [.5781, .4558, .3586, .1049, .1292];
@@ -169,7 +170,7 @@ exports.get = searchTerm => {
 
     const bingApiKey = process.env.BING_API || null;
     const newsConfigObj = {
-      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=10&offset=0&mkt=en-us&safeSearch=Off`,
+      url: `https://api.cognitive.microsoft.com/bing/v5.0/news/search?q=${searchTerm}&count=30&offset=0&mkt=en-us&safeSearch=Off`,
       headers: {
         'Ocp-Apim-Subscription-Key': bingApiKey,
       },
@@ -184,15 +185,15 @@ exports.get = searchTerm => {
 
     return newsRequestPromise
       .then(parseArticles)
-      .then(function(parseArticles){console.log("parseArticles :", parseArticles); return parseArticles})
+      .then(function(parsedArticles){console.log("parseArticles :"); return parsedArticles})
       .then(scrapeArticles)
-      .then(function(scrapedArticles){console.log("scrapedArticles :", scrapedArticles); return scrapedArticles})
+      .then(function(scrapedArticles){console.log("scrapedArticles :"); return scrapedArticles})
       .then(analyzeTones)
-      .then(function(analyzeTones){console.log("analyzeTones :", analyzeTones); return analyzeTones})
+      .then(function(analyzedTones){console.log("analyzeTones :"); return analyzedTones})
       .then(formatArticles)
-      .then(function(formatArticles){console.log("formatArticles :", formatArticles); return formatArticles})
-      .then(getDominantTone)
-      .then(function(getDominantTone){console.log("getDominantTone :", getDominantTone); return getDominantTone})      
+      .then(function(formattedArticles){console.log("formatArticles :"); return formattedArticles})
+      .then(getDominantTones)
+      .then(function(dominantTone){console.log("getDominantTone :"); return dominantTone})      
       .catch(err => console.log(err));
   };
 

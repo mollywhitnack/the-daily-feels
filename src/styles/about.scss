@@ -1,0 +1,77 @@
+.container {
+  margin: 15px;
+  display: inline-block;
+}
+
+h2 {
+  font-size: 3.55em;
+  box-shadow: 2px 2px 8px 0 #999;
+  padding: 7px;
+  padding-left: 15px;
+  padding-right: 10px;
+  background-color: #e6e6e6;
+  z-index: 9;
+  text-align: center;
+  color: black;
+}
+
+.info {
+  margin-top: 5px;
+  color: black;
+  text-align: left;
+  margin: 15px;
+  margin-top: 8px;
+  font-size: 1.2em;
+  // background-color: #FFEEF2;
+}
+
+.articleEmotionRow{
+  font-size: 1.6em;
+}
+
+
+
+.flip-container {
+  perspective: 1000px;
+}
+  /* flip the pane when hovered */
+  .flip-container:hover .flipper, .flip-container.hover .flipper {
+    transform: rotateY(180deg);
+  }
+
+.flip-container, .front, .back {
+  padding: 5px;
+  width: 380px;
+  height: 250px;
+  display: inline-block;
+}
+
+/* flip speed goes here */
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+  box-shadow: 3px 3px 7px 3px #999;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+  z-index: 2;
+  /* for firefox 31 */
+  transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+  padding-top: 23px;
+  background-color:  #f2f2f2;
+  transform: rotateY(180deg);
+}
