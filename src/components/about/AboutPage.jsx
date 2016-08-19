@@ -1,12 +1,10 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import TextInput from '../common/TextInput';
 import * as articleActions from '../../actions/articleActions';
 import '../../styles/about.scss';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
-import Header from '../common/Header';
 
 class AboutPage extends React.Component {
   constructor(props, context) {
@@ -23,11 +21,85 @@ class AboutPage extends React.Component {
   render() {
     return (
  <div> 
-    <Header />  
 
- 
-   
-    <div id="about-section" class="section" >
+    <div id="about-section" className="section" >   
+       <div className="container" >
+            <h2>About the Team</h2>
+
+            <h5>
+              <ul>
+                <li>We are four developers with a passion for news, media, linguistics, and data. </li>
+                <br></br>
+                <li>We built <i>The Daily Feels</i> to help people analyze what they read on a daily basis and learn about the prevalence of emotional language used in the media.</li>
+              </ul>
+            </h5>
+          
+            <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
+                    <div className="row">
+                        <div className="col-md-3 col-sm-3">
+                            <ul>
+                                <li>Matthew Broatch</li>
+
+                                <li>  <span> (INSERT MATT AVATAR) </span> </li>
+                                
+                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
+
+                                
+                            </ul>
+                        </div>
+                        <div className="col-md-3 col-sm-3">
+                            <ul className="plan-main">
+                                <li className="plan-name">Molly Whitnack</li>
+
+                                <li>  <span> (INSERT MOLLY AVATAR) </span> </li>
+
+                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
+
+                                
+                            </ul>
+                        </div>
+                        <div className="col-md-3 col-sm-3">
+                            <ul className="plan-main">
+                                <li className="plan-name">Nikhil Ram</li>
+
+                                <li>  <span> (INSERT NICK AVATAR) </span> </li>
+                                
+                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
+
+                                
+                            </ul>
+                        </div>
+                        <div className="col-md-3 col-sm-3">
+                            <ul className="plan-main">
+                                <li className="plan-name">Sonam Kindy</li>
+
+                                <li>  <span> (INSERT SONAM AVATAR) </span> </li>
+                                
+                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
+                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
+
+                                
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div> 
+
+
+   <div id="about-section" class="section" >
         <div className="container" >
           
                
@@ -100,73 +172,7 @@ class AboutPage extends React.Component {
 
 
 
-    <div id="about-section" className="section" >   
-       <div className="container" >
-            <h2>About the Team</h2>
-
-            <h5>
-              <ul>
-                <li>We are four developers with a passion for news, media, linguistics, and data. </li>
-                <br></br>
-                <li>We built <i>The Daily Feels</i> to help people analyze what they read on a daily basis and learn about the prevalence of emotional language used in the media.</li>
-              </ul>
-            </h5>
-          
-            <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
-                    <div className="row">
-                        <div className="col-md-3 col-sm-3">
-                            <ul>
-                                <li>Matthew Broatch</li>
-                                
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
-                            </ul>
-                        </div>
-                        <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Molly Whitnack</li>
-                                
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
-                            </ul>
-                        </div>
-                        <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Nikhil Ram</li>
-                                
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
-                            </ul>
-                        </div>
-                        <div className="col-md-3 col-sm-3">
-                            <ul className="plan-main">
-                                <li className="plan-name">Sonam Kindy</li>
-                                
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Email</a></li>
-
-                                
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-        </div>
-    </div>    
+   
       <div className="space-bottom"></div>
 
 
