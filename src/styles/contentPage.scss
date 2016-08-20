@@ -40,12 +40,13 @@
   font-size: 1.0em;
 }
 
-.background-image {
+
+.backgroundImage {
   overflow-y: auto;
   position: relative;
 }
 
-.background-image:before {
+.backgroundImage:before {
   content: "";
   position: fixed;
   left: 0;
@@ -63,4 +64,15 @@
   -o-filter: blur(10px);
   -ms-filter: blur(10px);
   filter: blur(10px);
+  -webkit-animation: 5s blurIn ease 1;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes blurIn {
+  from {
+    -webkit-filter: blur(0);
+  }
+  to {
+    -webkit-filter: blur(10px);
+  }
 }
