@@ -16,6 +16,7 @@ class AboutPage extends React.Component {
     return (
       <div className = "aboutBackground">
         <Navbar />
+        { /* <a onClick={e => {e.preventDefault(); window.history.back();}}>Go Back</a> */ }
         <div className = "aboutcontainer">
 
           <div id="about-section" className="section" >
