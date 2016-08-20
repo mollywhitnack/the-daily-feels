@@ -24,7 +24,7 @@ const ArticleList = ({ articles, emotion }) => {
     <div>
       {filteredArticles.length && filteredArticles ?
         filteredArticles :
-        <p class='noFilteredArticles'>
+        <p className="noFilteredArticles">
           Sorry, there are none that meet the threshold!
         </p>
       }

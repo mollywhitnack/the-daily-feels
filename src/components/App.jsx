@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Navbar from './common/Navbar';
 
 const App = ({ children }) =>
 // const App = ({ children, loading }) =>

@@ -10,7 +10,7 @@ import Header from '../common/Header';
 import Navbar from '../common/Navbar';
 import '../../styles/contentPage.scss';
 import toastr from 'toastr';
-//change for heroku
+//  change for heroku
 class ContentPage extends Component {
 
   componentWillMount() {

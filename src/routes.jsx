@@ -12,6 +12,6 @@ export default (
     <Route path="articles" component={ContentPage} />
     <Route path="articles/:search" component={ContentPage} />
     <Route path="articles/:search/:emotion" component={ContentPage} />
-    <Route path="about" component={AboutPage} />    
+    <Route path="about" component={AboutPage} />
   </Route>
 );

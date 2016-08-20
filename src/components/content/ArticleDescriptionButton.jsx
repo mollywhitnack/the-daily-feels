@@ -1,14 +1,13 @@
 import React, { PropTypes } from 'react';
-import { Link } from 'react-router';
 import '../../styles/article.scss';
 
-const ArticleDescriptionButton = ({ clickHandler }) => {
+const ArticleDescriptionButton = ({ clickHandler }) =>
+  <div onClick={clickHandler} className="descriptionButton">
+    ?
+  </div>;
 
-  return (
-    <div onClick={clickHandler} className="descriptionButton">
-      ?
-    </div>
-  );
+ArticleDescriptionButton.propTypes = {
+  clickHandler: PropTypes.func.isRequired,
 };
 
 export default ArticleDescriptionButton;

@@ -10,21 +10,21 @@ const AllFaceButton = ({ searchTerm, currentEmotion }) =>
       <div className="allFaces">
         <div
           className="smallFace emj"
-          id={currentEmotion ? "joyHover" : "joyActive"}
+          id={currentEmotion ? 'joyHover' : 'joyActive'}
           style={{ top: 15, left: 17, zIndex: 2 }}
         >
           😄
         </div>
         <div
           className="smallFace emj"
-          id={currentEmotion ? "angerHover" : "angerActive"}
+          id={currentEmotion ? 'angerHover' : 'angerActive'}
           style={{ top: 48, left: -4, zIndex: 1 }}
         >
           😠
         </div>
         <div
           className="smallFace emj"
-          id={currentEmotion ? "sadnessHover" : "sadnessActive"}
+          id={currentEmotion ? 'sadnessHover' : 'sadnessActive'}
           style={{ top: 51, left: 38, zIndex: 3 }}
         >
           😭
