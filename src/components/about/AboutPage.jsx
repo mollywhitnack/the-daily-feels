@@ -10,7 +10,6 @@ import Navbar from '../common/Navbar';
 class AboutPage extends React.Component {
   constructor(props, context) {
     super(props, context);
-
     this.state = {
 
     };
@@ -19,8 +18,8 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div className = "aboutBackground">
+      <Navbar />
         <div className = "aboutcontainer">
-          <Navbar />
 
           <div id="about-section" className="section" >
             <div className="container">
@@ -141,8 +140,5 @@ class AboutPage extends React.Component {
     );
   }
 }
-
-
-
 
 export default AboutPage;

@@ -42,6 +42,7 @@ class Article extends Component {
   }
 
   articleClickHandler() {
+    window.open(this.props.article.url)
   }
 
   render () {
