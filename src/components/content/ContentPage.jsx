@@ -50,12 +50,11 @@ class ContentPage extends Component {
           </span>
           <ArticleList articles={articles} emotion={params.emotion} />
         </div>
-
       </div>
     );
 
     return (
-      <div>
+      <div className="backgroundImage">
         {loading ? loadingCircle : content}
       </div>
     );
