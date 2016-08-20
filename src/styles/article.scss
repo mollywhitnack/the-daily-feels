@@ -11,6 +11,7 @@
 .article {
   margin: 15px;
   display: inline-block;
+  cursor: pointer;
 }
 
 .articleTitle {
@@ -45,23 +46,23 @@
   //font-size: 4em !important;
 }
 
-.percentages>.anger {
+.anger {
   color: red;
 }
 
-.percentages>.disgust {
+.disgust {
   color: green;
 }
 
-.percentages>.fear {
+.fear {
   color: black;
 }
 
-.percentages>.joy {
+.joy {
   color: pink;
 }
 
-.percentages>.sadness {
+.sadness {
   color: blue;
 }
 
@@ -115,30 +116,23 @@
     text-shadow: $text-shadow-lighter;
   }
 }
-.background-image {
-  overflow-y: auto;
-  position: relative;
-  //background-color:green;
 
+.descriptionButton {
+  height: 35px;
+  width: 35px;
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: #0EA2F7;
+  color: white;
 }
 
-.background-image:before {
-  content: "";
-  position: fixed;
-  left: 0;
-  right: 0;
-  z-index: -1;
-
-  display: block;
-  background-image: url("http://i.imgur.com/u5BmnVH.png");
-  background-size:cover;
-  width: 100%;
-  height: 100%;
-
-  -webkit-filter: blur(10px);
-  -moz-filter: blur(10px);
-  -o-filter: blur(10px);
-  -ms-filter: blur(10px);
-  filter: blur(10px);
+.readMoreLink {
+  color: #0EA2F7;
 }
-
