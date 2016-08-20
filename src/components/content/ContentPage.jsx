@@ -9,7 +9,7 @@ import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
 import '../../styles/contentPage.scss';
 import toastr from 'toastr';
-
+//change for heroku
 class ContentPage extends Component {
 
   componentWillMount() {
