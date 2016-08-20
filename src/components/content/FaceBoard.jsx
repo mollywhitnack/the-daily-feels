@@ -19,6 +19,7 @@ const FaceBoard = ({ faces, searchTerm, currentEmotion }) => {
 FaceBoard.propTypes = {
   faces: PropTypes.array.isRequired,
   searchTerm: PropTypes.string.isRequired,
+  currentEmotion: PropTypes.string.isRequired,
 };
 
 export default FaceBoard;
