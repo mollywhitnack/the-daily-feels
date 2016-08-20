@@ -16,7 +16,12 @@ store.dispatch(loadAuthors());
 
 render(
   <Provider store={store}>
-  <Router history={browserHistory} routes={routes} />
+    <Router history={browserHistory} routes={routes}>
+      <Route path="/" component={App}>
+        <IndexRoute component={Dashboard} />
+        <Route path="about" component={About} />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('app')
 );
