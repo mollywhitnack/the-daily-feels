@@ -22,7 +22,12 @@ const ArticleList = ({ articles, emotion }) => {
 
   return (
     <div>
-      {filteredArticles}
+      {filteredArticles.length && filteredArticles ?
+        filteredArticles :
+        <p>
+          Sorry, there are none that meet the threshold!
+        </p>
+      }
     </div>
   );
 };

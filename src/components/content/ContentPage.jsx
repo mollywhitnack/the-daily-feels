@@ -25,8 +25,12 @@ class ContentPage extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.routeParams.search !== nextProps.params.search) {
       // make api request for new search term entered via Header component
-      nextProps.actions.loadArticles(nextProps.params.search);
-      // .catch(err => toastr.error(err));
+      nextProps.actions.loadArticles(nextProps.params.search)
+        .then(() => {
+          if (this.props.articles.length === 0) {
+            toastr.warning('No Articles Found, Please search again');
+          }
+        });
     }
   }
 
