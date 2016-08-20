@@ -131,7 +131,7 @@ class AboutPage extends React.Component {
                       </ul>    
                     </h5>
                 </div>
-            </div> b      
+            </div>
         </div>
     </div>    
 
