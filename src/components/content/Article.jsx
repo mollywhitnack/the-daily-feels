@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 import ArticleDescriptionButton from './ArticleDescriptionButton';
 import ArticleEmotionsList from './ArticleEmotionsList';
 import emotionColorKey from '../../emotionColorKey';
@@ -17,6 +18,7 @@ class Article extends Component {
 
     this.descriptionClickHandler = this.descriptionClickHandler.bind(this);
     this.articleClickHandler = this.articleClickHandler.bind(this);
+    this.readMoreClickHandler = this.readMoreClickHandler.bind(this);
     this.onMouseLeaveHandler = this.onMouseLeaveHandler.bind(this);
   }
 
@@ -29,18 +31,22 @@ class Article extends Component {
     }.bind(this));
   }
 
-  articleClickHandler() {
-    window.open(this.props.article.url);
-  }
-
   onMouseLeaveHandler() {
     setTimeout(() => {
       this.setState({ isDescriptionShowing: false });
     },300);
   }
 
+  readMoreClickHandler(e) {
+    e.stopPropagation();
+    window.location.assign('/about');
+  }
+
+  articleClickHandler() {
+  }
+
   render () {
-    let numbersDescription = "Elit doloremque deserunt cumque voluptatem impedit quod voluptatem. Eaque magnam mollitia ad nihil quos. Earum ipsum sunt minus et nisi officiis. Pariatur debitis molestias laboriosam totam esse pariatur aperiam nesciunt."
+    let numbersDescription = 'These numbers represent how strong the listed emotions are relative to that emotion\'s average across many articles. An anger score of 8.0 means that the article contains significantly more anger than the average article and thus is likely to stand out as angry to someone who reads a lot of news. The percentages at the top represent the raw average emotion levels of all articles returned for the current search.'
 
     let dominantTone = {
       boxShadow: `3px 3px 7px 3px #999,
@@ -50,12 +56,13 @@ class Article extends Component {
     let backContent = this.state.isDescriptionShowing ?
       <div>
         {numbersDescription}
+        <br />
+        <div onClick={this.readMoreClickHandler} className="readMoreLink">Read More</div>
       </div>
       :
       <div>
-        <ArticleDescriptionButton />
+        <ArticleDescriptionButton clickHandler={this.descriptionClickHandler} />
         <ArticleEmotionsList article={this.props.article} />
-
       </div>; 
 
 
