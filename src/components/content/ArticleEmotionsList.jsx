@@ -5,7 +5,7 @@ import '../../styles/article.scss';
 const ArticleEmotionsList = ({ article }) => {
 
   return (
-    <div className="descriptionButton">
+    <div className="emotionList">
       <p className="articleEmotionRow anger">
         anger: {(article.tone[0].std.toFixed(1))}
       </p>
