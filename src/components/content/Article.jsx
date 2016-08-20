@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
+import ArticleDescriptionButton from './ArticleDescriptionButton';
+import ArticleEmotionsList from './ArticleEmotionsList';
 import emotionColorKey from '../../emotionColorKey';
 import '../../styles/article.scss';
 
@@ -51,22 +53,9 @@ class Article extends Component {
       </div>
       :
       <div>
-        <div onClick={this.descriptionClickHandler}>????????</div>
-        <p className="articleEmotionRow anger">
-          anger: {(this.props.article.tone[0].std.toFixed(1))}
-        </p>
-        <p className="articleEmotionRow disgust">
-          disgust: {(this.props.article.tone[1].std.toFixed(1))}
-        </p>
-        <p className="articleEmotionRow fear">
-          fear: {(this.props.article.tone[2].std.toFixed(1))}
-        </p>
-        <p className="articleEmotionRow joy">
-          joy: {(this.props.article.tone[3].std.toFixed(1))}
-        </p>
-        <p className="articleEmotionRow sadness">
-          sadness: {(this.props.article.tone[4].std.toFixed(1))}
-        </p> 
+        <ArticleDescriptionButton />
+        <ArticleEmotionsList article={this.props.article} />
+
       </div>; 
 
 
