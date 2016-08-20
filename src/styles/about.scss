@@ -1,4 +1,4 @@
-.backgroundImage{
+.aboutBackground{
   text-align: center;
   overflow-y: auto;
   position: relative;
@@ -6,7 +6,7 @@
 }
 
 
-.backgroundImage:before{
+.aboutBackground:before{
   content: "";
   position: fixed;
   left: 0;

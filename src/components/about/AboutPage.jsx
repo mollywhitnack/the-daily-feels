@@ -17,7 +17,7 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-    <div className = "backgroundImage"> 
+    <div className = "aboutBackground"> 
     <div className = "aboutcontainer"> 
 
     <div id="about-section" className="section" >   
