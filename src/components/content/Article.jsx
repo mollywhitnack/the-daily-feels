@@ -42,14 +42,15 @@ class Article extends Component {
   }
 
   articleClickHandler() {
+    window.open(this.props.article.url)
   }
 
   render () {
     let numbersDescription = 'These numbers represent how strong the listed emotions are relative to that emotion\'s average across many articles. An anger score of 8.0 means that the article contains significantly more anger than the average article and thus is likely to stand out as angry to someone who reads a lot of news. The percentages at the top represent the raw average emotion levels of all articles returned for the current search.'
 
     let dominantTone = {
-      boxShadow: `3px 3px 7px 3px #999,
-    inset 0px 0px 10px ${emotionColorKey[this.props.article.dominantTone]}`,
+      boxShadow: '3px 3px 7px 3px #999',
+      border: `8px solid ${emotionColorKey[this.props.article.dominantTone]}`,
     }
 
     let backContent = this.state.isDescriptionShowing ?

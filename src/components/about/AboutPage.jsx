@@ -17,7 +17,6 @@ class AboutPage extends React.Component {
       <div className = "aboutBackground">
         <Navbar />
         <div className = "aboutcontainer">
-
           <div id="about-section" className="section" >
             <div className="container">
               <h1 className = "hermanoAlto">About the Team</h1>
@@ -137,8 +136,5 @@ class AboutPage extends React.Component {
     );
   }
 }
-
-
-
 
 export default AboutPage;
