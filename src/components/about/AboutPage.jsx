@@ -39,7 +39,7 @@ class AboutPage extends React.Component {
                   <h4>Matthew Broatch</h4>
                   <div className="Matt"></div>
                         <a href="https://github.com/mnbroatch" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
-                        <a href="#" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="http://matthewbroatch.com/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
                         <a href="https://twitter.com/mnbroatch" className="btn" target="_blank"><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
                   </div>
                 
@@ -55,7 +55,7 @@ class AboutPage extends React.Component {
                   <h4>Nikhil Ram</h4>
                   <div className="Nick"></div>
                         <a href="https://github.com/nram20" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
-                        <a href="#" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="http://www.nikhilram.org/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
                         <a href="https://twitter.com/nikhilram" className="btn" target="_blank"><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
                   </div>
 
@@ -63,7 +63,7 @@ class AboutPage extends React.Component {
                   <h4>Sonam Kindy</h4>
                   <div className="Sonam"></div>
                         <a href="https://github.com/sdkindy" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
-                        <a href="#" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="http://sonamdkindy.com/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
                         <a href="https://twitter.com/sonamdkindy" className="btn" target="_blank"><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
                   </div>
               </div>
