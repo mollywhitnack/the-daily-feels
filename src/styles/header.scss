@@ -5,6 +5,9 @@
   display: block;
   position: relative;
   top: -52px;
+  input, button {
+    margin-bottom: 10px;
+  }
 }
 
 label {
