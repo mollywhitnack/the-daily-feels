@@ -30,9 +30,11 @@ class ContentPage extends Component {
   }
 
   render() {
-
-    let { faces, articles, loading, params } = this.props;
-    const loadingCircle = <div className = "loading text-center"><CircularProgress color={"#000"} size={3} /></div>;
+    const { faces, articles, loading, params } = this.props;
+    const loadingCircle =
+      (<div className="loading text-center">
+        <CircularProgress color={"#000"} size={3} />
+      </div>);
 
     const content = (
       <div>
