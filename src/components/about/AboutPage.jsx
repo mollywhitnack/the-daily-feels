@@ -19,8 +19,9 @@ class AboutPage extends React.Component {
   render() {
     return (
       <div className = "aboutBackground">
+        <Navbar />
         <div className = "aboutcontainer">
-          <Navbar />
+        { /* <a onClick={e => {e.preventDefault(); window.history.back();}}>Go Back</a> */ }
 
           <div id="about-section" className="section" >
             <div className="container">
@@ -46,7 +47,7 @@ class AboutPage extends React.Component {
                   </div>
 
                   <div className="col-md-3 col-sm-3">
-                    <h4>Molly Whitnack</h4>
+                    <h3>Molly Whitnack</h3>
                     <div className="Molly"></div>
                     <a href="https://github.com/mollywhitnack" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                     <a href="http://www.mollywhitnack.me/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
@@ -54,7 +55,8 @@ class AboutPage extends React.Component {
                   </div>
 
                   <div className="col-md-3 col-sm-3">
-                    <h4>Nikhil Ram</h4>
+
+                    <h3>Nikhil Ram</h3>
                     <div className="Nick"></div>
                     <a href="https://github.com/nram20" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                     <a href="http://www.nikhilram.org/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
@@ -62,7 +64,8 @@ class AboutPage extends React.Component {
                   </div>
 
                   <div className="col-md-3 col-sm-3">
-                    <h4>Sonam Kindy</h4>
+
+                    <h3>Sonam Kindy</h3>
                     <div className="Sonam"></div>
                     <a href="https://github.com/sdkindy" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                     <a href="http://sonamdkindy.com/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
