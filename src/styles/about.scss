@@ -6,6 +6,17 @@
       color: #fff;
     }
   }
+  h2 {
+    font-size: 3.55em;
+    z-index: 9;
+    text-align: center;
+    color: black;
+  }
+
+  h1, h2 {
+    text-shadow: 1px 1px 1px rgb(255, 255, 255);
+    line-height: 30px;
+  }
 }
 
 .aboutBackground{
@@ -49,18 +60,6 @@
 .container {
   // margin: 15px;
   display: inline-block;
-}
-
-h2 {
-  font-size: 3.55em;
-  z-index: 9;
-  text-align: center;
-  color: black;
-}
-
-h1, h2 {
-  text-shadow: 1px 1px 1px rgb(255, 255, 255);
-  line-height: 30px;
 }
 
 .hermanoAlto{
