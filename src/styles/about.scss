@@ -1,8 +1,42 @@
+.aboutBackground{
+  text-align: center;
+  overflow-y: auto;
+  position: relative;
+  font-family: Ghostlight;
+}
+
+
+.aboutBackground:before{
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url("../images/blurrycolorballs.png");
+  background-size:cover;
+  width: 100%;
+  height: 100%;
+
+  -webkit-filter: blur(10px);
+  -moz-filter: blur(10px);
+  -o-filter: blur(10px);
+  -ms-filter: blur(10px);
+  filter: blur(10px);
+  -webkit-animation: 5s blurIn ease 1;
+  -webkit-animation-fill-mode: forwards;
+}
 
 .aboutcontainer{
   background-color: rgba(255, 255, 255, 0.8);
-  text-align: center;
+  width: 90%;
+  border: 1px solid #000;
+  border-radius: 15px;
+  margin:0 auto;
+  margin-top: 20px;
 }
+
 .container {
   margin: 15px;
   display: inline-block;
@@ -10,20 +44,17 @@
 
 h2 {
   font-size: 3.55em;
-  box-shadow: 2px 2px 8px 0 #999;
-  padding: 7px;
-  padding-left: 15px;
-  padding-right: 10px;
-  background-color: #e6e6e6;
   z-index: 9;
   text-align: center;
   color: black;
 }
 
+.hermanoAlto{
+  font-family: HermanoAlto;
+}
+
 .info {
   margin-top: 5px;
-  color: black;
-  text-align: left;
   margin: 15px;
   margin-top: 8px;
   font-size: 1.2em;
@@ -33,39 +64,39 @@ h2 {
 .Matt {
   width: 128px;
   height: 170.6px;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
+  border: 5px solid #333;
   background-image: url("../images/Matt_Chibi.jpg");
   background-size: cover;
-  -webkit-animation: 9s colorChange linear infinite;
+ // -webkit-animation: 9s colorChange linear infinite;
 }
 
 .Molly {
   width: 128px;
   height: 170.6px;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
+  border: 5px solid #333;
   background-image: url("../images/Molly_Chibi.jpg");
   background-size: cover;
-  -webkit-animation: 8s colorChange linear infinite;
+  //-webkit-animation: 8s colorChange linear infinite;
 }
 
 .Nick {
   width: 128px;
   height: 170.6px;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
+  border: 5px solid #333;
   background-image: url("../images/Nick_Chibi.jpg");
   background-size: cover;
-  -webkit-animation: 7s colorChange linear infinite;
+  //-webkit-animation: 7s colorChange linear infinite;
 }
 
 .Sonam {
   width: 128px;
   height: 170.6px;
-  top: 0;
-  left: 0;
+  margin: 0 auto;
+  border: 5px solid #333;
   background-image: url("../images/sonam_Chibi.jpg");
   background-size: cover;
-  -webkit-animation: 10s colorChange linear infinite;
+  //-webkit-animation: 10s colorChange linear infinite;
 }
