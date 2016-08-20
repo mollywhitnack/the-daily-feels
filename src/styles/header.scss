@@ -5,8 +5,14 @@
   display: block;
   position: relative;
   top: -52px;
-  input, button {
+  input, a {
     margin-bottom: 10px;
+  }
+  a.btn {
+    background-color: #fff;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.7);
+    }
   }
 }
 
