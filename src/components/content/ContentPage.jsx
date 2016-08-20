@@ -7,6 +7,7 @@ import * as articleActions from '../../actions/articleActions';
 import ArticleList from './ArticleList';
 import CircularProgress from 'material-ui/CircularProgress';
 import Header from '../common/Header';
+import Navbar from '../common/Navbar';
 import '../../styles/contentPage.scss';
 import toastr from 'toastr';
 //change for heroku
@@ -38,6 +39,7 @@ class ContentPage extends Component {
 
     const content = (
       <div>
+        <Navbar />
         <Header /> {/* might want to change to builtin MUI <AppBar title=whatever /> */}
         <FaceBoard faces={faces} searchTerm={params.search} currentEmotion={params.emotion} />
         <div className="text-center articlesDisplay">

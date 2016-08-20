@@ -6,8 +6,6 @@ import Navbar from './common/Navbar';
 const App = ({ children }) =>
 // const App = ({ children, loading }) =>
   <div className="container-fluid">
-
-    <Navbar />
     <MuiThemeProvider>
       {children}
     </MuiThemeProvider>
@@ -25,4 +23,3 @@ App.propTypes = {
 };
 
 export default connect(mapStateToProps)(App);
-

@@ -5,13 +5,14 @@ import * as articleActions from '../../actions/articleActions';
 import '../../styles/about.scss';
 import { browserHistory } from 'react-router';
 import { Link } from 'react-router';
+import Navbar from '../common/Navbar';
 
 class AboutPage extends React.Component {
   constructor(props, context) {
     super(props, context);
 
     this.state = {
-     
+
     };
 
 
@@ -20,9 +21,10 @@ class AboutPage extends React.Component {
 
   render() {
     return (
-    <div className = "aboutcontainer"> 
+    <div className = "aboutcontainer">
+      <Navbar />
 
-    <div id="about-section" className="section" >   
+    <div id="about-section" className="section" >
        <div className="container" >
           <h2>About the Team</h2>
           <br></br>
@@ -33,7 +35,7 @@ class AboutPage extends React.Component {
               <p>We built <i>The Daily Feels</i> to help people analyze what they read on a daily basis and learn about the prevalence of emotional language used in the media.</p>
             </ul>
           </h5>
-          
+
             <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
               <div className="row">
                 <div className="col-md-3 col-sm-3">
@@ -41,15 +43,15 @@ class AboutPage extends React.Component {
                   <div className="Matt"></div>
                         <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                         <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
-                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
                   </div>
-                
+
                 <div className="col-md-3 col-sm-3">
                   <h5>Molly Whitnack</h5>
                   <div className="Molly"></div>
                         <a href="https://github.com/mollywhitnack" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                         <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
-                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
                   </div>
 
                 <div className="col-md-3 col-sm-3">
@@ -57,7 +59,7 @@ class AboutPage extends React.Component {
                   <div className="Nick"></div>
                         <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                         <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
-                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
                   </div>
 
                 <div className="col-md-3 col-sm-3">
@@ -65,20 +67,20 @@ class AboutPage extends React.Component {
                   <div className="Sonam"></div>
                         <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                         <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
-                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>
                   </div>
               </div>
 
           </div>
        </div>
     </div>
-  
+
 
 
    <div id="about-section" class="section" >
         <div className="container" >
-          
-               
+
+
             <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>How Does <i><b>The Daily Feels</b></i> Work?</h2>
@@ -94,14 +96,14 @@ class AboutPage extends React.Component {
                     </h5>
                 </div>
             </div>
-           
-            
+
+
         </div>
     </div>
-   
+
     <div id="about-section" className="section" >
         <div className="container" >
-          
+
            <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>What Do The Numbers Mean?</h2>
@@ -119,14 +121,14 @@ class AboutPage extends React.Component {
                     </h5>
                 </div>
             </div>
-           
-            
+
+
         </div>
     </div>
 
     <div id="about-section" className="section" >
         <div className="container" >
-          
+
            <div className="row main-low-margin">
                 <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info" >
                     <h2>How Was <i><b>The Daily Feels</b></i> Built?</h2>
@@ -138,25 +140,25 @@ class AboutPage extends React.Component {
                           <li> We're using the Bing News API, Cheerio for webscraping, as well as IBM Watson's Tone Analyzer.</li>
                           <br></br>
                           <li> Styling is done with SCSS and Bootstrap, and all of our code follows the AirBnB Style Guide. </li>
-                      </ul>    
+                      </ul>
                     </h5>
                 </div>
             </div>
-           
-            
+
+
         </div>
-    </div>    
+    </div>
 
 
 
 
 
-   
+
       <div className="space-bottom"></div>
 
 
-    
-    
+
+
 </div>
 
     );
@@ -167,10 +169,3 @@ class AboutPage extends React.Component {
 
 
 export default AboutPage;
-
-
-
-
-
-
- 
