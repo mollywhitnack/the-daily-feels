@@ -2,7 +2,7 @@
 @import 'emotions';
 @import 'shared-styles';
 
-.anger, #angerActive {
+.anger {
   color: $anger;
 }
 
@@ -14,11 +14,11 @@
   color: $fear;
 }
 
-.joy, #joyActive {
+.joy {
   color: $joy;
 }
 
-.sadness, #sadnessActive {
+.sadness {
   color: $sadness;
 }
 
