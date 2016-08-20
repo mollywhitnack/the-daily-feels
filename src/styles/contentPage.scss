@@ -39,3 +39,34 @@
   display: inline-block;
   font-size: 1.0em;
 }
+
+.backgroundImage {
+  overflow-y: auto;
+  position: relative;
+}
+
+.backgroundImage:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: -1;
+
+  display: block;
+  background-image: url("../images/blurrycolorballs.png");
+  background-size:cover;
+  width: 100%;
+  height: 100%;
+
+  -webkit-animation: 5s blurIn ease 1;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes blurIn {
+  from {
+    -webkit-filter: blur(0);
+  }
+  to {
+    -webkit-filter: blur(10px);
+  }
+}
