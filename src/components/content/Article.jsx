@@ -6,7 +6,6 @@ import ArticleEmotionsList from './ArticleEmotionsList';
 import emotionColorKey from '../../emotionColorKey';
 import '../../styles/article.scss';
 
-
 class Article extends Component {
   constructor(props, context) {
     super(props, context);

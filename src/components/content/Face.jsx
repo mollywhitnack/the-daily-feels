@@ -8,11 +8,11 @@ const displayNone = {
   textDecoration: 'none',
 };
 
-const Face = ({ face, searchTerm, params, currentEmotion }) => {
+const Face = ({ face, searchTerm, currentEmotion }) => {
   let setId = face.emotion;
 
   let currentColorStyle = (currentEmotion && (currentEmotion === face.emotion)) ?
-    {color: emotionColorKey[face.emotion]} :
+    { color: emotionColorKey[face.emotion] } :
     {};
 
   return (
@@ -37,6 +37,7 @@ const Face = ({ face, searchTerm, params, currentEmotion }) => {
 Face.propTypes = {
   face: PropTypes.object.isRequired,
   searchTerm: PropTypes.string.isRequired,
+  currentEmotion: PropTypes.string,
 };
 
 export default Face;
