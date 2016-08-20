@@ -39,7 +39,7 @@ class AboutPage extends React.Component {
               <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
                 <div className="row text-center hermanoAlto">
                   <div className="col-md-3 col-sm-3">
-                    <h4>Matthew Broatch</h4>
+                    <h3>Matthew Broatch</h3>
                     <div className="Matt"></div>
                     <a href="https://github.com/mnbroatch" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
                     <a href="http://matthewbroatch.com/" className="btn" target="_blank"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
