@@ -20,76 +20,59 @@ class AboutPage extends React.Component {
 
   render() {
     return (
- <div> 
-
+    <div className = "aboutcontainer"> 
 
     <div id="about-section" className="section" >   
        <div className="container" >
-            <h2>About the Team</h2>
-            <br></br>
-            <h5>
-              <ul>
-                <li>We are four developers with a passion for news, media, linguistics, and data. </li>
-                <br></br>
-                <li>We built <i>The Daily Feels</i> to help people analyze what they read on a daily basis and learn about the prevalence of emotional language used in the media.</li>
-              </ul>
-            </h5>
+          <h2>About the Team</h2>
+          <br></br>
+          <h5>
+            <ul>
+              <p>We are four developers with a passion for news, media, linguistics, and data. </p>
+              <br></br>
+              <p>We built <i>The Daily Feels</i> to help people analyze what they read on a daily basis and learn about the prevalence of emotional language used in the media.</p>
+            </ul>
+          </h5>
           
             <div className="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 info">
-                    <div className="row">
-                        <div className="col-md-3 col-sm-3">
-                          <h5>Matthew Broatch</h5>
-                          <div className="Matt"></div>
-                            <ul>
-              
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                              
-                            </ul>
-                        </div>
-                        
-                        <div className="col-md-3 col-sm-3">
-                          <h5>Molly Whitnack</h5>
-                          <div className="Molly"></div>
-                            <ul>
-              
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                              
-                            </ul>
-                        </div>
+              <div className="row">
+                <div className="col-md-3 col-sm-3">
+                  <h5>Matthew Broatch</h5>
+                  <div className="Matt"></div>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                  </div>
+                
+                <div className="col-md-3 col-sm-3">
+                  <h5>Molly Whitnack</h5>
+                  <div className="Molly"></div>
+                        <a href="https://github.com/mollywhitnack" target="_blank" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                  </div>
 
-                        <div className="col-md-3 col-sm-3">
-                          <h5>Nikhil Ram</h5>
-                          <div className="Nick"></div>
-                            <ul>
-              
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                              
-                            </ul>
-                        </div>
+                <div className="col-md-3 col-sm-3">
+                  <h5>Nikhil Ram</h5>
+                  <div className="Nick"></div>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                  </div>
 
-                        <div className="col-md-3 col-sm-3">
-                          <h5>Sonam Kindy</h5>
-                          <div className="Sonam"></div>
-                            <ul>
-              
-                                <li><a href="#" className="btn btn-primary btn-sm">GitHub</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Website</a></li>
-                                <li><a href="#" className="btn btn-primary btn-sm">Twitter</a></li>
-                                              
-                            </ul>
-                        </div>                        
+                <div className="col-md-3 col-sm-3">
+                  <h5>Sonam Kindy</h5>
+                  <div className="Sonam"></div>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-github" aria-hidden="true"></i></a>
+                        <a href="#" className="btn"><i className="fa fa-2x fa-user" aria-hidden="true"></i></a>
+                        <a href="#" className="btn "><i className="fa fa-2x fa-twitter" aria-hidden="true"></i></a>                
+                  </div>
+              </div>
 
-                    </div>
-                </div>
-
-        </div>
-    </div> 
+          </div>
+       </div>
+    </div>
+  
 
 
    <div id="about-section" class="section" >
