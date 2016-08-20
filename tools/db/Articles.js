@@ -114,9 +114,6 @@ function analyzeOneTone(article) {
         return resolve(tone);
       });
   });
-
-  // console.log('using mock tone api');
-  // return mockToneApi.getTone(article);
 }
 
 function formatArticles(articles) {
@@ -191,6 +188,9 @@ exports.get = searchTerm => {
     .then(getDominantTone)
     .catch(err => console.log(err));
 };
+
+
+
 
 //   console.log('using mock news api');
 //   return mockNewsApi.getArticles(searchTerm)
