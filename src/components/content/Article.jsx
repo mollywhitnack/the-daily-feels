@@ -14,14 +14,11 @@ const Article = ({ article }) => {
     backgroundColor: 'white',
   };
 
-  dominantTone = {
-    boxShadow: 'inset 0 0 10px red'
-  }
-
   if (article.dominantTone) {
     dominantTone = {
-      boxShadow: `3px 3px 7px 3px #999, inset 0px 0px 10px ${dominantToneShadowObj[article.dominantTone]}`,
-    }
+      boxShadow: `3px 3px 7px 3px #999,
+      inset 0px 0px 10px ${dominantToneShadowObj[article.dominantTone]}`,
+    };
   }
 
   return (
@@ -32,7 +29,7 @@ const Article = ({ article }) => {
             <div className="articleTitle">{article.title}</div>
             <div className="articleSnippet">{`${article.snippet} ... `}</div>
           </div>
-          <div className="back" style = {dominantTone}>
+          <div className="back" style={dominantTone}>
 
             <p className="articleEmotionRow anger">
               anger: {(article.tone[0].std.toFixed(1))}
