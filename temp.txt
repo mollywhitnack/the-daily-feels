@@ -1,0 +1,82 @@
+@import 'emotions';
+
+.smallFace {
+  position: absolute;
+  font-size: 4em;
+  border: 2px solid white;
+  height: .85em;
+  line-height: .68em!important;
+  border-radius: 50%;
+}
+
+.allFaces {
+  position: relative;
+  width: 80px;
+  height: 98px;
+  color: #eee;
+  #angerActive {
+    color: $anger;
+  }
+  #joyActive {
+    color: $joy;
+  }
+  #sadnessActive {
+    color: $sadness;
+  }
+  &:hover {
+    #angerHover {
+      color: $anger;
+    }
+    #sadnessHover {
+      color: $sadness;
+    }
+    #joyHover {
+      color: $joy;
+    }
+    animation-name: stretch;
+    animation-duration: 0.6s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: none;
+    animation-play-state: running;
+  }
+}
+
+.allEmotions {
+  position: relative;
+  vertical-align: top;
+  text-align: center;
+  width: 76px;
+  height: 168px;
+}
+
+
+
+import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import '../../styles/allFaceButton.scss';
+import '../../styles/face.scss';
+
+const AllFaceButton = ({ searchTerm, currentEmotion }) => {
+  console.log('currentEmotion:', currentEmotion);
+  return (
+    <div className="allEmotions faceAlign">
+      <div className="emotionLabel">All</div>
+      <Link to={`/articles/${searchTerm}`}>
+        <div className="allFaces">
+          <div className="smallFace emj" id={currentEmotion ? "joyHover" : "joyActive"} style={{ top: 15, left: 17, zIndex: 2 }}>😄</div>
+          <div className="smallFace emj" id={currentEmotion ? "angerHover" : "angerActive"} style={{ top: 48, left: -4, zIndex: 1 }}>😠</div>
+          <div className="smallFace emj" id={currentEmotion ? "sadnessHover" : "sadnessActive"} style={{ top: 51, left: 38, zIndex: 3 }}>😭</div>
+        </div>
+      </Link>
+    </div>
+  )
+}
+
+AllFaceButton.propTypes = {
+  searchTerm: PropTypes.string.isRequired,
+};
+
+export default AllFaceButton;
