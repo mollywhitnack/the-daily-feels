@@ -18,9 +18,11 @@ body {
   font-family: Ghostlight;
 }
 
-.background-image {
+/*.background-image {
   overflow-y: auto;
   position: relative;
+  background-color:green;
+
 }
 
 .background-image:before {
@@ -31,7 +33,8 @@ body {
   z-index: -1;
 
   display: block;
-  background-image: url("../images/blurrycolorballs.png");
+  //background-image: url("../images/blurrycolorballs.png");
+  background-color:green;
   background-size:cover;
   width: 100%;
   height: 100%;
@@ -42,3 +45,4 @@ body {
   -ms-filter: blur(10px);
   filter: blur(10px);
 }
+*/
